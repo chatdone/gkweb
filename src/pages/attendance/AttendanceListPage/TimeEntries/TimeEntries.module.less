@@ -1,0 +1,61 @@
+@import 'src/global.less';
+
+.wrapper {
+  .table();
+
+  .monthly-table {
+    :global(.arco-table-th:not(:first-child):not(:last-child)) {
+      :global(.arco-table-th-item) {
+        padding: 0;
+        width: 1;
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    :global(td.arco-table-td:not(:first-child):not(:last-child)) {
+      padding: 0px;
+    }
+  }
+
+  .schedule-select {
+    width: 299px;
+  }
+
+  .search-input {
+    width: 306px;
+  }
+
+  .summary-type-select {
+    min-width: 100px;
+  }
+
+  .timezone-select {
+    min-width: 176px;
+  }
+}
+
+.tooltip-month-square {
+  display: flex;
+  flex-direction: column;
+}
+
+.monthly-table-square,
+.monthly-table-square-overtime,
+.monthly-table-square-rest {
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+}
+
+.monthly-table-square {
+  background: #3686ff;
+}
+
+.monthly-table-square-overtime {
+  background: #e64e59;
+}
+
+.monthly-table-square-rest {
+  background: #f2f3f5;
+}

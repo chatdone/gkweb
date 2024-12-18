@@ -1,0 +1,16 @@
+@import 'src/global.less';
+
+.wrapper {
+  :global(.arco-typography):not(.warning-txt) {
+    margin-left: 1rem;
+  }
+
+  :global(.arco-space-vertical) {
+    width: 100%;
+  }
+
+  .warning-txt {
+    color: #ff7d00;
+    font-size: @font-size-xs;
+  }
+}

@@ -1,0 +1,33 @@
+@import 'src/global.less';
+
+.wrapper {
+  margin-top: 1rem;
+  min-height: 82vh;
+
+  :global(.arco-space-vertical) {
+    width: 100%;
+  }
+
+  .card-title {
+    margin-bottom: 0.5rem;
+  }
+
+  .tabs {
+    border-bottom: 1px solid #e5e6eb;
+    margin-bottom: 1rem;
+  }
+}
+
+.tab-btn {
+  margin: 0 1rem;
+  padding: 0.5rem 0;
+
+  cursor: pointer;
+}
+
+.tab-btn-active {
+  color: @gk-theme;
+  font-weight: 900;
+
+  border-bottom: 1.5px solid @gk-theme;
+}

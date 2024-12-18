@@ -1,0 +1,86 @@
+@import 'src/global.less';
+
+.tooltip {
+  :global(.arco-tooltip-content-inner) {
+    color: black;
+  }
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  inset: 0;
+
+  background-color: rgba(0, 0, 0, 0.9);
+
+  z-index: 1999;
+
+  :global(.arco-typography) {
+    color: white;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    padding: 1.5rem 1rem 0 2rem;
+    margin-bottom: 0.5rem;
+
+    :global(div.arco-typography) {
+      margin-bottom: 0;
+    }
+
+    .title {
+      font-weight: 600;
+      font-size: @font-size-xl;
+    }
+
+    svg {
+      display: block;
+      color: white;
+      font-size: @font-size-2xl;
+      cursor: pointer;
+    }
+  }
+
+  .content {
+    flex: 1;
+    overflow: auto;
+  }
+}
+
+.loading-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.video-viewer-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  video {
+    width: 80%;
+  }
+}
+
+.no-preview-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  :global(.arco-typography) {
+    font-weight: 600;
+  }
+
+  .download {
+    cursor: pointer;
+  }
+}

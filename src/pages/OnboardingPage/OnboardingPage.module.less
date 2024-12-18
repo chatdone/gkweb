@@ -1,0 +1,116 @@
+@import 'src/global.less';
+
+.center-horizontal {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.theme-btn {
+  .theme-button();
+}
+
+.title {
+  font-size: @font-size-md;
+  font-weight: 600;
+}
+
+.wrapper {
+  .content {
+    padding: 5rem 0;
+
+    :global(.arco-space-vertical),
+    :global(.arco-radio-group-direction-vertical) {
+      width: 100%;
+    }
+
+    :global(.arco-btn-icon-only) {
+      color: @grey-8;
+    }
+
+    h1 {
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .title-container {
+      text-align: center;
+    }
+
+    .logo {
+      width: 250px;
+    }
+  }
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 80px;
+    background: #f7f8fa;
+
+    font-weight: 600;
+
+    :global(div.arco-typography) {
+      margin-bottom: 0;
+    }
+
+    .text-btn {
+      cursor: pointer;
+      color: @gk-theme;
+    }
+  }
+}
+
+.steps-form {
+  .steps {
+    width: 664px;
+    padding-left: 2rem;
+    margin: 0 auto 2.5rem;
+    box-shadow: inset 0px -1px 0px #e5e6eb;
+
+    :global(.arco-steps-item) {
+      padding-left: 0;
+      text-align: center;
+      margin-right: 0;
+    }
+
+    :global(.arco-steps-item-active .arco-steps-item-title) {
+      font-weight: 600;
+    }
+
+    :global(.arco-steps-item-active .arco-steps-icon) {
+      background-color: @gk-theme;
+    }
+
+    :global(.arco-steps-item-finish .arco-steps-icon) {
+      background-color: #ffe5e9;
+      color: @gk-theme;
+    }
+
+    :global(.arco-steps-mode-navigation
+        .arco-steps-item:not(:last-child)
+        .arco-steps-item-content::after) {
+      right: 3px;
+    }
+
+    :global(.arco-steps-item-active::after) {
+      background-color: @gk-theme;
+      left: 68px;
+      right: 50px;
+    }
+  }
+}
+
+.section-title {
+  width: 664px;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
+
+  font-weight: 600;
+  font-size: @font-size-md;
+  text-align: center;
+
+  box-shadow: inset 0px -1px 0px #e5e6eb;
+}

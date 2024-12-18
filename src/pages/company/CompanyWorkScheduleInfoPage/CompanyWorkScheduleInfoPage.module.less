@@ -1,0 +1,39 @@
+@import 'src/global.less';
+
+.wrapper {
+  width: 100%;
+
+  margin-top: 1rem;
+
+  :global(.arco-space-vertical) {
+    width: 100%;
+  }
+
+  :global(.arco-card-body) {
+    padding-bottom: 1.5rem;
+  }
+
+  .delete-section {
+    :global(div.arco-typography) {
+      margin-bottom: 0;
+    }
+
+    .title {
+      font-weight: bold;
+    }
+  }
+}
+
+.form-wrapper {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+
+  :global(.arco-switch-checked),
+  :global(.arco-switch[disabled].arco-switch-checked) {
+    background-color: @green-6;
+  }
+
+  :global(.arco-checkbox-text) {
+    margin-left: 1.25rem;
+  }
+}

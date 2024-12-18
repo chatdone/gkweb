@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.gokudos.app",
+      "sha256_cert_fingerprints": [
+        "2A:B0:C2:C5:3D:95:85:44:9D:40:61:85:AC:29:21:7E:8B:AC:94:B8:43:8D:C8:4C:A0:80:E7:FD:C0:BD:96:BC"
+      ]
+    }
+  }
+]

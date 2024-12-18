@@ -1,0 +1,79 @@
+@import 'src/global.less';
+
+.wrapper {
+  width: 100%;
+  margin-top: 1rem;
+
+  .add-button {
+    color: white;
+    background-color: @gk-theme;
+  }
+}
+
+.log-group {
+  h5 {
+    font-weight: 600;
+  }
+
+  :global(.arco-space) {
+    width: 100%;
+  }
+}
+
+.log-card {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+
+  .user-wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 0.5rem;
+
+    .user-name {
+      font-weight: 600;
+    }
+
+    .created-at {
+      font-size: 0.75rem;
+    }
+  }
+
+  .content {
+    padding-left: 2.75rem;
+
+    .log-info {
+      width: 100%;
+
+      margin-bottom: 1.5rem;
+    }
+
+    .comment-button {
+      color: @gk-theme;
+      cursor: pointer;
+
+      margin-bottom: 0.5rem;
+
+      &:hover {
+        font-weight: bold;
+      }
+
+      :global(svg) {
+        vertical-align: -2px;
+        font-size: 13px;
+      }
+    }
+
+    .comment-list {
+      padding-right: 2rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+
+      .post-comment {
+        :global(.arco-btn) {
+          .theme-button();
+        }
+      }
+    }
+  }
+}

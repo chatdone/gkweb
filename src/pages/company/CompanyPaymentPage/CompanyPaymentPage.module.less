@@ -1,0 +1,41 @@
+@import 'src/global.less';
+
+.title {
+  font-weight: 600;
+  font-size: @font-size-md;
+}
+
+.wrapper {
+  width: 100%;
+  margin-top: 1rem;
+
+  .table();
+
+  :global(.arco-space-vertical) {
+    width: 100%;
+  }
+
+  :global(.arco-btn-icon-only) {
+    color: @grey-8;
+  }
+}
+
+.empty-payment-method {
+  display: flex;
+  justify-content: center;
+
+  :global(div.arco-typography) {
+    margin-bottom: 0;
+  }
+
+  img {
+    width: 150px;
+
+    margin-right: 2rem;
+  }
+
+  svg {
+    font-size: @font-size-2xl;
+    vertical-align: -3px;
+  }
+}

@@ -1,0 +1,51 @@
+.tour :global(.shepherd-header) {
+    background: white !important;
+  }
+  
+  .tour :global(.shepherd-arrow:before) {
+    background-color: white !important;
+  }
+  
+  .tour :global(.shepherd-title) {
+    font-weight: bold;
+  }
+  
+  .tour :global(.shepherd-content),
+  .tour :global(.shepherd-header) {
+    border-radius: 10px;
+  }
+  
+  .tour :global(.shepherd-text) {
+    padding-top: 0;
+  }
+  
+  .button-next {
+    background: #d6001c !important;
+    color: white;
+  
+    border-radius: 10px !important;
+  
+    font-weight: bold;
+  }
+  
+  .button-next:hover {
+    background: #d6001c !important;
+  }
+  
+  .initial-step {
+    /* width: 110vh; */
+    /* height: 65vh; */
+    max-width: unset;
+  }
+  
+  .initial-step :global(.shepherd-footer) {
+    justify-content: center;
+  
+    margin-top: 1rem;
+  }
+  
+  .initial-step .button-next {
+    width: 250px;
+    height: 45px;
+  }
+  

@@ -1,0 +1,51 @@
+@import 'src/global.less';
+
+.wrapper {
+  @media only screen and (max-width: @mobile-screen-width) {
+    row-gap: 2rem;
+  }
+
+  .summary-item {
+    width: 100%;
+    cursor: pointer;
+
+    :global(div.arco-typography) {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      background-color: @grey-1;
+    }
+
+    .icon-container {
+      display: flex;
+      justify-content: center;
+      position: relative;
+
+      width: 54px;
+      height: 54px;
+      background-color: #f6f7fb;
+      border-radius: 50%;
+
+      img {
+        position: absolute;
+        top: 14px;
+      }
+    }
+
+    .count {
+      font-size: 1.375rem;
+      font-weight: bold;
+    }
+
+    @media only screen and (max-width: @mobile-screen-width) {
+      :global(div.arco-typography) {
+        font-size: @font-size-xs;
+      }
+    }
+
+    @media only screen and (min-width: @mobile-screen-width) {
+      border-right: 1px solid #f2f3f5;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@import 'src/global.less';
+
+.wrapper {
+  margin-top: 1rem;
+
+  .table();
+
+  :global(.arco-space-vertical) {
+    width: 100%;
+  }
+
+  :global(.arco-btn-icon-only) {
+    color: @grey-8;
+  }
+
+  :global(.arco-switch-checked) {
+    background-color: @gk-theme;
+  }
+
+  .title {
+    font-weight: 600;
+    font-size: @font-size-xl;
+  }
+}
+
+.label-circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.theme-btn {
+  .theme-button();
+}

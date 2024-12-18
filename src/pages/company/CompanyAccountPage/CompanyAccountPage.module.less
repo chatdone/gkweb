@@ -1,0 +1,101 @@
+@import 'src/global.less';
+
+.wrapper {
+  width: 100%;
+  margin-top: 1rem;
+
+  .account-card {
+    :global(.arco-card-body) {
+      padding-bottom: 2rem;
+      padding-left: 2rem;
+    }
+
+    .created-by-skeleton {
+      margin-bottom: 1rem;
+
+      :global(.arco-skeleton-text-row) {
+        height: 25px;
+      }
+    }
+
+    .created-by {
+      color: #979797;
+
+      margin-bottom: 2rem;
+    }
+
+    .avatar-wrapper {
+      .descriptions {
+        font-size: @font-size-xs;
+        color: @grey-6;
+        word-break: normal;
+      }
+
+      @media only screen and (max-width: @mobile-screen-width) {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 2rem;
+
+        .descriptions {
+          padding: 0 4rem;
+        }
+      }
+    }
+
+    .update-btn-container {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .checkbox-subtitle {
+      font-size: @font-size-xs;
+      color: #979797;
+    }
+
+    @media only screen and (max-width: @mobile-screen-width) {
+      :global(.arco-card-body) {
+        padding-left: 1rem;
+      }
+    }
+  }
+
+  .delete-company-card {
+    :global(div.arco-typography) {
+      margin-bottom: 0;
+    }
+
+    .container {
+      padding-right: 3rem;
+      row-gap: 1rem;
+
+      .title {
+        font-weight: bold;
+      }
+
+      .descriptions {
+        word-break: break-word;
+      }
+
+      @media only screen and (max-width: @mobile-screen-width) {
+        padding-right: 4rem;
+
+        .title {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+}
+
+.profile-image-skeleton {
+  justify-content: center;
+
+  :global(.arco-skeleton-header .arco-skeleton-image-left) {
+    margin-right: 0;
+  }
+
+  :global(.arco-skeleton-image) {
+    width: 150px;
+    height: 150px;
+  }
+}

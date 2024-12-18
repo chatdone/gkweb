@@ -1,0 +1,67 @@
+@import 'src/global.less';
+
+.wrapper {
+  .table();
+
+  .title {
+    font-size: @font-size-md;
+    font-weight: 600;
+  }
+
+  .tooltip-icon {
+    color: @grey-4;
+  }
+
+  .stripe-wrapper {
+    border: 1px solid #e5e6e8;
+    border-radius: 2px;
+
+    padding: 1rem;
+  }
+
+  .center-row {
+    width: 65vw;
+
+    .table-paragraph {
+      margin-bottom: 0;
+    }
+
+    .promo-input-wrapper {
+      width: 100%;
+
+      :global(.arco-space-item:first-child) {
+        flex: 1;
+      }
+    }
+
+    .promo-code-valid-txt {
+      color: @green-7;
+    }
+
+    .summary-value-container {
+      margin-top: 4rem;
+    }
+
+    .label {
+      font-weight: bold;
+    }
+
+    .total-value {
+      font-size: @font-size-2xl;
+      font-weight: 600;
+    }
+
+    .discount-value-txt {
+      color: @green-6;
+      font-weight: bold;
+    }
+
+    .divider {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .bottom-row {
+    margin-top: 4rem;
+  }
+}

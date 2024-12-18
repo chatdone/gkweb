@@ -1,0 +1,57 @@
+@import 'src/global.less';
+
+.title {
+  font-weight: 600;
+  font-size: @font-size-xl;
+  margin-bottom: 0.5rem;
+}
+
+.wrapper {
+  width: 100%;
+  margin-top: 1rem;
+
+  .table();
+
+  :global(.arco-space-vertical) {
+    width: 100%;
+  }
+
+  :global(.arco-btn-icon-only) {
+    color: @grey-8;
+  }
+
+  .group-description-card {
+    :global(.arco-card-body) {
+      padding-bottom: 2rem;
+    }
+
+    :global(.arco-space) {
+      width: 100%;
+
+      :global(.arco-space-item:last-child) {
+        flex: 1;
+      }
+    }
+
+    :global(.arco-typography-edit-content) {
+      left: unset;
+      margin-right: unset;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .label {
+      color: @grey-8;
+    }
+
+    .row {
+      row-gap: 0.5rem;
+    }
+  }
+}
+
+.tag-color-circle {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}

@@ -1,0 +1,36 @@
+@import 'src/global.less';
+
+.wrapper {
+  margin-top: 1rem;
+
+  .table();
+
+  :global(.arco-space-vertical) {
+    width: 100%;
+  }
+
+  .title {
+    font-weight: 600;
+    font-size: @font-size-xl;
+  }
+
+  .checkbox-group-dropdown {
+    :global(.arco-card-body) {
+      padding-top: 0;
+    }
+  }
+}
+
+.table {
+  overflow: scroll;
+  // custom scrollbar
+  ::-webkit-scrollbar {
+    width: 1em;
+    height: 0.5em;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(129, 129, 129);
+    border-radius: 0.5em;
+  }
+}

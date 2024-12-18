@@ -1,0 +1,54 @@
+@import 'src/global.less';
+
+.checkbox {
+  &:global(.arco-checkbox-checked .arco-checkbox-mask),
+  &:global(.arco-checkbox-indeterminate .arco-checkbox-mask),
+  &:global(.arco-checkbox-disabled.arco-checkbox-checked .arco-checkbox-mask) {
+    background-color: @gk-theme;
+  }
+
+  &:global(.arco-checkbox-disabled.arco-checkbox-checked .arco-checkbox-mask) {
+    opacity: 0.4;
+  }
+}
+
+.drawer {
+  :global(.arco-drawer-header) {
+    background-color: @grey-8;
+
+    :global(.arco-drawer-header-title) {
+      color: white;
+    }
+  }
+
+  :global(.arco-drawer-close-icon) {
+    color: white;
+
+    &:hover {
+      color: black;
+    }
+  }
+}
+
+.radio {
+  &:global(.arco-radio-checked .arco-radio-mask),
+  &:global(.arco-radio-disabled.arco-radio-checked .arco-radio-mask) {
+    border-color: @gk-theme;
+    background-color: @gk-theme;
+  }
+
+  &:global(.arco-radio-disabled .arco-radio-icon-hover) {
+    opacity: 0.4;
+  }
+}
+
+.switch {
+  &:global(.arco-switch-checked),
+  &:global(.arco-switch[disabled].arco-switch-checked) {
+    background-color: @gk-theme;
+  }
+
+  &:global(.arco-switch[disabled].arco-switch-checked) {
+    opacity: 0.4;
+  }
+}

@@ -1,0 +1,31 @@
+@import 'src/global.less';
+
+.show-more-btn {
+  height: 51px;
+}
+
+.active-btn {
+  color: @gk-theme !important;
+  font-weight: 600;
+}
+
+.inactive-btn {
+  &:not(:hover) {
+    background-color: unset !important;
+  }
+}
+
+.subtask {
+  svg {
+    vertical-align: -2px;
+    color: @grey-4;
+  }
+
+  span {
+    color: @grey-6;
+  }
+}
+
+.task-list-separator {
+  margin: 0 0 10px;
+}

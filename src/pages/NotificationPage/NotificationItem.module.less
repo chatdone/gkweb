@@ -1,0 +1,80 @@
+@import 'src/global.less';
+
+.notification-item {
+  display: flex;
+  padding: 0.75rem 0.5rem 1.5rem;
+  position: relative;
+  cursor: pointer;
+
+  &.unread {
+    background-color: #fff3e8;
+  }
+
+  &:hover {
+    background-color: @grey-1;
+
+    &.unread {
+      background-color: #ebdccf;
+    }
+  }
+
+  .content {
+    flex: 1;
+
+    .title {
+      font-weight: 600;
+    }
+
+    .date {
+      color: @grey-8;
+      font-size: @font-size-xs;
+    }
+
+    :global(div.arco-typography) {
+      margin-top: 0.5rem;
+      margin-bottom: 0;
+    }
+  }
+
+  .notification-icon {
+    margin-top: 0.2rem;
+    margin-right: 0.5rem;
+
+    color: @gk-theme;
+    font-size: @font-size-md;
+  }
+
+  .divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 2rem;
+
+    border: 0.5px solid #c9cdd4;
+  }
+
+  :global(.arco-btn-icon-only) {
+    color: @grey-8;
+  }
+
+  :global(.arco-space) {
+    width: 100%;
+  }
+}
+
+.markdown-txt {
+  margin: 0.25rem 0;
+
+  p {
+    margin-block: 0;
+  }
+
+  a {
+    color: #2200cc;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

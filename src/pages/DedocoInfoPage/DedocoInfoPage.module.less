@@ -1,0 +1,48 @@
+@import 'src/global.less';
+
+.wrapper {
+  width: 100%;
+  margin-top: 1rem;
+
+  .table();
+
+  :global(div.arco-typography) {
+    margin-bottom: 0;
+  }
+
+  :global(.arco-space-vertical) {
+    width: 100%;
+  }
+
+  .payment-settings-card {
+    .title {
+      font-size: @font-size-md;
+      font-weight: 600;
+    }
+
+    .label {
+      font-weight: 600;
+      color: @grey-6;
+    }
+  }
+
+  .whitelist-card {
+    min-height: 70vh;
+
+    .tooltip-icon {
+      display: block;
+      color: @grey-4;
+    }
+
+    :global(.arco-btn-icon-only) {
+      color: @grey-8;
+    }
+  }
+}
+
+.unsubscribe-btn {
+  &:not(:global(.arco-btn-disabled)) {
+    background-color: white;
+    color: @gk-theme !important;
+  }
+}

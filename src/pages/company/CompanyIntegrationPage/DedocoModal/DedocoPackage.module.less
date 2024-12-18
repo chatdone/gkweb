@@ -1,0 +1,46 @@
+@import 'src/global.less';
+
+.title {
+  font-size: @font-size-md;
+  font-weight: 600;
+}
+
+.group {
+  width: 100%;
+
+  :global(.arco-radio) {
+    padding-left: 0;
+    margin-bottom: 1rem;
+    line-height: 1rem;
+  }
+}
+
+.checked-icon-wrapper {
+  svg {
+    vertical-align: -5px;
+    font-size: @font-size-xl;
+  }
+
+  .checked-icon {
+    color: @gk-theme;
+  }
+}
+
+.price-card {
+  :global(.arco-space-vertical) {
+    padding-left: 1.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .price {
+    color: @arcoblue-6;
+  }
+
+  .check {
+    color: @green-6;
+  }
+
+  svg {
+    display: block;
+  }
+}

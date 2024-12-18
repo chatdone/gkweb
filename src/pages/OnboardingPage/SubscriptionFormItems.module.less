@@ -1,0 +1,59 @@
+@import 'src/global.less';
+
+:global(.arco-radio-group-direction-vertical) {
+  width: 100%;
+}
+
+.subscription-type-wrapper {
+  margin-bottom: 1.5rem;
+
+  .active {
+    background-color: #ffe5e9;
+    color: @gk-theme;
+    font-weight: 600;
+  }
+
+  .not-active {
+    color: @grey-8;
+  }
+}
+
+.btn-group {
+  padding: 0.1rem;
+  background-color: #f2f3f5;
+
+  :global(.arco-btn-secondary:not(:last-child)) {
+    border-right: 0;
+  }
+
+  .active {
+    background-color: white;
+    color: @gk-theme;
+    font-weight: 600;
+  }
+}
+
+.package-item {
+  :global(.arco-switch-checked) {
+    background-color: @gk-theme;
+  }
+
+  :global(.arco-switch[disabled].arco-switch-checked) {
+    background-color: #ffe5e9;
+  }
+
+  :global(.arco-radio:not(:last-child)) {
+    margin-bottom: 0.75rem;
+  }
+}
+
+.checked-icon-wrapper {
+  svg {
+    vertical-align: -5px;
+    font-size: @font-size-xl;
+  }
+
+  .checked-icon {
+    color: @gk-theme;
+  }
+}

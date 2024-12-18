@@ -1,0 +1,50 @@
+@import 'src/global.less';
+
+.content {
+  background-color: white;
+  margin-top: 1rem;
+
+  .title {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .verification-container {
+    width: 30%;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    :global(div.arco-descriptions.arco-descriptions-layout-inline-horizontal) {
+      padding-left: 20px;
+    }
+
+    :global(div.arco-descriptions-title) {
+      margin: 0;
+      font-weight: 600;
+    }
+
+    :global(td.arco-descriptions-item) {
+      padding: 0;
+    }
+
+    .action {
+      button {
+        border-radius: 5px;
+      }
+    }
+  }
+
+  .descriptions-group {
+    padding: 20px;
+    width: 100%;
+    .description-weekly {
+      margin-left: 5rem;
+      :global(div.arco-descriptions-title) {
+        font-weight: 600;
+        margin: 0;
+      }
+    }
+  }
+}

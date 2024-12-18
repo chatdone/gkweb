@@ -1,0 +1,53 @@
+@import 'src/global.less';
+
+.wrapper {
+  width: 100%;
+
+  :global(.arco-space-vertical) {
+    width: 100%;
+  }
+
+  :global(div.arco-typography) {
+    margin-bottom: 0;
+  }
+
+  :global(.arco-divider) {
+    margin: 0.5rem 0;
+  }
+}
+
+.select {
+  margin-bottom: 1rem;
+
+  :global(.arco-select-view-value) {
+    color: @grey-6;
+  }
+}
+
+.selected-member {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e6eb;
+
+  :global(.arco-btn-icon-only) {
+    color: #c9cdd4;
+    font-size: @font-size-lg;
+  }
+
+  .name {
+    font-weight: 600;
+  }
+
+  .email {
+    color: @grey-6;
+  }
+}
+
+.save-btn {
+  &:not(:global(.arco-btn-disabled)) {
+    background-color: @gk-theme !important;
+  }
+
+  &:global(.arco-btn-disabled) {
+    background-color: @red-2;
+  }
+}

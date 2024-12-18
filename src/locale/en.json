@@ -1,0 +1,105 @@
+{
+  "fills": {
+    "nothingHere": "There's nothing here yet!",
+    "createTask": "Create a task to keep things moving.",
+    "createCollection": "Create a contact in CRM to add a collection."
+  },
+
+  "allTeams": "All Teams",
+  "tasks": "Tasks",
+  "projects": "Projects",
+  "assignee": "Assignee",
+  "collections": "Collections",
+  "payments": "Payments",
+  "show#More": "Show {{number}} more",
+
+  "status": {
+    "pending": "Pending",
+    "overdue": "Overdue",
+    "done": "Done",
+    "completed": "Completed",
+    "total": "Total",
+    "uncollected": "Uncollected",
+    "collected": "Collected"
+  },
+
+  "menu": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "contacts": "Contacts",
+    "tasks": "Tasks",
+    "projects": "Projects",
+    "attendance": "Attendance",
+    "collections": "Collections",
+    "payments": "Payments",
+    "reports": "Reports",
+    "allTasks": "All Tasks",
+    "internal": "Internal",
+    "personal": "Personal",
+    "collaboration": "Collaboration",
+    "sharedWithMe": "Shared With Me",
+    "myProfile": "My Profile",
+    "payment": "Payment",
+    "company": "Company",
+    "account": "Account",
+    "member": "Members",
+    "team": "Teams",
+    "workSchedule": "Work Schedules",
+    "tags": "Tags",
+    "subscription": "Subscription",
+    "timeAttendance": "Time Attendance",
+    "time": "Time",
+    "policies": "Policies",
+    "holidays": "Holidays",
+    "location": "Location",
+    "activityLabel": "Activity Labels",
+    "integration": "Integrations",
+    "notification": "Notification",
+    "permission": "Permissions",
+    "logout": "Logout",
+    "invoice": "Invoice"
+  },
+
+  "home": {
+    "view": {
+      "org": "Organization View",
+      "member": "Member View"
+    },
+    "welcome": "👏 Welcome, {{- name}}!",
+    "tasks": {
+      "company": "Company Tasks",
+      "own": "My Tasks"
+    },
+    "collections": {
+      "company": "Company Collections",
+      "own": "My Collections"
+    }
+  },
+
+  "calendar": {
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "tomorrow": "Tomorrow",
+    "year": "Year",
+    "day": "Day"
+  },
+
+  "viewOptions": {
+    "list": "List",
+    "kanban": "Kanban"
+  },
+
+  "errors": {
+    "networkError": "There was an error connecting to the server. Please check your network settings and try again.",
+    "databaseError": "Unable to connect to database.",
+    "requestError": "There was an error processing your request. Please try again.",
+    "login": {
+      "userNoCompanies": "User doesn't have any companies",
+      "companyNoSlug": "Company doesn't have a slug defined"
+    }
+  },
+
+  "form": {
+    "required": "This field is required"
+  }
+}

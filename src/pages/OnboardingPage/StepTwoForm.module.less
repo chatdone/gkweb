@@ -1,0 +1,98 @@
+@import 'src/global.less';
+
+.center-horizontal {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.subscription-type-wrapper {
+  .center-horizontal();
+
+  margin-bottom: 1.5rem;
+
+  .active {
+    background-color: #ffe5e9;
+    color: @gk-theme;
+    font-weight: 600;
+  }
+
+  .not-active {
+    color: @grey-8;
+  }
+}
+
+.btn-group {
+  padding: 0.1rem;
+  background-color: #f2f3f5;
+
+  :global(.arco-btn-secondary:not(:last-child)) {
+    border-right: 0;
+  }
+
+  .active {
+    background-color: white;
+    color: @gk-theme;
+    font-weight: 600;
+  }
+}
+
+.package-item {
+  :global(.arco-switch-checked) {
+    background-color: @gk-theme;
+  }
+
+  :global(.arco-switch[disabled].arco-switch-checked) {
+    background-color: #ffe5e9;
+  }
+
+  :global(.arco-radio:not(:last-child)) {
+    margin-bottom: 0.75rem;
+  }
+
+  .heading {
+    margin-bottom: 1rem;
+  }
+}
+
+.subscription-card {
+  padding: 0.75rem 1rem;
+
+  border: 1px solid #e5e6e8;
+  border-radius: 2px;
+
+  .price {
+    color: #165dff;
+  }
+}
+
+.modal-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+
+  background-color: #ffe5e9;
+  color: @gk-theme;
+  font-size: 28px;
+}
+
+.tooltip-icon {
+  color: @grey-4;
+  font-size: @font-size-xs;
+  vertical-align: -1px;
+}
+
+.checked-icon-wrapper {
+  svg {
+    vertical-align: -5px;
+    font-size: @font-size-xl;
+  }
+
+  .checked-icon {
+    color: @gk-theme;
+  }
+}

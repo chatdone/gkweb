@@ -1,0 +1,36 @@
+@import 'src/global.less';
+
+.task-list-item {
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: 1rem;
+
+    font-weight: 600;
+    font-size: @font-size-md;
+  }
+
+  .subtitle {
+    color: @grey-6;
+  }
+
+  .icon,
+  .footer-icon {
+    display: block;
+  }
+
+  .footer-icon {
+    font-size: @font-size-md;
+    color: @blue-6;
+  }
+}
+
+.overdue {
+  color: @gk-theme;
+  font-weight: bold;
+}

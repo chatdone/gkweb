@@ -1,0 +1,53 @@
+.calendar {
+  @apply text-sm;
+
+  :global(.rbc-month-view) {
+    @apply border-gray-300;
+  }
+
+  :global(.rbc-header),
+  :global(.rbc-agenda-view table.rbc-agenda-table thead > tr > th) {
+    @apply bg-gray-100 py-3 px-2 font-normal text-left;
+  }
+
+  :global(.rbc-day-bg) {
+    @apply border-gray-300 bg-white;
+  }
+
+  :global(.rbc-off-range-bg) {
+    @apply bg-gray-50;
+  }
+
+  :global(.rbc-date-cell) {
+    @apply px-2 py-1 text-left text-lg;
+  }
+
+  :global(.rbc-button-link) {
+    @apply text-sm;
+  }
+
+  :global(.rbc-show-more) {
+    @apply text-xs font-normal text-brand-500 hover:text-brand-700 px-2;
+  }
+
+  :global(.rbc-event),
+  :global(.rbc-day-slot .rbc-background-event) {
+    @apply rounded-sm border border-solid mb-1;
+  }
+
+  :global(.rbc-time-view .rbc-row) {
+    @apply min-h-max;
+  }
+
+  :global(.rbc-time-view .rbc-row .rbc-header) {
+    @apply text-center;
+  }
+
+  :global(.rbc-day-slot) {
+    @apply bg-white;
+  }
+
+  :global(.rbc-agenda-table td) {
+    @apply border border-gray-200 bg-white;
+  }
+}

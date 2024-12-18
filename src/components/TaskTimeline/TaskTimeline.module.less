@@ -1,0 +1,79 @@
+.head {
+  @apply h-8 p-2 bg-gray-100 capitalize text-sm;
+}
+
+.col {
+  @apply h-8 p-2 capitalize text-sm;
+}
+
+.row {
+  @apply h-8 divide-x divide-gray-300 flex flex-nowrap;
+}
+
+.bar {
+  @apply h-6 mt-1 absolute border px-2;
+
+  span {
+    @apply whitespace-nowrap;
+  }
+}
+
+.bar-parent {
+  @apply h-8 absolute border-l border-gray-300 bg-gradient-to-r from-gray-200 to-transparent w-10;
+}
+
+.bar-actual {
+  @apply h-0 absolute border-4;
+}
+
+.bar,
+.bar-actual,
+.bar-parent {
+  &:global(.red) {
+    @apply bg-red-50 border-red-500 text-red-500;
+  }
+
+  &:global(.blue) {
+    @apply bg-blue-50 border-blue-500 text-blue-500;
+  }
+
+  &:global(.orangered) {
+    @apply bg-orangered-50 border-orangered-500 text-orangered-500;
+  }
+
+  &:global(.orange) {
+    @apply bg-orange-50 border-orange-500 text-orange-500;
+  }
+
+  &:global(.gold) {
+    @apply bg-gold-50 border-gold-500 text-gold-500;
+  }
+
+  &:global(.lime) {
+    @apply bg-lime-50 border-lime-500 text-lime-500;
+  }
+
+  &:global(.green) {
+    @apply bg-green-50 border-green-500 text-green-500;
+  }
+
+  &:global(.cyan) {
+    @apply bg-cyan-50 border-cyan-500 text-cyan-500;
+  }
+
+  &:global(.purple) {
+    @apply bg-purple-50 border-purple-500 text-purple-500;
+  }
+
+  &:global(.pinkpurple) {
+    @apply bg-pinkpurple-50 border-pinkpurple-500 text-pinkpurple-500;
+  }
+
+  &:global(.magenta) {
+    @apply bg-magenta-50 border-magenta-500 text-magenta-500;
+  }
+
+  &:global(.gray) {
+    @apply bg-gray-50 border-gray-500 text-gray-500;
+  }
+}

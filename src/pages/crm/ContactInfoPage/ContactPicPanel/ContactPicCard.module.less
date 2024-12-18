@@ -1,0 +1,50 @@
+@card-border-radius: 4px;
+
+.contact-pic-card {
+  border-radius: @card-border-radius;
+
+  :global(.arco-card-header) {
+    border-bottom: none;
+  }
+
+  :global(.arco-card-header .arco-space) {
+    width: 100%;
+  }
+
+  :global(.arco-card-header .arco-card-header-title) {
+    font-weight: 900;
+  }
+
+  :global(.arco-card-header .arco-space .arco-space-item:last-child) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  :global(.arco-card-body) {
+    padding: 0 1rem 0 3rem;
+  }
+
+  :global(.arco-descriptions-item-value),
+  :global(.arco-descriptions-item-label) {
+    padding: 0 0 0.1rem 0;
+  }
+
+  :global(.arco-descriptions-item-label) {
+    color: #4e5969;
+
+    width: 22px;
+
+    position: relative;
+
+    padding-right: 0.5rem;
+
+    > svg {
+      position: absolute;
+      top: 5px;
+    }
+  }
+
+  :global(.arco-descriptions-item-value) {
+    color: #86909c;
+  }
+}

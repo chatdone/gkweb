@@ -1,0 +1,32 @@
+@import 'src/global.less';
+
+.wrapper {
+  margin-top: 1rem;
+
+  .title {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .view-mode-select {
+    width: auto;
+  }
+
+  .table {
+    margin-top: 1rem;
+
+    :global(.arco-table-tfoot .arco-table-td) {
+      background-color: unset;
+      border-bottom: none;
+    }
+
+    :global(.arco-table-tfoot .arco-table-td:first-child),
+    :global(.arco-table-tfoot .arco-table-td:last-child) {
+      font-weight: 600;
+    }
+
+    :global(.arco-table-tfoot .arco-table-td:nth-child(2)) {
+      text-align: right;
+    }
+  }
+}

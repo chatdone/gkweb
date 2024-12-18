@@ -1,0 +1,39 @@
+@import 'src/global.less';
+
+.wrapper {
+  .table();
+
+  .title {
+    font-size: @font-size-xl;
+    margin-bottom: 0;
+  }
+
+  .heading-container {
+    margin-bottom: 1rem;
+
+    .company-tasks-txt {
+      font-size: @font-size-md;
+      font-weight: 900;
+    }
+
+    @media only screen and (max-width: @mobile-screen-width) {
+      margin-top: 1rem;
+    }
+  }
+
+  .team-select {
+    min-width: 166px;
+  }
+}
+
+.empty-chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

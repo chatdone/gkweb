@@ -1,0 +1,40 @@
+@import 'src/global.less';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table {
+  .table();
+
+  :global(.arco-avatar) {
+    margin-left: 1.5rem;
+  }
+
+  :global(.arco-btn-text) {
+    color: #4e5969;
+  }
+}
+
+.chevron-down {
+  transform: rotate(90deg);
+}
+
+.file-name {
+  svg {
+    color: @gk-theme;
+
+    vertical-align: -2px;
+
+    font-size: 16px;
+  }
+}
+
+.search-input {
+  width: 240px;
+
+  @media only screen and (max-width: @mobile-screen-width) {
+    width: 100%;
+  }
+}

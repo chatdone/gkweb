@@ -1,0 +1,24 @@
+@import 'src/global.less';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  padding: 2rem 0;
+
+  :global(div.arco-typography) {
+    text-align: left;
+    margin-bottom: 0;
+  }
+
+  // .title {
+  //   font-weight: 600;
+  // }
+
+  .icon-button {
+    background: @gk-theme;
+    color: white;
+  }
+}

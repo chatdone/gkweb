@@ -1,0 +1,50 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext", "WebWorker"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": "./src",
+    "paths": {
+      "@/components": ["./components/index"],
+      "@/components/*": ["./components/*"],
+      "@/configs": ["./configs/index"],
+      "@/fragments": ["./graphql/fragments"],
+      "@/hooks": ["./hooks/index"],
+      "@/hooks/*": ["./hooks/*"],
+      "@/i18n": ["./locale/index"],
+      "@/pages": ["./pages/index"],
+      "@/pages/*": ["./pages/*"],
+      "@/navigation": ["./navigation/navigation"],
+      "@/services": ["./services/index"],
+      "@/services/*": ["./services/*"],
+      "@/stores/*": ["./stores/*"],
+      "@/assets/*": ["./assets/*"],
+      "@/types": ["./types/index"],
+      "@/utils/*": ["./utils/*"],
+      "@/constants/*": ["./constants/*"],
+      "@/test-utils": ["./test-utils/index"]
+    }
+  },
+  "types": [
+    "vitest/globals",
+    "gapi",
+    "google.picker",
+    "google.account",
+    "vite-plugin-sentry/client",
+    "dropbox-chooser"
+  ],
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

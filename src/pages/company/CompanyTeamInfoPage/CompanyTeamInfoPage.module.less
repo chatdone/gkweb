@@ -1,0 +1,62 @@
+@import 'src/global.less';
+
+.wrapper {
+  margin-top: 1rem;
+  row-gap: 0.75rem;
+
+  .table();
+
+  :global(.arco-space-vertical) {
+    width: 100%;
+  }
+
+  :global(.arco-btn-icon-only) {
+    color: @grey-8;
+  }
+
+  .left-wrapper {
+    height: 100%;
+
+    :global(.arco-space-item:last-child) {
+      flex: 1;
+
+      :global(.arco-card) {
+        height: 100%;
+      }
+    }
+
+    .description-label {
+      font-weight: 600;
+      color: @grey-6;
+    }
+  }
+
+  .right-card {
+    height: 100%;
+  }
+
+  .title {
+    font-weight: 600;
+    font-size: @font-size-xl;
+  }
+
+  .category-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .verified-icon {
+    font-size: @font-size-md;
+    color: @blue-6;
+
+    vertical-align: -3px;
+  }
+}
+
+.dynamic-category-heading-container {
+  margin-bottom: 0.5rem;
+}
+
+.theme-btn {
+  .theme-button();
+}

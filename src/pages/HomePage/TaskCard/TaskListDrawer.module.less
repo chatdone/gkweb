@@ -1,0 +1,19 @@
+@import 'src/global.less';
+
+.input {
+  margin-bottom: 0.5rem;
+}
+
+.tabs {
+  margin-bottom: 0.5rem;
+
+  .theme-tabs();
+
+  :global(.arco-tabs-header-nav::before) {
+    height: 0;
+  }
+
+  :global(.arco-tabs-header) {
+    border-bottom: 1px solid @grey-3;
+  }
+}

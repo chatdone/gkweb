@@ -1,0 +1,32 @@
+.arco-layout-sider-light {
+  box-shadow: none;
+}
+
+.arco-table-size-small .arco-table-td,
+.arco-table-size-small .arco-table-th-item {
+  padding: 0.5rem;
+}
+
+.arco-modal:not(.arco-modal-simple) .arco-modal-header .arco-modal-title {
+  @apply text-left font-heading;
+}
+
+.arco-modal-simple .arco-modal-content {
+  @apply text-center;
+}
+
+.arco-modal-wrapper.full .arco-modal-content {
+  @apply p-0;
+}
+
+.arco-input-inner-wrapper.large input {
+  @apply text-xl;
+}
+
+.arco-btn-outline:not(.arco-btn-disabled) {
+  @apply border-gray-400 text-gray-900;
+}
+
+.arco-checkbox-mask-icon {
+  display: block !important;
+}

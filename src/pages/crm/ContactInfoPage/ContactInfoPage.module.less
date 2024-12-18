@@ -1,0 +1,119 @@
+@import 'src/global.less';
+
+.space-wrapper {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.card {
+  border-radius: 4px;
+}
+
+.info-card {
+  @media only screen and (max-width: @mobile-screen-width) {
+    :global(.arco-row) {
+      row-gap: 1rem;
+    }
+
+    :global(.arco-row > .arco-col:first-child) {
+      text-align: center;
+    }
+  }
+}
+
+.tabs {
+  :global(.arco-tabs-header-title-text span) {
+    > svg {
+      vertical-align: -2px;
+      margin-right: 3px;
+    }
+  }
+
+  .theme-tabs();
+
+  :global(.arco-tabs-pane) {
+    padding-bottom: 0.5rem;
+  }
+}
+
+.contact-descriptions {
+  :global(.arco-descriptions-item-label) {
+    text-align: right;
+    vertical-align: baseline;
+  }
+
+  :global(.arco-select-suffix) {
+    margin-left: 1rem;
+    padding-left: 0.5rem;
+
+    border-left: 1px solid #e5e6eb;
+  }
+
+  :global(.arco-typography-edit-content) {
+    left: unset;
+    margin-right: unset;
+  }
+
+  @media only screen and (max-width: @mobile-screen-width) {
+    width: 100%;
+  }
+
+  @media only screen and (min-width: @mobile-screen-width) {
+    :global(.arco-select) {
+      width: auto;
+    }
+  }
+}
+
+.delete-button {
+  background-color: white !important;
+  color: @gk-theme !important;
+
+  &:hover {
+    background-color: whitesmoke !important;
+  }
+}
+
+.loading-panel {
+  width: 100%;
+
+  .loading-tabs {
+    :global(.arco-skeleton-text-row) {
+      height: 25px;
+    }
+  }
+
+  .skeleton-grid {
+    row-gap: 1rem;
+
+    :global(.arco-col) {
+      height: 132px;
+    }
+
+    :global(.arco-col > div) {
+      height: 100%;
+    }
+
+    :global(.arco-skeleton) {
+      display: block;
+    }
+
+    :global(.arco-skeleton .arco-skeleton-header) {
+      height: 100%;
+      margin-right: unset;
+    }
+
+    :global(.arco-skeleton-image) {
+      width: 100%;
+      height: 100%;
+
+      margin-right: unset;
+    }
+  }
+
+  .search-input-skeleton {
+    :global(.arco-skeleton-text-row) {
+      height: 35px;
+    }
+  }
+}

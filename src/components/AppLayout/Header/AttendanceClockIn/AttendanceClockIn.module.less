@@ -1,0 +1,35 @@
+@import 'src/global.less';
+
+.button-container {
+  border-style: unset !important;
+
+  &:hover {
+    background-color: unset !important;
+  }
+
+  .attendance-clock-in-container {
+    :global(span.arco-typography) {
+      font-size: @font-size-sm;
+    }
+
+    .start {
+      color: green;
+    }
+
+    .stop {
+      color: @gk-theme;
+    }
+
+    .company-tag-icon {
+      vertical-align: -2px;
+    }
+
+    .break-tag {
+      font-weight: 600;
+    }
+
+    :global(.arco-space-item > svg) {
+      vertical-align: -3px;
+    }
+  }
+}

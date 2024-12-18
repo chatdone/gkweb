@@ -1,0 +1,99 @@
+.collapse {
+  :global(.arco-collapse-item) {
+    @apply mt-4 border-b-0;
+  }
+
+  :global(.arco-collapse-item-header) {
+    @apply bg-gray-50 border-0;
+  }
+
+  :global(.arco-collapse-item-content-box) {
+    @apply px-0;
+  }
+}
+
+.table {
+  :global(.arco-table-td),
+  :global(.arco-table-th-item) {
+    @apply p-2;
+  }
+
+  overflow: scroll;
+  ::-webkit-scrollbar {
+    width: 0.5em;
+    height: 1em;
+
+    &:hover {
+      cursor: pointer !important;
+    }
+  }
+
+  background: #f2f3f5;
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(129, 129, 129);
+    border-radius: 0.5em;
+
+    &:hover {
+      cursor: pointer !important;
+    }
+  }
+}
+
+.expand-table {
+  :global(.arco-table-content-inner) {
+    @apply overflow-hidden;
+  }
+}
+
+:global(.arco-checkbox-mask-icon) {
+  @apply !block;
+}
+
+.hovered {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 1rem;
+
+  button {
+    opacity: 0;
+  }
+
+  &:hover {
+    button {
+      opacity: 1;
+    }
+  }
+}
+
+.hovered2 {
+  display: flex;
+  flex-direction: row;
+  width: 60vw;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 1rem;
+
+  button {
+    opacity: 0;
+  }
+
+  &:hover {
+    button {
+      opacity: 1;
+    }
+  }
+
+  .alwaysVisible {
+    opacity: 1;
+  }
+}
+
+.dragHandle {
+  opacity: 0;
+  :hover {
+    opacity: 1;
+  }
+}

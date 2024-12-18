@@ -1,0 +1,42 @@
+@import 'src/global.less';
+
+.collapse-wrapper {
+  :global(.arco-collapse-item) {
+    border-bottom: unset;
+    margin-bottom: 0.5rem;
+  }
+
+  :global(.arco-collapse-item-header) {
+    background: #fff5e8;
+  }
+
+  :global(.arco-collapse-item-header-title) {
+    font-weight: bold !important;
+
+    margin-left: 1rem;
+  }
+
+  :global(.arco-collapse-item-content-box) {
+    padding: 0;
+  }
+
+  .icon-arrow {
+    font-size: @font-size-lg;
+  }
+
+  .item {
+    &.not-empty {
+      :global(.arco-collapse-item-content) {
+        background-color: white;
+      }
+    }
+
+    :global(.arco-empty) {
+      padding: 1.5rem 0;
+    }
+  }
+
+  .separator {
+    margin: 0 0 10px;
+  }
+}

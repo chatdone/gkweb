@@ -1,0 +1,65 @@
+.chart {
+  @apply border border-gray-300 bg-white;
+
+  header {
+    @apply border-b border-gray-300 bg-gray-100 p-2;
+  }
+
+  .content {
+    @apply p-4;
+  }
+
+  :global(.arco-badge-status-text) {
+    @apply w-28;
+  }
+
+  :global(.recharts-layer) {
+    [color='red'] {
+      @apply fill-red-100 stroke-red-300;
+    }
+
+    [color='blue'] {
+      @apply fill-blue-100 stroke-blue-300;
+    }
+
+    [color='orangered'] {
+      @apply fill-orangered-100 stroke-orangered-300;
+    }
+
+    [color='orange'] {
+      @apply fill-orange-100 stroke-orange-300;
+    }
+
+    [color='gold'] {
+      @apply fill-gold-100 stroke-gold-300;
+    }
+
+    [color='lime'] {
+      @apply fill-lime-100 stroke-lime-300;
+    }
+
+    [color='green'] {
+      @apply fill-green-100 stroke-green-300;
+    }
+
+    [color='cyan'] {
+      @apply fill-cyan-100 stroke-cyan-300;
+    }
+
+    [color='purple'] {
+      @apply fill-purple-100 stroke-purple-300;
+    }
+
+    [color='pinkpurple'] {
+      @apply fill-pinkpurple-100 stroke-pinkpurple-300;
+    }
+
+    [color='magenta'] {
+      @apply fill-magenta-100 stroke-magenta-300;
+    }
+
+    [color='gray'] {
+      @apply fill-gray-100 stroke-gray-300;
+    }
+  }
+}

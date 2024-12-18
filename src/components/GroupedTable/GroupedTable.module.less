@@ -1,0 +1,87 @@
+@import 'src/global.less';
+
+.wrapper {
+  overflow-x: auto;
+
+  > div {
+    display: inline-block;
+    min-width: 1000px;
+  }
+
+  :global(.arco-table-expand-icon-col) {
+    width: 20px;
+  }
+}
+
+.collapse-wrapper {
+  overflow: unset;
+
+  :global(.arco-collapse-item-content),
+  :global(.arco-table-layout-fixed .arco-table-content-inner),
+  :global(.arco-table-content-scroll) {
+    overflow: unset;
+  }
+
+  :global(.arco-collapse-item) {
+    border-bottom: unset;
+    margin-bottom: 0.5rem;
+  }
+
+  :global(.arco-collapse-item-header) {
+    background: #fff5e8;
+  }
+
+  :global(.arco-collapse-item-header-title) {
+    font-weight: bold !important;
+
+    margin-left: 1rem;
+  }
+
+  :global(.arco-collapse-item-content-box) {
+    padding: 0;
+  }
+
+  :global(.arco-table-expand-content .arco-table-td) {
+    background-color: white;
+  }
+
+  .icon-arrow {
+    font-size: @font-size-lg;
+  }
+
+  :global(td.arco-table-td.arco-table-operation.arco-table-checkbox) {
+    padding-left: 20px;
+  }
+
+  :global(td.arco-table-td.arco-table-operation.arco-table-checkbox) {
+    padding: 0;
+  }
+
+  :global(div.arco-list-item) {
+    margin-left: 6.5rem;
+
+    :global(div.arco-checkbox-mask) {
+      border-radius: 100%;
+    }
+  }
+
+  :global(tr.arco-table-tr) {
+    cursor: pointer;
+  }
+}
+
+.table-header-only {
+  margin-bottom: 0.5rem;
+
+  .table();
+
+  tbody,
+  :global(.arco-checkbox) {
+    display: none;
+  }
+
+  &:global(.arco-table-layout-fixed .arco-table-content-inner),
+  :global(.arco-table-content-scroll) {
+    overflow: unset;
+  }
+}

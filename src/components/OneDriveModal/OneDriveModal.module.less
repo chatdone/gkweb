@@ -1,0 +1,70 @@
+@import 'src/global.less';
+
+.wrapper {
+  width: 90vw;
+  height: 90%;
+
+  > div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  :global(.arco-modal-content) {
+    flex: 1;
+    padding-top: 0.5rem;
+
+    > div {
+      height: 100%;
+    }
+  }
+
+  .left-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100%;
+    padding: 0.25rem 0.5rem 0 0;
+    border-right: 1px solid #e5e6eb;
+
+    :global(div.arco-typography) {
+      margin-bottom: 0;
+    }
+
+    .username {
+      font-weight: bold;
+    }
+
+    .email {
+      color: @blue-6;
+    }
+  }
+
+  .right-panel {
+    height: 100%;
+    overflow: scroll;
+
+    padding: 0.25rem 1rem 0;
+
+    :global(.arco-table .arco-table-th) {
+      background-color: unset;
+    }
+
+    :global(.arco-btn-text) {
+      padding: 0;
+    }
+
+    .icon {
+      font-size: @font-size-xl;
+    }
+
+    .breadcrumb-txt {
+      padding: 0px 8px;
+    }
+
+    .breadcrumb-btn {
+      margin-left: 8px;
+    }
+  }
+}

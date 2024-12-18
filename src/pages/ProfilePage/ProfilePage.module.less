@@ -1,0 +1,77 @@
+@import 'src/global.less';
+
+.wrapper {
+  width: 100%;
+  margin-top: 1rem;
+
+  :global(div.arco-typography) {
+    margin-bottom: 0;
+  }
+
+  .profile-card {
+    :global(.arco-card-body) {
+      padding-top: 3rem;
+      padding-bottom: 2rem;
+    }
+
+    .avatar-wrapper {
+      @media only screen and (max-width: @mobile-screen-width) {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .descriptions {
+        font-size: @font-size-xs;
+        color: @grey-6;
+        word-break: normal;
+
+        @media only screen and (max-width: @mobile-screen-width) {
+          padding: 0 4rem;
+        }
+      }
+    }
+
+    .update-btn-container {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  .reset-password-card {
+    .container {
+      padding-right: 3rem;
+
+      .title {
+        font-weight: bold;
+      }
+
+      @media only screen and (max-width: @mobile-screen-width) {
+        padding-right: 4rem;
+
+        :global(.arco-typography) {
+          word-break: break-word;
+        }
+
+        :global(.arco-btn-text) {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+.profile-image-skeleton {
+  :global(.arco-skeleton-header .arco-skeleton-image-left) {
+    margin-right: 0;
+  }
+
+  :global(.arco-skeleton-image) {
+    width: 150px;
+    height: 150px;
+  }
+
+  @media only screen and (max-width: @mobile-screen-width) {
+    justify-content: center;
+  }
+}

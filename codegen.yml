@@ -1,0 +1,14 @@
+schema: ./src/generated/schema.graphql
+documents:
+  [
+    'src/**/*.tsx',
+    'src/hooks/useTaskMutations.ts',
+    'src/stores/useWorkspaceStore.ts',
+    'src/stores/useAppStore.ts',
+    'src/graphql/fragments.ts',
+  ]
+generates:
+  ./src/generated/graphql-types.ts:
+    plugins:
+      - typescript
+      - typescript-operations

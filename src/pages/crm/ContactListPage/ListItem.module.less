@@ -1,0 +1,27 @@
+@import 'src/global.less';
+
+.list-item {
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: 1rem;
+
+    font-weight: 600;
+    font-size: @font-size-md;
+  }
+
+  .subtitle {
+    color: @grey-6;
+  }
+
+  .footer-icon {
+    display: block;
+    font-size: @font-size-md;
+    color: @blue-6;
+  }
+}

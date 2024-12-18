@@ -1,0 +1,64 @@
+@import 'src/global.less';
+
+.drawer {
+  :global(.arco-drawer-header) {
+    background-color: @grey-8;
+
+    :global(.arco-drawer-header-title) {
+      color: white;
+    }
+  }
+
+  :global(.arco-drawer-close-icon) {
+    color: white;
+
+    &:hover {
+      color: black;
+    }
+  }
+
+  :global(.arco-drawer-footer) {
+    border-top: unset;
+  }
+
+  .title {
+    font-size: @font-size-md;
+    font-weight: 600;
+  }
+
+  .avatar-container {
+    display: flex;
+    margin-bottom: 1rem;
+
+    :global(.arco-avatar) {
+      margin-right: 1.5rem;
+    }
+
+    :global(div.arco-typography) {
+      margin-bottom: 0;
+    }
+
+    .reference-image {
+      object-fit: cover;
+    }
+  }
+
+  .verified-icon,
+  .rejected-icon {
+    font-size: @font-size-md;
+    vertical-align: -3px;
+  }
+
+  .verified-icon {
+    color: @blue-6;
+  }
+
+  .rejected-icon {
+    color: @gk-theme;
+  }
+}
+
+.space-between {
+  width: 100%;
+  .flex-space-between();
+}

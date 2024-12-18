@@ -1,0 +1,25 @@
+@import 'src/global.less';
+
+.wrapper {
+  margin-top: 1rem;
+  width: 100%;
+
+  :global(.arco-space-vertical) {
+    width: 100%;
+  }
+}
+
+.create-btn {
+  svg {
+    transform: rotate(90deg);
+  }
+}
+
+.active-btn {
+  &:global(.arco-btn-secondary:not(.arco-btn-disabled)),
+  &:global(.arco-btn-secondary:not(.arco-btn-disabled):not(.arco-btn-loading):hover) {
+    color: @gk-theme;
+    font-weight: 600;
+    background-color: white;
+  }
+}

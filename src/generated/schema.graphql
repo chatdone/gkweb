@@ -1,0 +1,5067 @@
+"""Exposes a URL that specifies the behaviour of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behaviour of this scalar."""
+  url: String!
+) on SCALAR
+
+type ActivityDaySummary {
+  company_member: CompanyMember
+  task: Task
+  day: Int
+  total: Int
+  month: Int
+  year: Int
+}
+
+"""
+Not directly from the db, it is a combination all the week numbers sent
+"""
+type ActivityMonthSummary {
+  company_member: CompanyMember
+  task: Task
+  week_number: Int
+  year: Int
+  week_total: Int
+  total: Int
+}
+
+type ActivityWeekSummary {
+  id: ID
+  company_member: CompanyMember
+  task: Task
+  monday: Int
+  tuesday: Int
+  wednesday: Int
+  thursday: Int
+  friday: Int
+  saturday: Int
+  sunday: Int
+  total_weekly: Int
+  created_at: DateTime
+  updated_at: DateTime
+  week_number: Int
+}
+
+input AddCompanyTeamStatusInput {
+  label: String!
+  percentage: Int!
+  color: String!
+  parent_status: CompanyTeamStatusType!
+  parentStatus: CompanyTeamStatusType
+  stage: StageType
+}
+
+input AddCustomValueToTaskInput {
+  taskId: ID!
+  attributeId: ID!
+  groupId: ID!
+  value: String!
+}
+
+input AddMembersToContactGroupInput {
+  contact_ids: [ID]!
+  contactIds: [ID]
+}
+
+input AddMemberToCompanyInput {
+  email: String!
+  position: String
+  type: CompanyMemberType
+  hourlyRate: Float
+  employeeTypeId: ID
+  hourly_rate: Float
+  employee_type_id: ID
+}
+
+input AddPackageInput {
+  quantity: Int
+  package_price_id: ID!
+  packagePriceId: ID
+}
+
+input AddTaskWatchersInput {
+  taskId: ID!
+  memberIds: [ID!]!
+}
+
+input AddToProjectVisibilityWhitelistInput {
+  projectId: ID!
+  memberIds: [ID!]
+  teamIds: [ID!]
+}
+
+input AddToTaskVisibilityWhitelistInput {
+  taskId: ID!
+  memberIds: [ID!]
+  teamIds: [ID!]
+}
+
+input AddToVisibilityWhitelistInput {
+  boardId: ID!
+  memberIds: [ID!]
+  teamIds: [ID!]
+}
+
+input AddToWorkspaceVisibilityWhitelistInput {
+  workspaceId: ID!
+  memberIds: [ID!]
+  teamIds: [ID!]
+}
+
+input ApplyTaskTemplateInput {
+  companyId: ID!
+  companyTeamId: ID
+  templateId: ID!
+  taskBoardId: ID!
+}
+
+input ArchivedStatus {
+  status: TimesheetArchiveStatus
+}
+
+input ArchiveTaskInput {
+  task_ids: [ID]!
+}
+
+input AssignMembersToCollectionInput {
+  collectionId: ID!
+  memberIds: [ID!]!
+}
+
+input AssignProjectsToWorkspaceInput {
+  workspaceId: ID!
+  projectIds: [ID!]!
+}
+
+input AssignTaskBoardsToFolderInput {
+  folderId: ID!
+  boardIds: [ID!]!
+}
+
+type Attendance {
+  id: ID!
+  type: AttendanceType
+  comments: String
+  location: Location
+  label: AttendanceLabel
+  worked: Int
+  overtime: Int
+  lat: Latitude
+  lng: Longitude
+  address: String
+  tags: [Tag]
+  companyMember: CompanyMember
+  startDate: DateTime
+  endDate: DateTime
+  submittedDate: DateTime
+  commentsOut: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  timeTotal: Int
+  verificationType: AttendanceVerificationType
+  isLastOut: Boolean
+  imageUrl: String
+  s3Bucket: String
+  s3Key: String
+  contact: Contact
+  company_member: CompanyMember
+  start_date: DateTime
+  end_date: DateTime
+  submitted_date: DateTime
+  comments_out: String
+  created_at: DateTime
+  updated_at: DateTime
+  time_total: Int
+  verification_type: AttendanceVerificationType
+  is_last_out: Boolean
+  image_url: String
+  s3_bucket: String
+  s3_key: String
+}
+
+type AttendanceDaySummary {
+  day: Int
+  month: Int
+
+  """Deprecated"""
+  firstIn: DateTime
+  firstAttendance: Attendance
+  lastAttendance: Attendance
+  year: Int
+  tracked: Int
+  worked: Int
+  regular: Int
+  overtime: Int
+  attendances: [Attendance]
+  generatedAt: DateTime
+  updatedAt: DateTime
+  createdAt: DateTime
+  companyMember: CompanyMember
+  generated_at: DateTime
+  updated_at: DateTime
+  created_at: DateTime
+  company_member: CompanyMember
+}
+
+input AttendanceDaySummaryInput {
+  day: Int!
+  month: Int!
+  year: Int!
+  companyMemberId: ID
+}
+
+type AttendanceLabel {
+  id: ID!
+  company: Company
+  name: String
+  color: String
+  archived: Boolean
+  description: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  created_at: DateTime
+  updated_at: DateTime
+}
+
+input AttendanceLabelInput {
+  name: String!
+  color: String
+  description: String
+}
+
+type AttendanceMemberStats {
+  total: Int
+  overtime: Int
+  break: Int
+  worked: Int
+}
+
+type AttendanceMonthSummary {
+  month: Int
+  year: Int
+  companyMember: CompanyMember
+  trackedTotal: Int
+  workedTotal: Int
+  regularTotal: Int
+  overtimeTotal: Int
+  company_member: CompanyMember
+  tracked_total: Int
+  worked_total: Int
+  regular_total: Int
+  overtime_total: Int
+}
+
+input AttendanceMonthSummaryInput {
+  week: [Int]!
+  month: Int!
+  year: Int!
+  companyMemberId: ID
+}
+
+type AttendanceSettings {
+  allowMobile: Boolean
+  allowWeb: Boolean
+  requireVerification: Boolean
+  requireLocation: Boolean
+  enable2d: Boolean
+  enableBiometric: Boolean
+  allow_mobile: Boolean
+  allow_web: Boolean
+  require_verification: Boolean
+  require_location: Boolean
+  enable_2d: Boolean
+  enable_biometric: Boolean
+}
+
+enum AttendanceType {
+  CLOCK
+  BREAK
+}
+
+input AttendanceVerificationS3Object {
+  bucket: String!
+  key: String!
+}
+
+enum AttendanceVerificationType {
+  BIOMETRIC
+  DEVICE_PASSCODE
+  IMAGE_COMPARE
+}
+
+type AttendanceWeekSummary {
+  week: Int
+  month: Int
+  year: Int
+  monday: Int
+  tuesday: Int
+  wednesday: Int
+  thursday: Int
+  friday: Int
+  saturday: Int
+  sunday: Int
+  companyMember: CompanyMember
+  trackedTotal: Int
+  workedTotal: Int
+  regularTotal: Int
+  overtimeTotal: Int
+  generatedAt: DateTime
+  updatedAt: DateTime
+  createdAt: DateTime
+  company_member: CompanyMember
+  tracked_total: Int
+  worked_total: Int
+  regular_total: Int
+  overtime_total: Int
+  generated_at: DateTime
+  updated_at: DateTime
+  created_at: DateTime
+}
+
+input AttendanceWeekSummaryInput {
+  week: Int!
+  month: Int!
+  year: Int!
+  companyMemberId: ID
+}
+
+type AuditLogChangedValues {
+  archive: Boolean
+  invoice: Boolean
+  title: Boolean
+  dueDate: Boolean
+  refNo: Boolean
+  contactAddress: Boolean
+  contactType: Boolean
+  contactName: Boolean
+  contactNo: Boolean
+  contactPicName: Boolean
+  contactGroup: Boolean
+  collectionPayment: Boolean
+  isCreate: Boolean
+  markedPaid: Boolean
+  collectorMember: Boolean
+  companyMember: Boolean
+  companyTeam: Boolean
+  notifyPics: Boolean
+  uploadedPayment: Boolean
+  uploadedReceipt: Boolean
+  rejectedPayment: Boolean
+  due_date: Boolean
+  ref_no: Boolean
+  contact_address: Boolean
+  contact_type: Boolean
+  contact_name: Boolean
+  contact_no: Boolean
+  contact_pic_name: Boolean
+  contact_group: Boolean
+  collection_payment: Boolean
+  is_create: Boolean
+  marked_paid: Boolean
+  collector_member: Boolean
+  company_member: Boolean
+  company_team: Boolean
+  notify_pics: Boolean
+  uploaded_payment: Boolean
+  uploaded_receipt: Boolean
+  rejected_payment: Boolean
+}
+
+type AuditLogValues {
+  title: String
+  archive: Int
+  status: Int
+  label: String
+  refNo: String
+  dueDate: String
+  contactPicName: String
+  teamName: String
+  memberName: String
+  contactGroupName: String
+  contactNo: String
+  contactAddress: String
+  contactType: String
+  contactName: String
+  attachmentName: String
+  ref_no: String
+  due_date: String
+  contact_pic_name: String
+  team_name: String
+  member_name: String
+  contact_group_name: String
+  contact_no: String
+  contact_address: String
+  contact_type: String
+  contact_name: String
+  attachment_name: String
+}
+
+"""
+The `BigInt` scalar type represents non-fractional signed whole numeric values.
+"""
+scalar BigInt
+
+type BillingInvoice {
+  id: ID
+  project: TaskBoard
+  docNo: String
+  docDate: DateTime
+  contactPic: ContactPic
+  terms: Int
+  remarks: String
+  createdAt: DateTime
+  createdBy: User
+  updatedAt: DateTime
+  updatedBy: User
+
+  """Total discounted is calculated first before tax is applied."""
+  totalDiscounted: Float
+
+  """Total taxed is calculated after discount"""
+  totalTaxed: Float
+  totalReceived: Float
+  items: [BillingInvoiceItem]
+  void: Boolean
+  voidedAt: DateTime
+  voidedBy: User
+}
+
+type BillingInvoiceItem {
+  id: ID
+  billingInvoice: BillingInvoice
+  descriptionHdr: String
+  sequence: Int
+  task: Task
+
+  """Either task name or the custom name, aka descriptionDtl"""
+  itemName: String
+  qty: Int
+  uom: String
+  unitPrice: Float
+  discountPercentage: Float
+  tax: String
+  taxInclusive: Boolean
+  taxPercentage: Float
+  taxAmount: Float
+
+  """aka amount"""
+  billed: Float
+  createdAt: DateTime
+  createdBy: User
+  updatedAt: DateTime
+  updatedBy: User
+}
+
+type BreadcrumbInfo {
+  name: String
+}
+
+enum BreadcrumbType {
+  TASK_BOARD
+  PROJECT_BOARD
+  CRM
+  COLLECTION
+  CLIENT
+  PAYMENTS
+  TIMESHEET
+  COMPANY_SLUG
+}
+
+type BulkUploadContactsResponse {
+  contacts: [Contact]
+}
+
+type BulkUploadMembersResponse {
+  companyMembers: [CompanyMember]
+  duplicateEmails: Int
+}
+
+"""The `Byte` scalar type represents byte value as a Buffer"""
+scalar Byte
+
+input CancelSubscriptionInput {
+  subscriptionId: ID!
+  companyId: ID!
+  reason: String
+}
+
+input ChangeGroupTaskInput {
+  taskIds: [ID!]!
+  groupId: ID!
+}
+
+input ChangeTaskPositionInput {
+  taskId: ID!
+  posY: Float!
+  projectStatusId: ID
+}
+
+type Checklist {
+  id: ID!
+  title: String
+  checked: Boolean
+  sequence: Int
+  task: Task
+}
+
+input ChecklistInput {
+  title: String!
+}
+
+input ChecklistSequencesInput {
+  checklistId: ID!
+  sequence: Int
+}
+
+input ChecklistUpdateInput {
+  title: String
+  checked: Boolean
+}
+
+input CollaborationBoardInput {
+  contactId: ID
+  companyId: ID
+  contact_id: ID!
+  description: String
+  company_id: ID!
+  type: TaskBoardType!
+  category: TaskBoardCategory
+  status: Int!
+  name: String
+  owners: [String!]
+  color: String
+}
+
+type Collection {
+  id: ID
+  refNo: String
+  contact: Contact
+  title: String
+  description: String
+  payableAmount: Float
+  periods: Int
+  remindType: CollectionRemindTypes
+  due_date: DateTime
+  invoice: String
+  fileName: String
+  invoiceFileSize: Int
+  startMonth: DateTime
+  endMonth: DateTime
+  remindInterval: CollectionRemindIntervalTypes
+  remindOnDate: Int
+  remindOnMonth: Int
+  remindEndOn: DateTime
+  smsNotify: Boolean
+  whatsappNotify: Boolean
+  voiceNotify: Boolean
+  emailNotify: Boolean
+  notifyPics: [ContactPic]
+  status: CollectionStatusTypes
+  isDraft: Boolean
+  active: Boolean
+  archive: Boolean
+  archiveAt: DateTime
+  createdBy: User
+  updatedBy: User
+  createdAt: DateTime
+  updatedAt: DateTime
+  paymentType: CollectionPaymentTypes
+  spRecurringId: String
+  collectionPeriods: [CollectionPeriod]
+  remindOnDays: [CollectionRemindOnDays]
+  collector: Collector
+  activityLogs: [CollectionActivityLog]
+  assignees: [CompanyMember]
+
+  """Not from receivable_reminders DB"""
+  reminderStatus: ReminderStatus
+  messageLogs: [CollectionMessageLog]
+  shortLink: String
+  tags: [Tag]
+  ref_no: String
+  payable_amount: Float
+  remind_type: CollectionRemindTypes
+  dueDate: DateTime
+  file_name: String
+  invoice_file_size: Int
+  start_month: DateTime
+  end_month: DateTime
+  remind_interval: CollectionRemindIntervalTypes
+  remind_on_date: Int
+  remind_on_month: Int
+  remind_end_on: DateTime
+  sms_notify: Boolean
+  whatsapp_notify: Boolean
+  voice_notify: Boolean
+  email_notify: Boolean
+  notify_pics: [ContactPic]
+  is_draft: Boolean
+  archive_at: DateTime
+  created_by: User
+  updated_by: User
+  created_at: DateTime
+  updated_at: DateTime
+  payment_type: CollectionPaymentTypes
+  sp_recurring_id: String
+  collection_periods: [CollectionPeriod]
+  remind_on_days: [CollectionRemindOnDays]
+  reminder_status: ReminderStatus
+  message_logs: [CollectionMessageLog]
+  short_link: String
+}
+
+enum CollectionActionType {
+  COLLECTION_CREATED
+  COLLECTION_REMOVED
+  COLLECTION_UPDATED_DUE_DATE
+  COLLECTION_UPDATED_TITLE
+  COLLECTION_UPDATED_REF_NO
+  COLLECTION_MARKED_PAID
+  COLLECTION_MARKED_UNPAID
+  COLLECTION_UPLOADED_PAYMENT
+  COLLECTION_UPLOADED_RECEIPT
+  COLLECTION_PAYMENT_REJECTED
+  COLLECTION_PAYMENT_APPROVED
+  COLLECTION_REMOVED_MEMBER
+  COLLECTION_ADDED_MEMBER
+  COLLECTION_UPDATED_NAME
+  COLLECTION_UPDATED_REMINDER
+  COLLECTION_REMINDER_OPTION_UPDATED
+  COLLECTION_MANUAL_RESEND
+  COLLECTION_ARCHIVED
+  COLLECTION_UNARCHIVED
+  COLLECTION_PIC_UPDATED
+}
+
+enum CollectionActiveTypes {
+  TRUE
+  FALSE
+}
+
+type CollectionActivityLog {
+  actionType: CollectionActionType
+  createdBy: User
+  createdAt: DateTime
+  collection: Collection
+  currentValues: JSON
+  previousValues: JSON
+  changedValues: JSON
+}
+
+enum CollectionArchiveType {
+  TRUE
+  FALSE
+}
+
+enum CollectionDraftType {
+  TRUE
+  FALSE
+}
+
+type CollectionMessageLog {
+  id: ID
+  collection: Collection
+  type: String
+  emailAddress: String
+  phone: String
+  timestamp: DateTime
+  status: CollectionMessageLogStatusTypes
+  email_address: String
+}
+
+enum CollectionMessageLogStatusTypes {
+  SENT
+  FAILED
+}
+
+type CollectionPayment {
+  id: ID
+  collection: Collection
+  collectionPeriod: CollectionPeriod
+  contact: Contact
+  contactPic: ContactPic
+  companyMember: CompanyMember
+  paymentProof: String
+  paymentProofFileName: String
+  paymentProofFileSize: String
+  receipt: String
+  receiptFileName: String
+  receiptFileSize: Int
+  remarks: String
+  status: CollectionPaymentStatusTypes
+  transactionId: String
+  createdBy: User
+  updatedBy: User
+  createdAt: DateTime
+  updatedAt: DateTime
+  deletedAt: DateTime
+  deletedBy: User
+  collection_period: CollectionPeriod
+  contact_pic: ContactPic
+  company_member: CompanyMember
+  payment_proof: String
+  payment_proof_file_name: String
+  payment_proof_file_size: String
+  receipt_file_name: String
+  receipt_file_size: Int
+  transaction_id: String
+  created_by: User
+  updated_by: User
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
+  deleted_by: User
+}
+
+enum CollectionPaymentStatusTypes {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum CollectionPaymentTypes {
+  MANUAL
+  SENANGPAY
+}
+
+type CollectionPeriod {
+  id: ID
+  collection: Collection
+  period: Int
+  month: DateTime
+  amount: Float
+  dueDate: DateTime
+  lastRemindOn: DateTime
+  paymentAcceptAt: DateTime
+  status: CollectionStatusTypes
+  createdAt: DateTime
+  updatedAt: DateTime
+  webhookData: String
+  payments: [CollectionPayment]
+  due_date: DateTime
+  last_remind_on: DateTime
+  payment_accept_at: DateTime
+  created_at: DateTime
+  updated_at: DateTime
+  webhook_data: String
+}
+
+enum CollectionPeriodStatusTypes {
+  PENDING
+  PAID
+}
+
+type CollectionReminderRead {
+  id: ID
+  user: User
+  collection: Collection
+  createdAt: String
+  created_at: String
+}
+
+enum CollectionRemindIntervalTypes {
+  Day
+  Week
+  Month
+  Year
+}
+
+type CollectionRemindOnDays {
+  id: ID
+  collection: Collection
+  day: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+  created_at: DateTime
+  updated_at: DateTime
+}
+
+enum CollectionRemindTypes {
+  FULL
+  INSTALMENT
+}
+
+enum CollectionStatusTypes {
+  PENDING
+  PAID
+}
+
+type CollectionTag {
+  collection: Collection
+  tag: Tag
+}
+
+input CollectionTagOptions {
+  collectionId: ID!
+  tagIds: [ID!]!
+}
+
+type Collector {
+  id: ID
+  company: Company
+  collections(filters: FilterOptions): [Collection]
+  team: CompanyTeam
+  collectorMembers: [CollectorMember]
+  contact: Contact
+  createdAt: DateTime
+  updatedAt: DateTime
+  deletedAt: DateTime
+  createdBy: User
+  updatedBy: User
+  deletedBy: User
+  assignees: [CompanyMember]
+  collector_members: [CollectorMember]
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
+  created_by: User
+  updated_by: User
+  deleted_by: User
+}
+
+type CollectorMember {
+  id: ID
+  member: CompanyMember
+}
+
+input CommonCrud {
+  create: Boolean
+  read: Boolean
+  update: Boolean
+  delete: Boolean
+}
+
+enum CommonVisibility {
+  HIDDEN
+  PUBLIC
+  ASSIGNED
+  SPECIFIC
+  PRIVATE
+}
+
+type CommonVisibilityWhitelist {
+  teams: [CompanyTeam]
+  members: [CompanyMember]
+}
+
+type Company {
+  id: ID
+  id_num: Int
+  name: String
+  invitationCode: String
+  invitationValidity: DateTime
+  description: String
+  emailEnabled: Boolean
+  smsEnabled: Boolean
+  whatsappEnabled: Boolean
+  phoneCallEnabled: Boolean
+  createdBy: User
+  updatedBy: User
+  deletedBy: User
+  idleTiming: Int
+  settings: String
+  slug: String
+  user: User
+  members: [CompanyMember]
+  teams: [CompanyTeam]
+  currentSubscription: Subscription
+  subscriptions: [CompanySubscription]
+  activeSubscription: [CompanySubscription]
+  expiredSubscription: [CompanySubscription]
+  employeeTypes: [EmployeeType]
+  permission: String
+  defaultTimezone: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  deletedAt: DateTime
+  logoUrl: String
+
+  """Only for invoice generation"""
+  accountCode: String
+
+  """Only for invoice generation"""
+  invoicePrefix: String
+  address: String
+  email: String
+  phone: String
+  website: String
+  registrationCode: String
+  invoiceStart: Int
+  default_timezone: String
+  employee_types: [EmployeeType]
+  active_subscription: [CompanySubscription]
+  created_by: User
+  updated_by: User
+  deleted_by: User
+  idle_timing: Int
+  email_enabled: Boolean
+  sms_enabled: Boolean
+  whatsapp_enabled: Boolean
+  phone_call_enabled: Boolean
+  invitation_code: String
+  invitation_validity: DateTime
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
+  logo_url: String
+}
+
+enum CompanyArchivedUpdate {
+  UNARCHIVED
+  ARCHIVED
+}
+
+type CompanyHoliday {
+  id: ID!
+  name: String
+  startDate: DateTime
+  endDate: DateTime
+  type: String
+  company: Company
+  active: Boolean
+  createdAt: DateTime
+  createdBy: User
+  updatedAt: DateTime
+  updatedBy: User
+  publicHolidayId: PublicHoliday
+  start_date: DateTime
+  end_date: DateTime
+  created_at: DateTime
+  created_by: User
+  updated_at: DateTime
+  updated_by: User
+  public_holiday_id: PublicHoliday
+}
+
+enum CompanyHolidayStatus {
+  ACTIVE
+  INACTIVE
+}
+
+type CompanyMember {
+  id: ID!
+  user: User
+  type: CompanyMemberType
+  position: String
+  setting: CompanyMemberSettings
+  permissions: [CompanyMemberPermissionScope]
+  referenceImage: CompanyMemberReferenceImage
+  hourlyRate: Float
+  employeeType: EmployeeType
+  createdAt: DateTime
+  active: Boolean
+  teams: [CompanyTeam]
+  reference_image: CompanyMemberReferenceImage
+  hourly_rate: Float
+  employee_type: EmployeeType
+  created_at: DateTime
+}
+
+type CompanyMemberPermissionScope {
+  scope: String
+  enabled: Boolean
+}
+
+"""Describes the reference image of the member for face verification"""
+type CompanyMemberReferenceImage {
+  status: CompanyMemberReferenceImageStatus
+  remark: String
+  imageUrl: String
+  s3Bucket: String
+  s3Key: String
+  actionBy: User
+  createdAt: DateTime
+  updatedAt: DateTime
+  image_url: String
+  s3_bucket: String
+  s3_key: String
+  action_by: User
+  created_at: DateTime
+  updated_at: DateTime
+}
+
+type CompanyMemberReferenceImageResponse {
+  s3Bucket: String
+  s3Key: String
+  uploadUrl: String
+  s3_bucket: String
+  s3_key: String
+  upload_url: String
+}
+
+enum CompanyMemberReferenceImageStatus {
+  PENDING_APPROVAL
+  APPROVED
+  REJECTED
+}
+
+type CompanyMemberSettings {
+  senangPay: Int
+  senang_pay: Int
+}
+
+enum CompanyMemberType {
+  ADMIN
+  MANAGER
+  MEMBER
+}
+
+type CompanyPaymentMethod {
+  stripeCustomerId: String
+  stripePaymentMethodId: String
+  brand: String
+  last4: String
+  expMonth: String
+  expYear: String
+  company: Company
+  user: User
+  isDefault: Boolean
+  createdAt: DateTime
+  updatedAt: DateTime
+  createdBy: User
+  updatedBy: User
+}
+
+type CompanyPermission {
+  company: Company
+  grants: String
+}
+
+type CompanyStorageDetails {
+  summary: [CompanyStorageList]
+  totalUsageInKB: Float
+  totalUsageInMB: Float
+}
+
+type CompanyStorageList {
+  type: String
+  fileSize: Float
+}
+
+type CompanySubscription {
+  id: ID!
+  price: Float
+  interval: String
+  status: SubscriptionStatuses
+  active: Boolean
+  quantity: Int
+  type: PackageTypes
+  subscriptionPackagePrice: SubscriptionPackagePrice
+  whiteListedMembers: SubscriptionQuantityResult
+  company: Company
+  discount: SubscriptionDiscount
+  package: SubscriptionPackage
+  stripeSubscriptionId: String
+  productId: String
+  smsQuota: Int
+  phoneCallQuota: Int
+  emailQuota: Int
+  whatsappQuota: Int
+  signatureQuota: Int
+  packageTitle: String
+  packageDescription: String
+  intervalCount: Int
+  startDate: DateTime
+  endDate: DateTime
+  cancelDate: DateTime
+  createdAt: DateTime
+  updatedAt: DateTime
+  deletedAt: DateTime
+  createdBy: User
+  updatedBy: User
+  deletedBy: User
+  stripe_subscription_id: String
+  product_id: String
+  sms_quota: Int
+  phone_call_quota: Int
+  email_quota: Int
+  whatsapp_quota: Int
+  signature_quota: Int
+  package_title: String
+  package_description: String
+  interval_count: Int
+  start_date: DateTime
+  end_date: DateTime
+  cancel_date: DateTime
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
+  created_by: User
+  updated_by: User
+  deleted_by: User
+}
+
+type CompanyTeam {
+  id: ID!
+  company: Company
+  title: String
+  statuses: [CompanyTeamStatus]
+  members: [CompanyMember]
+  createdAt: DateTime
+  updatedAt: DateTime
+  deletedAt: DateTime
+  createdBy: User
+  updatedBy: User
+  deletedBy: User
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
+  created_by: User
+  updated_by: User
+  deleted_by: User
+}
+
+"""Also referred to as "dynamic statuses". Refers to table card_statuses"""
+type CompanyTeamStatus {
+  id: ID!
+  company: Company
+  label: String
+  percentage: Int
+  color: String
+  sequence: Int
+  team: CompanyTeam
+  parentStatus: CompanyTeamStatusType
+  stage: StageType
+  createdAt: DateTime
+  updatedAt: DateTime
+  deletedAt: DateTime
+  createdBy: User
+  updatedBy: User
+  deletedBy: User
+  parent_status: CompanyTeamStatusType
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
+  created_by: User
+  updated_by: User
+  deleted_by: User
+}
+
+input CompanyTeamStatusSequenceInput {
+  sequence: Int!
+  company_team_status_id: ID!
+  companyTeamStatusId: ID
+}
+
+enum CompanyTeamStatusType {
+  PENDING
+  DONE
+  REJECTED
+}
+
+type CompanyWorkDaySetting {
+  company: Company
+  day: WorkDay
+  open: Boolean
+  startHour: String
+  endHour: String
+  timezone: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  createdBy: User
+  updatedBy: User
+  start_hour: String
+  end_hour: String
+  created_by: User
+  updated_by: User
+  created_at: DateTime
+  updated_at: DateTime
+}
+
+type Contact {
+  id: ID!
+  company: Company
+  name: String
+  address: String
+  remarks: String
+  type: ContactType
+  groups: [ContactGroup]
+  pics: [ContactPic]
+  collections: [Collection]
+  notes: [ContactNote]
+  activities(limit: Int!, offset: Int!, tableType: ContactActivityTableType!, isCount: Boolean!): [ContactActivityRaw]
+  tags: [Tag]
+  dealValue: Float
+  dealCreator: User
+  createdAt: DateTime
+  updatedAt: DateTime
+  deletedAt: DateTime
+  createdBy: User
+  updatedBy: User
+  deletedBy: User
+  taskBoards: [TaskBoard]
+  attendances: [Attendance]
+  edited: Boolean
+
+  """Only for invoice generation"""
+  accountCode: String
+  deal_value: Float
+  deal_creator: User
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
+  created_by: User
+  updated_by: User
+  deleted_by: User
+  task_boards: [TaskBoard]
+}
+
+type ContactActivity {
+  assignee: CompanyMember
+  attachment: TaskAttachment
+  pic: ContactPic
+  activityType: String
+  toDate: DateTime
+  fromDate: DateTime
+  createdBy: User
+  date: DateTime
+  task: Task
+  activity_type: String
+  to_date: DateTime
+  from_date: DateTime
+  created_by: User
+}
+
+type ContactActivityRaw {
+  action: String
+  timestamp: DateTime
+  tableName: String
+  previousValues: String
+  currentValues: String
+  changedValues: String
+  table_name: String
+  previous_values: String
+  current_values: String
+  changed_values: String
+}
+
+enum ContactActivityTableType {
+  ALL
+  TASKS
+  COLLECTIONS
+  CONTACTS
+}
+
+enum ContactActivityType {
+  TASK_CREATED
+  TASK_ARCHIVED
+  TASK_UNARCHIVED
+  TASK_REMOVED
+  UPDATED_DUE_DATE
+  UPDATED_TEAM_STATUS
+  ASSIGNEE_ADDED
+  ASSIGNEE_REMOVED
+  PIC_ADDED
+  PIC_REMOVED
+  ATTACHMENT_UPLOADED
+  ATTACHMENT_REMOVED
+}
+
+type ContactGroup {
+  id: ID!
+  name: String
+  company: Company
+  createdAt: DateTime
+  updatedAt: DateTime
+  type: ContactGroupType
+  color: String
+  contacts: [Contact]
+  count: Int
+  created_at: DateTime
+  updated_at: DateTime
+}
+
+enum ContactGroupType {
+  UNASSIGNED
+  INDIVIDUAL
+  COMPANY
+}
+
+type ContactNote {
+  id: ID
+  contact: Contact
+  content: String
+  noteContent: String
+  user: User
+  date: DateTime
+}
+
+input ContactNoteInput {
+  content: String
+  noteContent: String
+  date: DateTime
+  userId: ID
+  user_id: ID
+}
+
+type ContactPic {
+  id: ID!
+  name: String
+  remarks: String
+  contact: Contact
+  user: User
+  contactNo: String
+  nationalFormat: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  deletedAt: DateTime
+  createdBy: User
+  updatedBy: User
+  deletedBy: User
+  contact_no: String
+  national_format: String
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
+  created_by: User
+  updated_by: User
+  deleted_by: User
+}
+
+type ContactTag {
+  contact: Contact
+  tag: Tag
+}
+
+input ContactTagOptions {
+  contactId: ID!
+  tagIds: [ID!]!
+}
+
+type ContactTask {
+  id: ID!
+  name: String
+  dueDate: DateTime
+  status: ContactTaskStatusType
+  due_date: DateTime
+}
+
+enum ContactTaskStatusType {
+  PENDING
+  DONE
+  REJECTED
+}
+
+enum ContactType {
+  NONE
+  INDIVIDUAL
+  COMPANY
+}
+
+input CopyProjectInput {
+  projectId: ID!
+  targetWorkspaceId: ID!
+}
+
+input CopyTaskInput {
+  companyId: ID!
+  companyTeamId: ID
+  taskId: ID!
+  taskBoardId: ID!
+  copySubtasks: Boolean!
+  copyAttachments: Boolean!
+}
+
+input CopyTasksInput {
+  companyId: ID!
+  companyTeamId: ID
+  taskIds: [ID!]!
+  taskBoardId: ID!
+  copySubtasks: Boolean!
+  copyAttachments: Boolean!
+}
+
+input CreateBillingInvoiceInput {
+  projectId: ID!
+  docDate: DateTime!
+
+  """Get companyName from contactId"""
+  picId: ID!
+  terms: Int
+
+  """Maximum 200 characters"""
+  remarks: String
+}
+
+input CreateBillingInvoiceItemInput {
+  invoiceId: ID!
+  taskId: ID
+  customName: String
+  unitPrice: Float
+  discountPercentage: Float
+  taxPercentage: Float
+}
+
+input CreateCollectionInput {
+  title: String!
+  description: String
+  periods: Int
+  tagIds: [ID!]
+  remindInterval: CollectionRemindIntervalTypes
+  remindType: CollectionRemindTypes
+  notifyTypes: [String]
+  refNo: String
+  payableAmount: Float
+  dueDate: DateTime
+  remindOnDate: Int
+  remindOnMonth: Int
+  remindEndOn: DateTime
+  notifyPics: [ID!]
+  isDraft: Boolean
+  contactId: ID
+  smsNotify: Boolean
+  whatsappNotify: Boolean
+  voiceNotify: Boolean
+  emailNotify: Boolean
+  paymentType: CollectionPaymentTypes
+  startMonth: DateTime
+  endMonth: DateTime
+  remind_interval: CollectionRemindIntervalTypes
+  remind_type: CollectionRemindTypes
+  notify_types: [String]
+  ref_no: String!
+  payable_amount: Float!
+  due_date: DateTime
+  remind_on_date: Int
+  remind_on_month: Int
+  remind_end_on: DateTime
+  notify_pics: [ID!]
+  is_draft: Boolean!
+  contact_id: ID!
+  sms_notify: Boolean
+  whatsapp_notify: Boolean
+  voice_notify: Boolean
+  email_notify: Boolean
+  payment_type: CollectionPaymentTypes
+  start_month: DateTime
+  end_month: DateTime
+}
+
+input CreateCollectionPaymentInput {
+  collectionId: ID
+  collectionPeriodId: ID
+  collection_id: ID!
+  collection_period_id: ID!
+}
+
+input CreateCollectorInput {
+  contact_id: ID!
+  team_id: ID
+  member_ids: [ID]
+  contactId: ID
+  teamId: ID
+  memberIds: [ID]
+}
+
+input CreateCompanyHolidayInput {
+  name: String!
+  startDate: DateTime
+  endDate: DateTime
+  start_date: DateTime!
+  end_date: DateTime!
+}
+
+input CreateCompanyInput {
+  name: String!
+  description: String
+
+  """Only for invoice generation"""
+  accountCode: String
+}
+
+input CreateCompanyPaymentMethodInput {
+  companyId: ID!
+  stripePaymentMethodId: String!
+}
+
+input CreateCompanyTeamInput {
+  title: String!
+  memberIds: [ID]
+  member_ids: [ID]
+}
+
+input CreateContactGroupInput {
+  name: String!
+}
+
+input CreateContactInput {
+  name: String!
+  address: String
+  type: ContactType!
+  remarks: String
+  deal_value: Float
+  dealValue: Float
+
+  """Only for invoice generation"""
+  accountCode: String
+  tagIds: [ID!]
+}
+
+input CreateContactPicInput {
+  name: String!
+  email: String
+  contactNo: String
+  contact_no: String
+  remarks: String
+}
+
+input CreateCustomColumnForGroupInput {
+  groupId: ID!
+  name: String!
+  type: ProjectGroupCustomAttributeType!
+}
+
+input CreateCustomTimesheetApprovalInput {
+  customName: String!
+  daysInput: TimesheetDaysInput!
+}
+
+input CreateCustomTimesheetApprovalsInput {
+  companyMemberId: ID!
+  customInput: [CreateCustomTimesheetApprovalInput!]!
+}
+
+input CreateLocationInput {
+  name: String!
+  address: String
+  radius: Float
+  lng: Float
+  lat: Float
+  metadata: String
+}
+
+input CreateProjectGroupInput {
+  name: String!
+  projectId: ID!
+}
+
+input CreateProjectInput {
+  name: String!
+  companyId: ID!
+  workspaceId: ID!
+  projectTemplateId: ID
+  visibility: ProjectVisibility
+  ownerIds: [ID!]
+}
+
+input CreateProjectStatusInput {
+  name: String!
+  color: String!
+  notify: Boolean
+  projectId: ID!
+}
+
+input CreateProjectTemplateStatusInput {
+  projectTemplateId: ID!
+  name: String!
+  color: String!
+  notify: Boolean!
+}
+
+input CreateSubscriptionInput {
+  quantity: Int
+  package_price_id: ID!
+  packagePriceId: ID
+}
+
+input CreateSubscriptionPackageInput {
+  name: String!
+  userQuota: Int
+  taskQuota: Int
+  invoiceQuota: Int
+  reportQuota: Int
+  teamQuota: Int
+  storageQuota: Int
+}
+
+input CreateSubscriptionPriceInput {
+  productId: String!
+  amount: Float!
+  interval: SubscriptionPriceInterval
+}
+
+input CreateSubscriptionProductInput {
+  name: String!
+}
+
+input CreateTagGroupInput {
+  companyId: ID!
+  name: String!
+  description: String
+}
+
+input CreateTagInput {
+  companyId: ID!
+  groupId: ID
+  name: String!
+  color: String!
+}
+
+input CreateTaskBoardFolderInput {
+  name: String!
+  type: TaskBoardFolderType!
+}
+
+input CreateTaskTemplateInput {
+  companyId: ID!
+  sourceTaskId: ID!
+  name: String!
+  copySubtasks: Boolean!
+  copyAttachments: Boolean!
+  description: String
+
+  """
+  Deprecated, sending a cronString will automatically mark it as recurring
+  """
+  isRecurring: Boolean
+
+  """
+  Sending a cronString means it will be classified as recurring and no longer should be listed as a template
+  """
+  cronString: String
+}
+
+input CreateTimesheetApprovalInput {
+  taskId: ID!
+  daysInput: TimesheetDaysInput!
+}
+
+input CreateTimesheetApprovalsInput {
+  companyMemberId: ID!
+  tasksInput: [CreateTimesheetApprovalInput!]!
+}
+
+input CreateWorkspaceInput {
+  name: String!
+  bgColor: String!
+  companyId: ID!
+}
+
+"""
+A field whose value is a Currency: https://en.wikipedia.org/wiki/ISO_4217.
+"""
+scalar Currency
+
+input CustomTimesheetApprovalInput {
+  customName: String!
+  companyMemberId: ID
+}
+
+type CustomTimesheetDayApproval {
+  companyMember: CompanyMember
+  customName: String
+  day: Int
+  total: Int
+  month: Int
+  year: Int
+  status: TimesheetApprovalStatus
+  billable: Boolean
+}
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format
+outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
+representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+input DateRangeFilter {
+  start_date: DateTime
+  end_date: DateTime
+}
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
+`date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
+8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+input DayTimesheetFilterOptions {
+  companyMemberId: ID
+  taskId: ID
+  day: Int!
+  month: Int!
+  year: Int!
+}
+
+input DeleteCollectorInput {
+  company_id: ID!
+  collector_ids: [ID]!
+  companyId: ID
+  collectorIds: [ID]
+}
+
+input DeleteCompanyPaymentMethodInput {
+  companyId: ID!
+  stripePaymentMethodId: String!
+}
+
+type DeleteCompanyPaymentMethodResponse {
+  success: Boolean
+  affectedNum: Int
+}
+
+type DeleteContactPicResponse {
+  contact: Contact
+}
+
+input DeleteCustomColumnForGroupInput {
+  groupId: ID!
+  attributeId: ID!
+}
+
+input DeleteCustomTimesheetApprovalInput {
+  customName: String!
+  daysInput: DeleteTimesheetDaysInput!
+}
+
+input DeleteCustomTimesheetApprovalsInput {
+  companyMemberId: ID!
+  customInput: [DeleteCustomTimesheetApprovalInput!]!
+}
+
+input DeleteCustomValueFromTaskInput {
+  taskId: ID!
+  attributeId: ID!
+  groupId: ID!
+}
+
+input DeletePaymentProofInput {
+  collectionId: ID
+  collectionPeriodId: ID
+  collectionPaymentId: ID
+  collection_id: ID!
+  collection_period_id: ID!
+  collection_payment_id: ID!
+}
+
+input DeleteProjectGroupInput {
+  projectGroupIds: [ID!]!
+}
+
+input DeleteProjectsInput {
+  projectIds: [ID!]!
+}
+
+input DeleteProjectStatusInput {
+  projectStatusIds: [ID!]!
+}
+
+input DeleteProjectTemplateIdsInput {
+  projectTemplateIds: [ID!]!
+}
+
+input DeleteTemplateInput {
+  companyId: ID!
+  templateId: ID!
+}
+
+input DeleteTimesheetDaysInput {
+  day: Int!
+  month: Int!
+  year: Int!
+}
+
+input DeleteWorkspacesInput {
+  workspaceIds: [ID!]!
+}
+
+type DiscountedPrice {
+  id: Int
+  package: SubscriptionPackage
+  name: String
+  description: String
+  interval: String
+  active: Int
+  price: Float
+  quantity: Int
+  stripePriceId: String
+  intervalCount: Int
+  discountedPrice: Float
+  pricePerUnit: Float
+  stripe_price_id: String
+  interval_count: Int
+  discounted_price: Float
+  price_per_unit: Float
+}
+
+input DowngradeSubscriptionInput {
+  subscriptionId: ID!
+  companyId: ID!
+  packageId: ID!
+  interval: SubscriptionPriceInterval!
+}
+
+input DowngradeSubscriptionPackageProductsInput {
+  packageId: ID!
+  productId: ID!
+}
+
+input DuplicateTasksInput {
+  taskIds: [ID!]!
+  projectGroupId: ID
+  projectId: ID!
+  parentId: ID
+}
+
+"""
+
+    A string representing a duration conforming to the ISO8601 standard,
+    such as: P1W1DT13H23M34S
+    P is the duration designator (for period) placed at the start of the duration representation.
+    Y is the year designator that follows the value for the number of years.
+    M is the month designator that follows the value for the number of months.
+    W is the week designator that follows the value for the number of weeks.
+    D is the day designator that follows the value for the number of days.
+    T is the time designator that precedes the time components of the representation.
+    H is the hour designator that follows the value for the number of hours.
+    M is the minute designator that follows the value for the number of minutes.
+    S is the second designator that follows the value for the number of seconds.
+
+    Note the time designator, T, that precedes the time value.
+
+    Matches moment.js, Luxon and DateFns implementations
+    ,/. is valid for decimal places and +/- is a valid prefix
+  
+"""
+scalar Duration
+
+input EditCustomColumnForGroupInput {
+  groupId: ID!
+  attributeId: ID!
+  name: String!
+}
+
+input EditProjectGroupInput {
+  projectGroupId: ID!
+  name: String!
+}
+
+"""Only works with new comment system"""
+input EditTaskCommentInput {
+  commentId: ID!
+  messageContent: ID!
+
+  """New and old mentions"""
+  mentionIds: [ID!]
+}
+
+"""
+A field whose value conforms to the standard internet email address format as
+specified in RFC822: https://www.w3.org/Protocols/rfc822/.
+"""
+scalar EmailAddress
+
+type EmployeeType {
+  id: ID!
+  name: String
+  archived: Boolean
+
+  """Work schedule"""
+  workDaySettings: [CompanyWorkDaySetting]
+  hasOvertime: Boolean
+  has_overtime: Boolean
+}
+
+input ExternalAttachmentInput {
+  name: String!
+  type: String!
+  url: String!
+  source: ExternalFileSource!
+}
+
+enum ExternalFileSource {
+  ONE_DRIVE
+  GOOGLE_DRIVE
+  DROPBOX
+}
+
+input FilterOptions {
+  date: DateRangeFilter
+  task_member: TaskMemberFilter
+  taskMember: TaskMemberFilter
+  team_status: TeamStatusFilter
+  project_type: TaskBoardType
+  category: TaskFilterOptions
+  archived: ArchivedStatus
+}
+
+input GetAttendancesInput {
+  companyId: ID
+  companyMemberId: ID
+  contactId: ID
+  fromDate: DateTime
+  toDate: DateTime
+  company_id: ID!
+  company_member_id: ID
+  from_date: DateTime!
+  to_date: DateTime!
+}
+
+"""
+A field whose value is a generic Universally Unique Identifier: https://en.wikipedia.org/wiki/Universally_unique_identifier.
+"""
+scalar GUID
+
+"""
+A field whose value is a hexadecimal: https://en.wikipedia.org/wiki/Hexadecimal.
+"""
+scalar Hexadecimal
+
+"""
+A field whose value is a hex color code: https://en.wikipedia.org/wiki/Web_colors.
+"""
+scalar HexColorCode
+
+type Holiday {
+  id: ID!
+  company: Company
+  name: String
+  type: String
+  startDate: DateTime
+  endDate: DateTime
+  createdBy: User
+  updatedBy: User
+  createdAt: DateTime
+  updatedAt: DateTime
+  date: DateTime
+  year: Int
+  countryCode: String
+  active: Boolean
+  start_date: DateTime
+  end_date: DateTime
+  created_by: User
+  updated_by: User
+  created_at: DateTime
+  updated_at: DateTime
+  country_code: String
+}
+
+"""
+A field whose value is a CSS HSL color: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#hsl()_and_hsla().
+"""
+scalar HSL
+
+"""
+A field whose value is a CSS HSLA color: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#hsl()_and_hsla().
+"""
+scalar HSLA
+
+"""
+A field whose value is an International Bank Account Number (IBAN):
+https://en.wikipedia.org/wiki/International_Bank_Account_Number.
+"""
+scalar IBAN
+
+type ImageGroup {
+  small: String
+  medium: String
+  large: String
+  original: String
+}
+
+input ImportTasksInput {
+  projectId: ID!
+  groupId: ID
+  attachment: Upload!
+}
+
+type ImportTasksResponse {
+  imported: Int
+  failed: Int
+  tasks: [Task!]
+}
+
+"""
+A field whose value is a IPv4 address: https://en.wikipedia.org/wiki/IPv4.
+"""
+scalar IPv4
+
+"""
+A field whose value is a IPv6 address: https://en.wikipedia.org/wiki/IPv6.
+"""
+scalar IPv6
+
+"""
+A field whose value is a ISBN-10 or ISBN-13 number: https://en.wikipedia.org/wiki/International_Standard_Book_Number.
+"""
+scalar ISBN
+
+"""
+
+    A string representing a duration conforming to the ISO8601 standard,
+    such as: P1W1DT13H23M34S
+    P is the duration designator (for period) placed at the start of the duration representation.
+    Y is the year designator that follows the value for the number of years.
+    M is the month designator that follows the value for the number of months.
+    W is the week designator that follows the value for the number of weeks.
+    D is the day designator that follows the value for the number of days.
+    T is the time designator that precedes the time components of the representation.
+    H is the hour designator that follows the value for the number of hours.
+    M is the minute designator that follows the value for the number of minutes.
+    S is the second designator that follows the value for the number of seconds.
+
+    Note the time designator, T, that precedes the time value.
+
+    Matches moment.js, Luxon and DateFns implementations
+    ,/. is valid for decimal places and +/- is a valid prefix
+  
+"""
+scalar ISO8601Duration
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+"""
+The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSONObject
+
+"""
+A field whose value is a JSON Web Token (JWT): https://jwt.io/introduction.
+"""
+scalar JWT
+
+"""
+A field whose value is a valid decimal degrees latitude number (53.471): https://en.wikipedia.org/wiki/Latitude
+"""
+scalar Latitude
+
+input LinkAttachmentToCommentInput {
+  attachmentId: ID!
+  commentId: ID!
+}
+
+input LinkExternalAttachmentsInput {
+  taskId: ID!
+  externalAttachments: [ExternalAttachmentInput!]!
+}
+
+"""
+A local date string (i.e., with no associated timezone) in `YYYY-MM-DD` format, e.g. `2020-01-01`.
+"""
+scalar LocalDate
+
+"""
+A local time string (i.e., with no associated timezone) in 24-hr
+`HH:mm[:ss[.SSS]]` format, e.g. `14:25` or `14:25:06` or `14:25:06.123`.  This
+scalar is very similar to the `LocalTime`, with the only difference being that
+`LocalEndTime` also allows `24:00` as a valid value to indicate midnight of the
+following day.  This is useful when using the scalar to represent the exclusive
+upper bound of a time block.
+"""
+scalar LocalEndTime
+
+"""
+A local time string (i.e., with no associated timezone) in 24-hr
+`HH:mm[:ss[.SSS]]` format, e.g. `14:25` or `14:25:06` or `14:25:06.123`.
+"""
+scalar LocalTime
+
+type Location {
+  id: ID!
+  company: Company
+  name: String
+  address: String
+  radius: Float
+  lng: Float
+  lat: Float
+  archived: Boolean
+  createdAt: DateTime
+  createdBy: User
+  updatedAt: DateTime
+  updatedBy: User
+  metadata: String
+  created_at: DateTime
+  created_by: User
+  updated_at: DateTime
+  updated_by: User
+}
+
+"""
+The `BigInt` scalar type represents non-fractional signed whole numeric values.
+"""
+scalar Long
+
+"""
+A field whose value is a valid decimal degrees longitude number (53.471): https://en.wikipedia.org/wiki/Longitude
+"""
+scalar Longitude
+
+"""
+A field whose value is a IEEE 802 48-bit MAC address: https://en.wikipedia.org/wiki/MAC_address.
+"""
+scalar MAC
+
+"""Refer to activity_tracker_monthly_mv"""
+type MonthlyActivityTracking {
+  company_member: CompanyMember
+  task: Task
+  created_at: DateTime
+  updated_at: DateTime
+  week_number: Int
+  week_total: Int
+  year: Int
+}
+
+input MonthlyTimesheetFilterOptions {
+  companyMemberId: ID
+  taskId: ID
+  weekNumbers: [Int]
+  year: Int
+}
+
+input MoveProjectsToWorkspaceInput {
+  sourceWorkspaceId: ID!
+  destinationWorkspaceId: ID!
+  projectIds: [ID!]!
+}
+
+input MoveTasksInput {
+  projectGroupId: ID!
+  taskIds: [ID!]!
+  projectId: ID!
+}
+
+input MoveTaskToMemberInput {
+  sourceMemberId: ID!
+  destinationMemberId: ID!
+  taskId: ID!
+}
+
+type Mutation {
+  _empty: String
+
+  """
+  Starts an attendance for either CLOCK or BREAK. If there is an open entry it will
+  close it first.
+  """
+  startAttendanceEntry(companyMemberId: ID!, locationId: ID, labelId: ID, contactId: ID, input: StartAttendanceEntryInput!): Attendance
+
+  """Clock out without starting a new entry"""
+  closeAttendance(companyMemberId: ID!, commentsOut: String): Attendance
+  closeAttendanceForUser(companyMemberId: ID!, commentsOut: String): Attendance
+  createAttendanceLabel(companyId: ID!, input: AttendanceLabelInput!): AttendanceLabel
+  updateAttendanceLabel(labelId: ID!, input: AttendanceLabelInput!): AttendanceLabel
+  archiveAttendanceLabel(labelId: ID!, archived: Boolean!): AttendanceLabel
+  updateAttendanceSettings(companyId: ID!, input: UpdateAttendanceSettingsInput!): AttendanceSettings
+  setAttendanceVerificationImage(companyMemberId: ID!, attendanceId: ID!, input: SetAttendanceVerificationImageInput!): Attendance
+  updateCollectionPaymentType(collectionId: ID!, input: UpdateCollectionPaymentTypeInput!): Collection
+  createCollection(input: CreateCollectionInput!, attachment: Upload!, remindOnDays: [Int!]): Collection
+  deleteCollections(collectionIds: [ID]!): [Collection]
+  updateCollection(collectionId: ID!, input: UpdateCollectionInput!, attachment: Upload, remindOnDays: [Int!]): Collection
+  deactivateCollections(collectionIds: [ID]!): [Collection]
+  activateCollections(collectionIds: [ID]!): [Collection]
+  archiveCollections(collectionIds: [ID]!): [Collection]
+  unarchiveCollections(collectionIds: [ID]!): [Collection]
+  collectionReminderRead(collectionId: ID!): CollectionReminderRead
+  updateCollectionPeriodStatus(collectionId: ID!, collectionPeriodId: ID!, status: CollectionPeriodStatusTypes!): CollectionPeriod
+  uploadPaymentProof(input: CreateCollectionPaymentInput!, attachment: Upload!): CollectionPayment
+  deletePaymentProof(input: DeletePaymentProofInput!): CollectionPayment
+  updatePaymentStatus(input: UpdatePaymentStatusInput!): CollectionPayment
+  uploadPaymentReceipt(input: UploadPaymentReceiptInput!, attachment: Upload!): CollectionPayment
+  assignMembersToCollection(input: AssignMembersToCollectionInput!): Collection
+  removeMembersFromCollection(input: RemoveMembersFromCollectionInput!): Collection
+  createCollector(input: CreateCollectorInput!): Collector
+  deleteCollectors(input: DeleteCollectorInput!): [Collector]
+  updateCollector(input: UpdateCollectorInput!): Collector
+  createCompany(input: CreateCompanyInput!): Company
+  deleteCompany(companyId: ID!): Company
+  updateCompanyInfo(companyId: ID!, input: UpdateCompanyInfoInput!): Company
+  uploadCompanyProfileImage(companyId: ID!, attachment: Upload!): Company
+  addMemberToCompany(companyId: ID!, input: AddMemberToCompanyInput!): Company
+  updateCompanyMemberInfo(companyMemberId: ID!, input: UpdateCompanyMemberInfoInput!): CompanyMember
+  removeMemberFromCompany(companyId: ID!, companyMemberId: ID!): Company
+  updateCompanyProfile(companyId: ID!, key: String!, value: String!): String
+  updateCompanyTimezone(companyId: ID!, timezone: String!): String
+  updateCompanyMemberActiveStatus(companyMemberId: ID!, active: Boolean!): CompanyMember
+  createCompanyTeam(companyId: ID!, input: CreateCompanyTeamInput!): CompanyTeam
+  deleteCompanyTeam(teamId: ID!): CompanyTeam
+  updateCompanyTeamInfo(companyTeamId: ID!, input: UpdateCompanyTeamInfoInput!): CompanyTeam
+  removeMemberFromCompanyTeam(companyTeamId: ID!, teamMemberId: ID!): CompanyTeam
+  addCompanyTeamStatus(teamId: ID!, input: AddCompanyTeamStatusInput!): CompanyTeamStatus
+  updateCompanyTeamStatus(teamId: ID!, statusId: ID!, input: UpdateCompanyTeamStatusInput!): CompanyTeamStatus
+  deleteCompanyTeamStatus(companyTeamStatusId: ID!): CompanyTeamStatus
+  updateCompanyTeamStatusSequences(input: [CompanyTeamStatusSequenceInput]!): [CompanyTeamStatus]
+  addSenangPayUsers(companyId: ID!, userIds: [ID]!): [CompanyMember]
+  removeSenangPayUsers(companyId: ID!, userIds: [ID]!): [CompanyMember]
+  updateSenangPayOptions(companyId: ID!, defaultPayment: Boolean, instalmentOption: Boolean, fullOption: Boolean, enabled: Boolean): Company
+  setCompanyMemberReferenceImage(companyMemberId: ID!, input: UploadMemberReferenceImageInput!): CompanyMember
+  setCompanyMemberReferenceImageStatus(companyId: ID!, companyMemberIds: [ID]!, status: CompanyMemberReferenceImageStatus!, remark: String): [CompanyMember]
+  createEmployeeType(companyId: ID!, name: String!, overtime: Boolean!, timezone: String): EmployeeType
+  updateEmployeeType(typeId: ID!, name: String!, overtime: Boolean!, archived: CompanyArchivedUpdate): EmployeeType
+  archiveEmployeeType(typeId: ID!, archived: Boolean!): EmployeeType
+  updateCompanyWorkDaySetting(companyId: ID!, day: WorkDay!, employeeTypeId: ID!, input: UpdateCompanyWorkDayInput!): CompanyWorkDaySetting
+  bulkUploadMembers(companyId: ID!, attachment: Upload!): BulkUploadMembersResponse
+  createCompanyPaymentMethod(input: CreateCompanyPaymentMethodInput!): CompanyPaymentMethod
+  deleteCompanyPaymentMethod(input: DeleteCompanyPaymentMethodInput!): DeleteCompanyPaymentMethodResponse
+
+  """
+  The default payment option here refers to the card which will be used for creating GK transactions but
+  it may not be the default card on the customer's Stripe object because the same customer may have different cards
+  set as default across different companies
+  """
+  setDefaultCompanyPaymentMethod(input: SetDefaultCompanyPaymentMethodInput!): CompanyPaymentMethod
+  createContact(companyId: ID!, input: CreateContactInput!, contactGroupId: ID, dealCreator: ID): Contact
+  deleteContacts(companyId: ID!, contactIds: [ID]!): [Contact]
+  updateContact(companyId: ID!, contactId: ID!, input: UpdateContactInput!, contactGroupId: ID, dealCreator: ID): Contact
+  createContactGroup(companyId: ID!, input: CreateContactGroupInput!): ContactGroup
+  updateContactGroup(groupId: ID!, input: UpdateContactGroupInput!): ContactGroup
+  deleteContactGroup(groupId: ID!): ContactGroup
+  addMembersToContactGroup(groupId: ID, input: AddMembersToContactGroupInput!): [Contact]
+  removeMemberFromContactGroup(groupId: ID!, contactId: ID!): ContactGroup
+  createContactPic(companyId: ID!, contactId: ID!, input: CreateContactPicInput!): ContactPic
+  updateContactPic(companyId: ID!, picId: ID!, input: UpdateContactPicInput!): ContactPic
+  deleteContactPic(companyId: ID!, picId: ID!): DeleteContactPicResponse
+  bulkUploadContacts(groupId: ID, companyId: ID!, attachment: Upload!): BulkUploadContactsResponse
+  createContactNote(contactId: ID!, input: ContactNoteInput!): ContactNote
+  updateContactNote(contactNoteId: ID!, input: ContactNoteInput!): ContactNote
+
+  """Ignores ids that does not exist and deletes the ones that do."""
+  deleteContactNotes(contactNoteIds: [ID]!): [ContactNote]
+  createHoliday(companyId: ID!, input: CreateCompanyHolidayInput!): [Holiday]
+  deactivatePublicHoliday(companyId: ID!, publicHolidayId: ID!): CompanyHoliday
+  updateCompanyHoliday(companyId: ID!, companyHolidayId: ID!, input: UpdateCompanyHolidayInput!): CompanyHoliday
+  deleteCompanyHoliday(companyId: ID!, companyHolidayId: ID!): CompanyHoliday
+  activatePublicHoliday(companyId: ID!, holidayId: ID!): CompanyHoliday
+  createLocation(companyId: ID!, input: CreateLocationInput!): Location
+  updateLocation(locationId: ID!, input: UpdateLocationInput!): Location
+  deleteLocations(locationIds: [ID]!): [Location]
+  updateLocationArchivedStatus(locationIds: [ID]!, archived: Boolean!): [Location]
+  resendCollectionNotification(collectionId: ID!): Notification
+  updateIsRead(notificationIds: [ID]!): UserNotification
+  updateAllRead(companyId: ID): [UserNotification]
+  createSubscriptionProduct(input: CreateSubscriptionProductInput!): SubscriptionProduct
+  updateSubscriptionProduct(id: ID!, input: UpdateSubscriptionProductInput!): SubscriptionProduct
+  deleteSubscriptionProduct(id: ID!): SubscriptionProduct
+
+  """
+  After creating a new price, it takes a few seconds to be available in Stripe, so
+  it will not be available in SubscriptionProduct until it's available in Stripe
+  """
+  createSubscriptionPrice(input: CreateSubscriptionPriceInput!): SubscriptionProduct
+
+  """Create a product first before creating a package"""
+  createSubscriptionPackage(input: CreateSubscriptionPackageInput!): SubscriptionPackage
+  addSubscriptionProductToPackage(input: UpdateSubscriptionPackageProductsInput!): SubscriptionPackage
+  removeSubscriptionProductFromPackage(input: UpdateSubscriptionPackageProductsInput!): SubscriptionPackage
+
+  """This is the new implementation of creating subscriptions"""
+  startSubscription(input: StartSubscriptionInput!): Subscription
+
+  """
+  This is for changing to a higher subscription plan only. Downgrading is done with the downgradeSubscription mutation.
+  """
+  upgradeSubscription(input: UpgradeSubscriptionInput!): Subscription
+
+  """
+  Only for downgrading to a lower subscription plan. If moving to free plan use cancelSubscription.
+  """
+  downgradeSubscription(input: DowngradeSubscriptionInput!): Subscription
+
+  """
+  Cancel subscription in this case means switching to a free plan package but there will still be a subscription
+  object available
+  """
+  cancelSubscriptionV2(input: CancelSubscriptionInput!): Subscription
+  requestSubscription(companyId: ID!, packagePriceId: ID!, promoCode: String): CompanySubscription
+  requestOmniSubscription(companyId: ID!, createSubscriptionInput: [CreateSubscriptionInput]!, promoCode: String): [CompanySubscription]
+  requestTrialOmniSubscription(companyId: ID!, createSubscriptionInput: [CreateSubscriptionInput]!, trialDays: Int!): [CompanySubscription]
+  cancelOmniTrialSubscription(companyId: ID!, companySubscriptionId: ID!): CompanySubscription
+  requestDedocoSubscription(companyId: ID!, packagePriceId: ID!): CompanySubscription
+  addPackageToSubscription(companyId: ID!, addPackageInput: [AddPackageInput]!): [CompanySubscription]
+  removePackagesFromSubscription(companyId: ID!, companySubscriptionIds: [ID]!): [CompanySubscription]
+  cancelSubscription(companyId: ID!, companySubscriptionId: ID!): CompanySubscription
+  cancelAllSubscriptions(companyId: ID!): [CompanySubscription]
+  switchSubscriptionPackage(companyId: ID!, switchSubscriptionPackageInput: SwitchSubscriptionPackageInput!, companySubscriptionId: ID!): CompanySubscription
+  editPackageQuantity(companyId: ID!, companySubscriptionId: ID!, quantity: Int!): CompanySubscription
+  assignSubscriptionQuantityToMember(companyMemberId: ID!, stripeProductId: String!): [CompanyMember]
+  removeSubscriptionQuantityFromMember(companyMemberId: ID!, stripeProductId: String!): [CompanyMember]
+  createTag(input: CreateTagInput!): Tag
+  createTagGroup(input: CreateTagGroupInput!): TagGroup
+  updateTag(input: UpdateTagInput!): Tag
+  updateTagGroup(input: UpdateTagGroupInput!): TagGroup
+  deleteTag(id: ID!): Tag
+  deleteTagGroup(id: ID!): TagGroup
+  assignContactTags(input: ContactTagOptions!): [ContactTag]
+  deleteContactTags(input: ContactTagOptions!): [ContactTag]
+  assignTaskTags(input: TaskTagOptions!): [TaskTag]
+  deleteTaskTags(input: TaskTagOptions!): [TaskTag]
+  assignCollectionTags(input: CollectionTagOptions!): [CollectionTag]
+  deleteCollectionTags(input: CollectionTagOptions!): [CollectionTag]
+  createCollaborationBoard(input: CollaborationBoardInput!): TaskBoard
+  createTask(input: TaskInput!, memberIds: [ID], picIds: [ID]): Task
+  createPersonalTask(input: TaskPersonalInput!, memberIds: [ID], creatorMemberId: ID): Task
+  createSubtask(taskId: ID!, input: SubtaskInput!): Subtask
+  postTaskComment(input: PostCommentInput!): TaskComment
+  editTaskComment(input: EditTaskCommentInput!): TaskComment
+  assignTaskMembers(taskId: ID!, input: TaskMemberInput!): [TaskMember]
+  assignTaskPics(taskId: ID!, input: TaskPicInput!): [TaskPic]
+  deleteTasks(taskIds: [ID]!): [Task]
+  deleteTaskAttachments(taskAttachmentIds: [ID]!): [TaskAttachment]
+  deleteTaskMembers(taskId: ID!, input: TaskMemberInput!): [TaskMember]
+  deleteTaskPics(taskId: ID!, input: TaskPicInput!): [TaskPic]
+  removeTaskPics(input: TaskPicsInput!): [TaskPic]
+  deleteSubtasks(subtaskIds: [ID]!): [Subtask]
+  deleteChecklists(checklistIds: [ID]!): [Checklist]
+  deleteTaskComment(taskCommentId: ID!): TaskComment
+  updateTask(taskId: ID!, input: TaskUpdateInput!): Task
+  updatePersonalTask(taskId: ID!, input: PersonalTaskUpdateInput!): Task
+  updateSubtask(subtaskId: ID!, input: SubtaskUpdateInput!): Subtask
+  updateChecklist(checklistId: ID!, input: ChecklistUpdateInput!): Checklist
+  updateTaskComment(taskCommentId: ID!, input: TaskCommentUpdateInput!): TaskComment
+  updateTasksSequence(input: [TaskSequenceInput]!): [Task]
+  uploadTaskAttachment(taskId: ID!, attachment: Upload!, commentId: ID): TaskAttachment
+  archiveTasks(input: ArchiveTaskInput!): [Task]
+  unarchiveTasks(input: UnarchiveTaskInput!): [Task]
+  startTaskTimer(taskId: ID!, companyMemberId: ID!): TaskTimerEntry
+  stopTaskTimer(taskId: ID!, companyMemberId: ID!): TaskTimerEntry
+  copyTask(input: CopyTaskInput!): Task
+  copyTasks(input: CopyTasksInput!): [Task]
+
+  """Include x-company-id in headers"""
+  duplicateTasks(input: DuplicateTasksInput!): [Task]
+  linkAttachmentToComment(input: LinkAttachmentToCommentInput!): TaskComment
+  unlinkAttachmentFromComment(input: LinkAttachmentToCommentInput!): TaskComment
+  updateSubtaskSequences(input: [SubtaskSequencesInput]): [Subtask]
+  updateChecklistSequences(input: [ChecklistSequencesInput]): [Checklist]
+  toggleTasksPinned(taskIds: [ID!]!): [Task]
+  toggleTasksPublishStatus(taskIds: [ID!]!): [Task]
+  linkExternalAttachments(input: LinkExternalAttachmentsInput!): Task
+  addTaskWatchers(input: AddTaskWatchersInput!): [TaskWatcher]
+  removeTaskWatchers(input: RemoveTaskWatchersInput!): [TaskWatcher]
+  changeTaskPosition(input: ChangeTaskPositionInput!): Task
+  changeGroupTasks(input: ChangeGroupTaskInput!): [Task]
+  createChecklist(taskId: ID!, input: ChecklistInput!): Checklist
+  importTasks(input: ImportTasksInput!): ImportTasksResponse
+  updateTaskParent(input: UpdateTaskParentInput!): UpdateTaskParentResponse
+  addToTaskVisibilityWhitelist(input: AddToTaskVisibilityWhitelistInput!): Task
+  removeFromTaskVisibilityWhitelist(input: RemoveFromTaskVisibilityWhitelistInput!): Task
+  setTaskVisibility(input: SetTaskVisibilityInput!): Task
+  createTaskBoard(input: TaskBoardInput!): TaskBoard
+  createTaskBoardTeam(input: TaskBoardTeamInput!): TaskBoardTeam
+  deleteTaskBoards(ids: [ID]!): [TaskBoard]
+  deleteTaskBoardTeams(ids: [ID]!, isV3: Boolean): [TaskBoardTeam]
+  updateTaskBoard(id: ID!, input: TaskBoardUpdateInput!): TaskBoard
+  updateTaskBoardsArchivedState(input: UpdateTaskBoardsArchivedStateInput!): [TaskBoard]
+  setTaskBoardVisibility(input: SetTaskBoardVisibilityInput!): TaskBoard
+  toggleTaskBoardPinned(boardId: ID!): TaskBoard
+  toggleTaskBoardsPinned(boardIds: [ID!]!): [TaskBoard]
+  addToVisibilityWhitelist(input: AddToVisibilityWhitelistInput!): TaskBoard
+  removeFromVisibilityWhitelist(input: RemoveFromVisibilityWhitelistInput!): TaskBoard
+  createTaskBoardFolder(input: CreateTaskBoardFolderInput!): TaskBoardFolder
+  updateTaskBoardFolder(input: UpdateTaskBoardFolderInput!): TaskBoardFolder
+  deleteTaskBoardFolder(folderId: ID!): TaskBoardFolder
+  assignTaskBoardsToFolder(input: AssignTaskBoardsToFolderInput!): TaskBoardFolder
+  removeTaskBoardsFromFolder(input: RemoveTaskBoardsFromFolderInput!): [TaskBoard]
+  createTaskTemplate(input: CreateTaskTemplateInput!): TaskTemplate
+  updateTaskTemplate(input: UpdateTaskTemplateInput!): TaskTemplate
+  deleteTaskTemplate(input: DeleteTemplateInput!): TaskTemplate
+  applyTaskTemplate(input: ApplyTaskTemplateInput!): TaskTemplate
+  createTimesheetEntry(taskId: ID!, locationId: ID, memberId: ID!, input: TimesheetEntryInput!): Timesheet
+  updateTimesheet(timesheetId: ID!, input: UpdateTimesheetInput!, locationId: ID): Timesheet
+  updateTimeSheetArchivedStatus(timesheetIds: [ID!]!, archived: TimesheetArchiveStatus!): [Timesheet]
+  stopMemberActivityTracker(memberId: ID!): Timesheet
+  createTimesheetApprovals(input: CreateTimesheetApprovalsInput!): [TimesheetDayApproval]
+  createCustomTimesheetApprovals(input: CreateCustomTimesheetApprovalsInput!): [CustomTimesheetDayApproval]
+  deleteCustomTimesheetApprovals(input: DeleteCustomTimesheetApprovalsInput!): [CustomTimesheetDayApproval]
+  updateTimesheetApprovals(input: UpdateTimesheetApprovalInput!): [TimesheetDayApproval]
+  updateCustomTimesheetApprovals(input: UpdateCustomTimesheetApprovalInput!): [CustomTimesheetDayApproval]
+  createShortUrl(url: String!): ShortUrl
+  loginUser: User
+  updateProfile(input: UpdateProfileInput!): User
+  attachPaymentMethod(paymentMethodId: String!): User
+  updatePaymentMethodId(paymentMethodId: String!): User
+  detachPaymentMethod(paymentMethodId: String!, companyId: String!): User
+  uploadProfileImage(attachment: Upload!): User
+  updateToolTipsStatus(input: UpdateToolTipsStatusInput!): User
+  setDefaultCompany(companyId: ID): User
+  setDefaultUserTimezone(timezone: String!): User
+  addExpoPushToken(token: String!): User
+  removeExpoPushToken(token: String!): User
+  updateUserViewOptions(payload: JSON): User
+  updateUserOnboarding(payload: JSON): User
+  requestAccountDeletion(input: RequestAccountDeletionInput!): RequestAccountDeletionResponse
+  createWorkspace(input: CreateWorkspaceInput!): Workspace
+  updateWorkspace(input: UpdateWorkspaceInput!): Workspace
+  assignProjectsToWorkspace(input: AssignProjectsToWorkspaceInput!): Workspace
+  removeProjectsFromWorkspace(input: RemoveProjectsFromWorkspaceInput!): Workspace
+  moveProjectsToWorkspace(input: MoveProjectsToWorkspaceInput!): [Workspace]
+  createProject(input: CreateProjectInput!): TaskBoard
+  updateProject(input: ProjectUpdateInput!): TaskBoard
+  createProjectInvoice(input: ProjectInvoiceInput!): ProjectInvoice
+  editProjectInvoice(input: ProjectInvoiceEditInput!): ProjectInvoice
+  deleteProjectInvoices(input: ProjectInvoiceDeleteInput!): [ProjectInvoice]
+  createProjectClaim(input: ProjectClaimInput!): ProjectClaim
+  editProjectClaim(input: ProjectClaimEditInput!): ProjectClaim
+  deleteProjectClaims(input: ProjectClaimDeleteInput!): [ProjectClaim]
+  createProjectTimeCost(input: ProjectTimeCostInput!): ProjectTimeCost
+  editProjectTimeCost(input: ProjectTimeCostEditInput!): ProjectTimeCost
+  deleteProjectTimeCosts(input: ProjectTimeCostDeleteInput!): [ProjectTimeCost]
+  editProjectTemplate(input: ProjectTemplateEditInput!): ProjectTemplate
+  createProjectTemplate(input: ProjectTemplateInput!): ProjectTemplate
+  editProjectTemplateStatus(input: ProjectTemplateStatusEditInput!): ProjectTemplateStatus
+  editProjectStatus(input: ProjectStatusEditInput!): ProjectStatus
+  editProjectSettings(input: ProjectSettingsEditInput!): ProjectSettings
+  createProjectGroup(input: CreateProjectGroupInput!): ProjectGroup
+  updateProjectsArchivedState(input: UpdateProjectsArchivedStateInput!): [TaskBoard]
+  setProjectVisibility(input: SetProjectVisibilityInput!): TaskBoard
+  setWorkspaceVisibility(input: SetWorkspaceVisibilityInput!): Workspace
+  deleteProjectTemplateStatuses(input: ProjectTemplateStatusIdsInput!): [ProjectTemplateStatus]
+  createProjectTemplateStatus(input: CreateProjectTemplateStatusInput!): ProjectTemplateStatus
+  createProjectStatus(input: CreateProjectStatusInput!): ProjectStatus
+  deleteProjectStatuses(input: DeleteProjectStatusInput!): [ProjectStatus]
+  editProjectGroup(input: EditProjectGroupInput!): ProjectGroup
+  deleteWorkspaces(input: DeleteWorkspacesInput!): [Workspace]
+  deleteProjects(input: DeleteProjectsInput!): [TaskBoard]
+  deleteProjectTemplates(input: DeleteProjectTemplateIdsInput!): [ProjectTemplate]
+  copyProject(input: CopyProjectInput!): TaskBoard
+  addToVisibilityWhitelistProject(input: AddToProjectVisibilityWhitelistInput!): TaskBoard
+  removeFromVisibilityWhitelistProject(input: RemoveFromProjectVisibilityWhitelistInput!): TaskBoard
+  deleteProjectGroups(input: DeleteProjectGroupInput!): [ProjectGroup]
+  moveTasks(input: MoveTasksInput!): [Task]
+  moveTaskToMember(input: MoveTaskToMemberInput!): Task
+  addToWorkspaceVisibilityWhitelist(input: AddToWorkspaceVisibilityWhitelistInput!): Workspace
+  removeFromWorkspaceVisibilityWhitelist(input: RemoveFromWorkspaceVisibilityWhitelistInput!): Workspace
+  createCustomColumnForGroup(input: CreateCustomColumnForGroupInput!): ProjectGroupCustomColumn
+  editCustomColumnForGroup(input: EditCustomColumnForGroupInput!): ProjectGroupCustomColumn
+  deleteCustomColumnForGroup(input: DeleteCustomColumnForGroupInput!): ProjectGroupCustomColumn
+  addCustomValueToTask(input: AddCustomValueToTaskInput!): TaskCustomValue
+  deleteCustomValueFromTask(input: DeleteCustomValueFromTaskInput!): TaskCustomValue
+  toggleEnabledCustomColumn(input: ToggleEnabledCustomColumnInput!): ProjectGroupCustomColumn
+  reorderGroups(input: ReorderGroupInput!): [ProjectGroup]
+  createBillingInvoice(input: CreateBillingInvoiceInput!): BillingInvoice
+  updateBillingInvoice(input: UpdateBillingInvoiceInput!): BillingInvoice
+  createBillingInvoiceItem(input: CreateBillingInvoiceItemInput!): BillingInvoiceItem
+  updateBillingInvoiceItem(input: UpdateBillingInvoiceItemInput!): BillingInvoiceItem
+  deleteBillingInvoices(ids: [ID!]!): [BillingInvoice]
+  deleteBillingInvoiceItems(ids: [ID!]!): BillingInvoiceItem
+  receivePaymentInvoice(input: ReceivePaymentInvoiceInput!): BillingInvoice
+
+  """Once voided, cannot be unvoided"""
+  voidInvoice(input: VoidInvoiceInput!): BillingInvoice
+  sendInvoice(input: SendInvoiceInput!): BillingInvoice
+}
+
+"""Floats that will have a value less than 0."""
+scalar NegativeFloat
+
+"""Integers that will have a value less than 0."""
+scalar NegativeInt
+
+"""A string that cannot be passed as an empty value"""
+scalar NonEmptyString
+
+"""Floats that will have a value of 0 or more."""
+scalar NonNegativeFloat
+
+"""Integers that will have a value of 0 or more."""
+scalar NonNegativeInt
+
+"""Floats that will have a value of 0 or less."""
+scalar NonPositiveFloat
+
+"""Integers that will have a value of 0 or less."""
+scalar NonPositiveInt
+
+type Notification {
+  id: ID!
+  type: String
+  title: String
+  message: String
+  description: String
+  data: String
+  user: User
+  member: CompanyMember
+  contact: Contact
+  pic: ContactPic
+  task: Task
+  comment: TaskComment
+  taskBoard: TaskBoard
+  team: CompanyTeam
+  company: Company
+  collection: Collection
+  group: String
+  due_date: DateTime
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
+}
+
+enum NotificationGroups {
+  CRM
+  TASK
+  COLLECTION
+  PAYMENT
+  MISC
+}
+
+enum NotificationType {
+  GENERIC
+  ASSIGNED_AS_CREATOR
+  INVITED_TO_COMPANY
+  JOIN_COMPANY_BY_CODE
+  REMOVED_FROM_COMPANY
+  ASSIGNED_MEMBER_TYPE
+  ASSIGNED_TO_TEAM
+  REMOVED_FROM_TEAM
+  MEMBER_ASSIGNED_TO_TASKBOARD
+  MEMBER_REMOVED_FROM_TASKBOARD
+  PIC_ASSIGNED_TO_TASKBOARD
+  PIC_REMOVED_FROM_TASKBOARD
+  MEMBER_ASSIGNED_TO_TASK
+  MEMBER_REMOVED_FROM_TASK
+  PIC_ASSIGNED_TO_TASK
+  PIC_REMOVED_FROM_TASK
+  COMMENT_ON_TASK
+  UPLOAD_TO_TASK
+  TASK_DUE_MEMBER
+  TASK_DUE_PIC
+  TASK_OVERDUE_MEMBER
+  TASK_OVERDUE_PIC
+  TASK_REJECTED
+  TASK_DONE
+  COLLECTION_CREATED
+  COLLECTION_DUE
+  COLLECTION_OVERDUE
+  COLLECTION_PAYMENT_RECEIVED
+  COLLECTION_PAYMENT_REJECTED
+  COLLECTION_CANCELLED
+  QUOTA_EXCEEDED
+  SENANGPAY_ACTIVATION
+  SENANGPAY_TRANSACTION_FULL
+  SENANGPAY_TRANSACTION_RECURRING
+  FPX_TRANSACTION_STATUS
+  DEDOCO_SIGN_REQUEST
+  PROJECT_REMINDER
+  PROJECT_ON_DUE
+  PROJECT_OVERDUE
+  CLOCK_IN_BEFORE_TEN_MINUTES
+  CLOCK_IN_AFTER_TEN_MINUTES
+  CLOCK_OUT_AFTER_TWO_HOURS
+}
+
+input NotificationTypeInput {
+  isAssigned: Boolean
+  isUnread: Boolean
+  isMentioned: Boolean
+}
+
+"""
+A field whose value conforms with the standard mongodb object ID as described
+here: https://docs.mongodb.com/manual/reference/method/ObjectId/#ObjectId.
+Example: 5e5677d71bdc2ae76344968c
+"""
+scalar ObjectID
+
+enum PackageTypes {
+  BASIC
+  TIME_ATTENDANCE
+  PROJECT_MANAGEMENT_TOOL
+  PAYMENT_COLLECTION_REMINDER
+  DEDOCO
+  LEGACY
+}
+
+type PaginatedProjectClaims {
+  projectClaims: [ProjectClaim]
+  total: Int
+}
+
+type PaginatedProjectInvoices {
+  projectInvoices: [ProjectInvoice]
+  total: Int
+}
+
+type PaginatedProjectTimeCosts {
+  projectTimeCosts: [ProjectTimeCost]
+  total: Int
+}
+
+type PaginatedSharedWithMeTasks {
+  tasks: [Task]
+  total: Int
+}
+
+type PaginatedTaskBoards {
+  taskBoards: [TaskBoard]
+  total: Int
+}
+
+type PaginatedTasks {
+  tasks: [Task]
+  total: Int
+}
+
+input Pagination {
+  limit: Int
+  offset: Int
+  orderBy: String
+  sortDirection: SortDirection
+}
+
+input PaginationFilter {
+  limit: Int
+  offset: Int
+  search: String
+  ids: [ID!]
+}
+
+type PaymentMethod {
+  id: String!
+  card: PaymentMethodCard
+  created: Int
+  customer: String
+  type: String
+}
+
+type PaymentMethodCard {
+  brand: String
+  country: String
+  last4: String
+  expMonth: Int
+  expYear: Int
+  exp_month: Int
+  exp_year: Int
+}
+
+enum PersonalStatusType {
+  PENDING
+  PASS
+  FAIL
+  CLOSED
+}
+
+input PersonalTaskUpdateInput {
+  name: String
+  description: String
+  sequence: Int
+  status: PersonalStatusType
+  stageStatus: StageType
+  value: Float
+  dueDate: DateTime
+  teamId: ID
+  dueReminder: DateTime
+  startDate: DateTime
+  endDate: DateTime
+  due_date: DateTime
+  team_id: ID
+  due_reminder: DateTime
+  start_date: DateTime
+  end_date: DateTime
+}
+
+"""
+A field whose value conforms to the standard E.164 format as specified in:
+https://en.wikipedia.org/wiki/E.164. Basically this is +17895551234.
+"""
+scalar PhoneNumber
+
+"""
+A field whose value is a valid TCP port within the range of 0 to 65535:
+https://en.wikipedia.org/wiki/Transmission_Control_Protocol#TCP_ports
+"""
+scalar Port
+
+"""Floats that will have a value greater than 0."""
+scalar PositiveFloat
+
+"""Integers that will have a value greater than 0."""
+scalar PositiveInt
+
+"""
+A field whose value conforms to the standard postal code formats for United
+States, United Kingdom, Germany, Canada, France, Italy, Australia, Netherlands,
+Spain, Denmark, Sweden, Belgium, India, Austria, Portugal, Switzerland or Luxembourg.
+"""
+scalar PostalCode
+
+input PostCommentInput {
+  taskId: ID!
+
+  """In JSON Format"""
+  parentId: String
+  messageContent: String!
+}
+
+type ProductInCoupon {
+  products: [String]
+}
+
+type ProjectClaim {
+  id: ID
+  name: String
+  description: String
+  note: String
+  member: CompanyMember
+  amount: Float
+  attachmentUrl: String
+  status: ProjectClaimType
+  project: TaskBoard
+  createdAt: DateTime
+  createdBy: User
+  updatedAt: DateTime
+  updatedBy: User
+}
+
+input ProjectClaimDeleteInput {
+  ids: [ID!]!
+}
+
+input ProjectClaimEditInput {
+  name: String
+  description: String
+  note: String
+  memberId: ID
+  amount: Float
+  attachmentUrl: String
+  status: ProjectClaimType
+  claimId: ID!
+}
+
+input ProjectClaimFilter {
+  projectId: ID
+}
+
+input ProjectClaimInput {
+  name: String!
+  description: String
+  note: String
+  memberId: ID
+  amount: Float!
+  attachmentUrl: String
+  status: ProjectClaimType
+  projectId: ID!
+}
+
+input ProjectClaimSort {
+  type: ProjectClaimSortType
+  direction: SortDirection
+}
+
+enum ProjectClaimSortType {
+  CREATED_AT
+  NAME
+}
+
+enum ProjectClaimType {
+  NEW
+  APPROVED
+  REJECTED
+}
+
+type ProjectGroup {
+  id: ID
+  name: String
+  project: TaskBoard
+  customColumns: [ProjectGroupCustomColumn]
+  tasks: [Task]
+  ordering: Int
+}
+
+type ProjectGroupCustomAttribute {
+  id: ID
+  name: String
+  type: ProjectGroupCustomAttributeType
+}
+
+enum ProjectGroupCustomAttributeType {
+  TEXT
+  NUMBER
+}
+
+type ProjectGroupCustomColumn {
+  group: ProjectGroup
+  attribute: ProjectGroupCustomAttribute
+  enabled: Boolean
+}
+
+type ProjectInvoice {
+  id: ID
+  name: String
+  invoiceNo: String
+  quantity: Int
+  price: Float
+  amount: Float
+  actualCost: Float
+  variance: Float
+  project: TaskBoard
+  createdAt: DateTime
+  createdBy: User
+  updatedAt: DateTime
+  updatedBy: User
+}
+
+input ProjectInvoiceDeleteInput {
+  ids: [ID!]!
+}
+
+input ProjectInvoiceEditInput {
+  invoiceId: ID!
+  name: String
+  invoiceNo: String
+  quantity: Int
+  price: Float
+  actualCost: Float
+}
+
+input ProjectInvoiceFilter {
+  projectId: ID
+}
+
+input ProjectInvoiceInput {
+  name: String!
+  invoiceNo: String
+  quantity: Int!
+  price: Float!
+  actualCost: Float
+  projectId: ID!
+}
+
+input ProjectInvoiceSort {
+  type: ProjectInvoiceSortType
+  direction: SortDirection
+}
+
+enum ProjectInvoiceSortType {
+  CREATED_AT
+  NAME
+}
+
+type ProjectSettings {
+  project: TaskBoard
+  columns: JSON
+}
+
+input ProjectSettingsEditInput {
+  projectId: ID!
+  columns: ProjectTemplateOptions!
+}
+
+type ProjectStatus {
+  id: ID
+  project: TaskBoard
+  color: String
+  name: String
+  sequence: Int
+  notify: Boolean
+}
+
+input ProjectStatusEditInput {
+  projectStatusId: ID!
+  name: String
+  color: String
+  notify: Boolean
+  sequence: Int
+}
+
+type ProjectTemplate {
+  id: ID
+  name: String
+  company: Company
+  columns: JSON
+  statuses: [ProjectTemplateStatus]
+}
+
+input ProjectTemplateEditInput {
+  projectTemplateId: ID!
+  name: String
+  columns: ProjectTemplateOptions
+}
+
+type ProjectTemplateGallery {
+  galleryTemplates: JSON
+}
+
+input ProjectTemplateInput {
+  name: String!
+  companyId: ID!
+  columns: ProjectTemplateOptions
+  statuses: [ProjectTemplateStatusInput]
+}
+
+input ProjectTemplateOptions {
+  name: Boolean
+  status: Boolean
+  timeline: Boolean
+  activity: Boolean
+  assignee: Boolean
+  watchers: Boolean
+  contacts: Boolean
+  tracking: Boolean
+  priority: Boolean
+  tags: Boolean
+  value: Boolean
+  effort: Boolean
+  reminder: Boolean
+  recurrence: Boolean
+}
+
+type ProjectTemplateStatus {
+  id: ID
+  projectTemplate: ProjectTemplate
+  name: String
+  color: String
+  notify: Boolean
+}
+
+input ProjectTemplateStatusEditInput {
+  projectTemplateStatusId: ID!
+  name: String
+  color: String
+  notify: Boolean
+}
+
+input ProjectTemplateStatusIdsInput {
+  projectTemplateStatusIds: [ID!]!
+}
+
+input ProjectTemplateStatusInput {
+  name: String!
+  color: String!
+  notify: Boolean
+}
+
+type ProjectTimeCost {
+  id: ID
+  project: TaskBoard
+  date: DateTime
+  timeIn: DateTime
+  timeOut: DateTime
+  task: Task
+  member: CompanyMember
+  duration: Int
+  amount: Float
+  createdAt: DateTime
+  createdBy: User
+  updatedAt: DateTime
+  updatedBy: User
+}
+
+input ProjectTimeCostDeleteInput {
+  ids: [ID!]!
+}
+
+input ProjectTimeCostEditInput {
+  timeCostId: ID!
+  date: DateTime
+  timeIn: DateTime
+  timeOut: DateTime
+  taskId: ID
+  memberId: ID
+  amount: Float
+  note: String
+  projectId: ID
+}
+
+input ProjectTimeCostFilter {
+  projectId: ID
+}
+
+input ProjectTimeCostInput {
+  date: DateTime!
+  timeIn: DateTime
+  timeOut: DateTime
+  taskId: ID!
+  memberId: ID!
+  amount: Float!
+  projectId: ID!
+  note: String
+}
+
+input ProjectTimeCostSort {
+  type: ProjectTimeCostSortType
+  direction: SortDirection
+}
+
+enum ProjectTimeCostSortType {
+  CREATED_AT
+}
+
+input ProjectUpdateInput {
+  projectId: ID!
+  name: String
+  description: String
+  color: String
+
+  """"owners" are company member IDs"""
+  ownerIds: [ID!]
+  published: Boolean
+}
+
+enum ProjectVisibility {
+  HIDDEN
+  PUBLIC
+  ASSIGNED
+  SPECIFIC
+  PRIVATE
+}
+
+type PublicHoliday {
+  id: ID!
+  name: String
+  date: DateTime
+  year: Int
+  countryCode: String
+  startDate: DateTime
+  endDate: DateTime
+  createdAt: DateTime
+  updatedAt: DateTime
+  country_code: String
+  start_date: DateTime
+  end_date: DateTime
+  created_at: DateTime
+  updated_at: DateTime
+}
+
+type Query {
+  _empty: String
+  getVerificationImageUploadUrl(companyId: ID!): VerificationImageUploadUrlResponse
+  attendances(input: GetAttendancesInput!): [Attendance]
+  attendanceLabels(companyId: ID!): [AttendanceLabel]
+  memberLastOut(companyMemberId: ID!): Attendance
+  getServerTime(companyId: ID!): DateTime
+  attendanceDaySummary(companyId: ID!, input: AttendanceDaySummaryInput!): [AttendanceDaySummary]
+
+  """selectedDate limit will only for one month"""
+  attendanceDaySummaries(companyId: ID!, selectedDate: DateTime!, companyMemberId: ID): [AttendanceDaySummary]
+  attendanceWeekSummary(companyId: ID!, input: AttendanceWeekSummaryInput!): [AttendanceWeekSummary]
+  attendanceMonthSummary(companyId: ID!, input: AttendanceMonthSummaryInput!): [AttendanceMonthSummary]
+  attendanceWeeklyForMonthSummary(companyId: ID!, input: AttendanceMonthSummaryInput!): [AttendanceWeekSummary]
+  attendanceSettings(companyId: ID!): AttendanceSettings
+  currentAttendance(memberId: ID!): Attendance
+  attendanceMemberStats(memberId: ID!): AttendanceMemberStats
+  collection(collectionId: ID!, isForMember: Boolean): Collection
+  collectionPeriods(collectionId: ID!): [CollectionPeriod]
+  collectionPeriod(collectionPeriodId: ID!): CollectionPeriod
+  collector(collectorId: ID!): Collector
+  collectors(companyId: ID!): [Collector]
+  getCollector(collectorId: ID!): Collector
+  listCollectors(companyId: ID!): [Collector]
+  getCollaboratedCollectors: [Collector]
+  collectorActivities(companyId: ID!): [CollectionActivityLog]
+  company(id: ID!): Company
+  companySlug(slug: String): Company
+  companyMember(companyMemberId: ID!): CompanyMember
+  companies(pagination: Pagination): [Company]
+  companyTeam(id: ID!): CompanyTeam
+  companyTeams(companyId: ID!): [CompanyTeam]
+  teamStatuses(companyTeamId: ID!): [CompanyTeamStatus]
+  senangPayUsers(companyId: ID!): [CompanyMember]
+  companyProfileJson(companyId: ID!): String
+  getReferenceImageUploadUrl(companyId: ID!): CompanyMemberReferenceImageResponse
+  companyWorkDaySettings(companyId: ID!, employeeTypeId: ID!): [CompanyWorkDaySetting]
+  employeeType(employeeTypeId: ID!): EmployeeType
+  companyStorage(companyId: ID!): CompanyStorageDetails
+  companyPaymentMethods(companyId: ID!): [CompanyPaymentMethod]
+  contact(id: ID!): Contact
+  contacts(companyId: ID!): [Contact]
+  contactGroups(companyId: ID!): [ContactGroup]
+  contactGroup(companyId: ID!, groupId: ID!): ContactGroup
+  contactActivities(contactId: ID!, tableType: ContactActivityTableType!, limit: Int!, isCount: Boolean!, offset: Int!): [ContactActivityRaw]
+  holidays(companyId: ID!, year: Int!): [Holiday]
+  location(id: ID!): Location
+  locations(companyId: ID!): [Location]
+
+  """
+  If you specify an id then it will only return if you are an admin. Otherwise it will return the subscription
+  for the currently active company
+  """
+  subscription(id: ID): Subscription
+
+  """This is not implemented yet"""
+  subscriptions(companyId: ID): [Subscription]
+  subscriptionProduct(productId: ID!): SubscriptionProduct
+  subscriptionProducts: [SubscriptionProduct]
+  subscriptionPackageV2(packageId: ID!): SubscriptionPackage
+  subscriptionPackagesV2(listAll: Boolean): [SubscriptionPackage]
+
+  """
+  This query is deprecated. Please use the new query 'subscription' instead.
+  """
+  companySubscription(subscriptionId: ID!): CompanySubscription
+  companySubscriptions(companyId: ID!): [CompanySubscription]
+  userSubscriptions: [CompanySubscription]
+  subscriptionPackages: [SubscriptionPackage]
+  dedocoPackages: [SubscriptionPackage]
+  userInvoices: [StripeInvoice]
+  subscriptionQuantitiesAssigned(stripeProductId: String!, companyId: ID!): SubscriptionQuantityResult
+  promoCodeInfo(code: String!, createSubscriptionInput: [CreateSubscriptionInput]!): [DiscountedPrice]
+  tag(id: ID!): Tag
+  tags(companyId: ID!): [Tag]
+  tagGroup(id: ID!): TagGroup
+  tagGroups(companyId: ID!): [TagGroup]
+
+  """To be deprecated"""
+  getTaskPics: [TaskPic]
+  taskPics: [TaskPic]
+  sharedWithMeTasks(filter: TaskFilter, sort: TaskSort, limit: Int, offset: Int): PaginatedSharedWithMeTasks
+  task(taskId: ID!): Task
+  tasksV3(filter: TaskFilter, sort: TaskSort, limit: Int, offset: Int): PaginatedTasks
+  tasks(companyId: ID!, filters: FilterOptions, category: TaskBoardCategory): [Task]
+  taskBoard(id: ID!): TaskBoard
+  taskBoards(companyId: ID!, type: TaskBoardType!, limit: Int, category: TaskBoardCategory, filters: TaskBoardFiltersOptions): [TaskBoard]
+  taskBoardsV3(filter: TaskBoardFilter, sort: TaskBoardSort, limit: Int, offset: Int): PaginatedTaskBoards
+  taskBoardTeams(companyId: ID!, type: TaskBoardType!, category: TaskBoardCategory): [TaskBoardTeam]
+  taskBoardFolders(type: TaskBoardFolderType!): [TaskBoardFolder]
+  taskTemplate(id: ID!, companyId: ID!): TaskTemplate
+  taskTemplates(companyId: ID!): [TaskTemplate]
+  timesheet(timesheetId: ID!): Timesheet
+  timesheets(companyId: ID!, filters: TimesheetFilterOptions): [Timesheet]
+  getTimesheetsByCompanyMember(companyMemberId: ID!): [Timesheet]
+  filterTimesheet(companyMemberId: ID, teamId: ID): [Timesheet]
+  getActivityTimeSummaryByDay(companyId: ID!, filters: DayTimesheetFilterOptions!): [ActivityDaySummary]
+  getActivityTimeSummaryByWeek(companyId: ID!, filters: WeeklyTimesheetFilterOptions!): [ActivityWeekSummary]
+  getActivityTimeSummaryByMonth(companyId: ID!, filters: MonthlyTimesheetFilterOptions!): [ActivityMonthSummary]
+  getMonthlyActivityTrackingByMonth(companyId: ID!, filters: MonthlyTimesheetFilterOptions!): [ActivityWeekSummary]
+  timesheetApprovals(companyId: ID!, memberId: ID): [TimesheetDayApproval]
+  customTimesheetApprovals(companyId: ID!, memberId: ID): [CustomTimesheetDayApproval]
+  shortUrl(shortId: String!): ShortUrl
+  breadcrumbInfo(id: ID!, type: BreadcrumbType!): BreadcrumbInfo
+  currentUser: User
+  user(id: ID!): User
+  redisTest: [String]
+  me: User
+  workspace(id: ID!): Workspace
+  workspaces(companyId: ID!, ids: [ID!]): [Workspace]
+  projectInvoice(invoiceId: ID!): ProjectInvoice
+  project(id: ID!): TaskBoard
+  projects(memberId: ID!): [TaskBoard]
+  projectInvoices(filter: ProjectInvoiceFilter, sort: ProjectInvoiceSort, limit: Int, offset: Int): PaginatedProjectInvoices
+  projectClaim(claimId: ID!): ProjectClaim
+  projectClaims(filter: ProjectClaimFilter, sort: ProjectClaimSort, limit: Int, offset: Int): PaginatedProjectClaims
+  projectTimeCost(timeCostId: ID!): ProjectTimeCost
+  projectTimeCosts(filter: ProjectClaimFilter, sort: ProjectTimeCostSort, limit: Int, offset: Int): PaginatedProjectTimeCosts
+  projectTemplates(companyId: ID!): [ProjectTemplate]
+  globalProjectTemplateGallery: ProjectTemplateGallery
+  billingInvoices(projectId: ID!): [BillingInvoice]
+  billingInvoice(id: ID!): BillingInvoice
+  billingInvoiceItem(id: ID!): BillingInvoiceItem
+  billingInvoiceItems(invoiceId: ID!): [BillingInvoiceItem]
+}
+
+input ReceivePaymentInvoiceInput {
+  invoiceId: ID!
+  received: Float!
+  date: DateTime
+}
+
+type ReminderStatus {
+  email: ServiceHistory
+  whatsapp: ServiceHistory
+}
+
+enum ReminderStatusTypes {
+  IN_PROGRESS
+  SENT
+  FAILED
+}
+
+input RemoveFromProjectVisibilityWhitelistInput {
+  projectId: ID!
+  memberIds: [ID!]
+  teamIds: [ID!]
+}
+
+input RemoveFromTaskVisibilityWhitelistInput {
+  taskId: ID!
+  memberIds: [ID!]
+  teamIds: [ID!]
+}
+
+input RemoveFromVisibilityWhitelistInput {
+  boardId: ID!
+  memberIds: [ID!]
+  teamIds: [ID!]
+}
+
+input RemoveFromWorkspaceVisibilityWhitelistInput {
+  workspaceId: ID!
+  memberIds: [ID!]
+  teamIds: [ID!]
+}
+
+input RemoveMembersFromCollectionInput {
+  collectionId: ID!
+  memberIds: [ID!]!
+}
+
+input RemoveProjectsFromWorkspaceInput {
+  workspaceId: ID!
+  projectIds: [ID!]!
+}
+
+input RemoveTaskBoardsFromFolderInput {
+  boardIds: [ID!]!
+}
+
+input RemoveTaskWatchersInput {
+  taskId: ID!
+  memberIds: [ID!]!
+}
+
+input ReorderedGroup {
+  groupId: ID!
+  ordering: Int!
+}
+
+input ReorderGroupInput {
+  projectId: ID!
+  reorderedGroups: [ReorderedGroup!]!
+}
+
+input RequestAccountDeletionInput {
+  reason: String!
+  alternateEmail: String
+}
+
+type RequestAccountDeletionResponse {
+  success: Boolean
+  message: String
+}
+
+type ResourcePermission {
+  companyMembers: [CompanyMember]
+  teams: [CompanyTeam]
+  company_members: [CompanyMember]
+}
+
+input ResourcePermissionInput {
+  companyMemberIds: [String]
+  teamIds: [String]
+  company_member_ids: [String]
+  team_ids: [String]
+}
+
+"""
+Add more resources as necessary, it will be combined with its own id, eg. task_26
+"""
+enum ResourceType {
+  TASK
+  COLLECTION
+}
+
+"""
+A field whose value is a CSS RGB color: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb()_and_rgba().
+"""
+scalar RGB
+
+"""
+A field whose value is a CSS RGBA color: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb()_and_rgba().
+"""
+scalar RGBA
+
+"""
+The `SafeInt` scalar type represents non-fractional signed whole numeric values
+that are considered safe as defined by the ECMAScript specification.
+"""
+scalar SafeInt
+
+input SendInvoiceInput {
+  invoiceId: ID!
+  emails: [String!]
+}
+
+type ServiceHistory {
+  id: ID
+  type: ServiceHistoryTypes
+  collection: Collection
+  to: String
+  status: ReminderStatusTypes
+  updatedAt: DateTime
+  updated_at: DateTime
+}
+
+enum ServiceHistoryTypes {
+  WHATSAPP
+  EMAIL
+}
+
+input SetAttendanceVerificationImageInput {
+  imageUrl: String!
+  s3Bucket: String!
+  s3Key: String!
+}
+
+input SetDefaultCompanyPaymentMethodInput {
+  companyId: ID!
+  stripePaymentMethodId: ID!
+}
+
+input SetProjectVisibilityInput {
+  projectId: ID!
+  visibility: ProjectVisibility!
+}
+
+input SetTaskBoardVisibilityInput {
+  boardId: ID!
+  visibility: TaskBoardVisibility!
+}
+
+input SetTaskVisibilityInput {
+  taskId: ID!
+  visibility: CommonVisibility!
+}
+
+input SetWorkspaceVisibilityInput {
+  workspaceId: ID!
+  visibility: CommonVisibility!
+}
+
+type ShortUrl {
+  url: String
+  short_id: String
+  active: Boolean
+  created_at: DateTime
+  full_url: String
+}
+
+enum SortDirection {
+  ASC
+  DESC
+}
+
+enum StageType {
+  PENDING
+  PASS
+  FAIL
+  CLOSED
+}
+
+input StartAttendanceEntryInput {
+  type: AttendanceType!
+  comments: String
+  lat: Latitude
+  lng: Longitude
+  address: String
+  tagIds: [ID!]
+  verificationType: AttendanceVerificationType
+  s3Bucket: String
+  s3Key: String
+  imageUrl: String
+  verification_type: AttendanceVerificationType
+  s3_bucket: String
+  s3_key: String
+  image_url: String
+}
+
+input StartSubscriptionInput {
+  companyId: ID!
+  packageId: ID!
+  interval: SubscriptionPriceInterval!
+}
+
+type StripeCoupon {
+  id: ID
+  object: String
+  created: Int
+  currency: String
+  duration: String
+  metadata: StripeCouponMetaData
+  name: String
+  valid: Boolean
+  amountOff: Float
+  maxRedemptions: Int
+  percentOff: Float
+  redeemBy: Int
+  timesRedeemed: Int
+  appliesTo: ProductInCoupon
+  amount_off: Float
+  max_redemptions: Int
+  percent_off: Float
+  redeem_by: Int
+  times_redeemed: Int
+  applies_to: ProductInCoupon
+}
+
+type StripeCouponMetaData {
+  applicable_products: [ID]
+  applicableProducts: [ID]
+}
+
+type StripeCustomerDetails {
+  id: String
+  default_currency: String
+}
+
+type StripeInvoice {
+  id: String
+  object: String
+  attempted: Boolean
+  charge: String
+  collection_method: String
+  created: Int
+  currency: String
+  customer: String
+  number: String
+  paid: Boolean
+  status: String
+  subscription: String
+  subtotal: Int
+  tax: Int
+  total: Int
+  accountCountry: String
+  accountName: String
+  amountDue: Int
+  amountPaid: Int
+  amountRemaining: Int
+  attemptCount: Int
+  billingReason: String
+  customerAddress: String
+  customerEmail: String
+  customerName: String
+  customerPhone: String
+  customerShipping: String
+  customerTaxExempt: String
+  defaultPaymentMethod: String
+  dueDate: String
+  endingBalance: Int
+  hostedInvoiceUrl: String
+  invoicePdf: String
+  nextPaymentAttempt: Int
+  paymentIntent: String
+  periodEnd: Int
+  periodStart: Int
+  receiptNumber: String
+  webhooksDeliveredAt: Int
+  account_country: String
+  account_name: String
+  amount_due: Int
+  amount_paid: Int
+  amount_remaining: Int
+  attempt_count: Int
+  billing_reason: String
+  customer_address: String
+  customer_email: String
+  customer_name: String
+  customer_phone: String
+  customer_shipping: String
+  customer_tax_exempt: String
+  default_payment_method: String
+  due_date: String
+  ending_balance: Int
+  hosted_invoice_url: String
+  invoice_pdf: String
+  next_payment_attempt: Int
+  payment_intent: String
+  period_end: Int
+  period_start: Int
+  receipt_number: String
+  webhooks_delivered_at: Int
+}
+
+type StripePromoCode {
+  id: ID
+  active: Boolean
+  code: String
+  coupon: StripeCoupon
+  created: Int
+  customer: String
+  expiresAt: Int
+  maxRedemptions: Int
+  timesRedeemed: Int
+  expires_at: Int
+  max_redemptions: Int
+  times_redeemed: Int
+}
+
+"""New subscription type for the new subscription model"""
+type Subscription {
+  id: ID!
+  stripeSubscriptionId: String
+  package: SubscriptionPackage
+  company: Company
+  intervalType: SubscriptionPriceInterval
+  upcomingChanges: [SubscriptionChange]
+  userQuota: Int
+  taskQuota: Int
+  invoiceQuota: Int
+  reportQuota: Int
+  teamQuota: Int
+
+  """In bytes"""
+  storageQuota: Float
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type SubscriptionChange {
+  action: String
+  actionData: JSON
+  runAt: DateTime
+}
+
+type SubscriptionDiscount {
+  id: ID
+  customer: String
+  start: Int
+  subscription: String
+  coupon: StripeCoupon
+  promotionCode: String
+  promotion_code: String
+}
+
+"""
+Covers new and legacy subscription types. The legacy one goes to 'packages' table while
+the new one goes to the 'subscription_packages' table.
+"""
+type SubscriptionPackage {
+  id: ID!
+  name: String
+  products: [SubscriptionProduct]
+
+  """
+  Published would be shown on the frontend, unpublished covers custom packages or internal use ones
+  """
+  published: Boolean
+
+  """
+  This indicates which is the free tier package, for the system to know which package to assign to a new company.
+  There's no error checking on this, it's up to the admin to make sure there's only one default package.
+  """
+  isDefault: Boolean
+
+  """This indicates whether it's a custom package created by admin"""
+  isCustom: Boolean
+  sequence: Int
+  userQuota: Int
+  taskQuota: Int
+  invoiceQuota: Int
+  reportQuota: Int
+  teamQuota: Int
+
+  """In bytes"""
+  storageQuota: Float
+
+  """
+  Deactivated packages should not be renewed automatically [not implemented yet] and
+  cannot be activated on a user's account
+  """
+  active: Boolean
+  createdAt: DateTime
+  updatedAt: DateTime
+  createdBy: User
+  updatedBy: User
+  title: String
+  description: String
+  slug: String
+  storage: Float
+  type: PackageTypes
+  productId: String
+  smsQuota: Int
+  phoneCallQuota: Int
+  emailQuota: Int
+  whatsappQuota: Int
+  signatureQuota: Int
+  deletedAt: DateTime
+  deletedBy: User
+  packagePrices: [SubscriptionPackagePrice]
+  product_id: String
+  sms_quota: Int
+  phone_call_quota: Int
+  email_quota: Int
+  whatsapp_quota: Int
+  signature_quota: Int
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
+  created_by: User
+  updated_by: User
+  deleted_by: User
+  package_prices: [SubscriptionPackagePrice]
+}
+
+type SubscriptionPackagePrice {
+  id: ID!
+  package: SubscriptionPackage
+  name: String
+  description: String
+  price: Float
+  currency: String
+  interval: String
+  active: Boolean
+  intervalCount: Int
+  stripePriceId: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  deletedAt: DateTime
+  createdBy: User
+  updatedBy: User
+  deletedBy: User
+  interval_count: Int
+  stripe_price_id: String
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
+  created_by: User
+  updated_by: User
+  deleted_by: User
+}
+
+"""This data comes from Stripe and is not stored in DB"""
+type SubscriptionPrice {
+  stripePriceId: String
+  stripeProductId: String
+  type: String
+  amount: Float
+  interval: String
+  currency: String
+}
+
+enum SubscriptionPriceInterval {
+  MONTH
+  YEAR
+}
+
+"""
+Each product is a module/feature and can be enabled/disabled for a subscription package
+"""
+type SubscriptionProduct {
+  id: ID!
+  name: String
+  stripeProductId: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  createdBy: User
+  updatedBy: User
+
+  """
+  After creating a new price, it takes a few seconds to be available in Stripe, so
+  it will not be available in the API until it's available in Stripe
+  """
+  prices: [SubscriptionPrice]
+}
+
+type SubscriptionPromoCode {
+  id: ID
+  subscription: CompanySubscription
+  code: String
+  promoCodeId: String
+  percentOff: Int
+  amountOff: Float
+  createdAt: DateTime
+  promo_code_id: String
+  percent_off: Int
+  amount_off: Float
+  created_at: DateTime
+}
+
+type SubscriptionQuantityResult {
+  total: Int
+  assigned: Int
+  companyMembers: [CompanyMember]
+  company_members: [CompanyMember]
+}
+
+enum SubscriptionStatuses {
+  ACTIVE
+  OVERDUE
+  CANCELLED
+  INCOMPLETE
+  TRIAL
+}
+
+type Subtask {
+  id: ID!
+  title: String
+  checked: Boolean
+  sequence: Int
+  task: Task
+}
+
+input SubtaskInput {
+  title: String!
+}
+
+input SubtaskSequencesInput {
+  subtaskId: ID!
+  sequence: Int
+}
+
+input SubtaskUpdateInput {
+  title: String
+  checked: Boolean
+}
+
+input SwitchSubscriptionPackageInput {
+  quantity: Int
+  package_price_id: ID!
+  packagePriceId: ID
+}
+
+type Tag {
+  id: ID
+  name: String
+  color: String
+  company: Company
+  group: TagGroup
+  createdBy: User
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type TagGroup {
+  id: ID
+  name: String
+  description: String
+  company: Company
+  createdBy: User
+  createdAt: DateTime
+  updatedAt: DateTime
+  tags: [Tag]
+}
+
+"""Task refers to "card" in DB"""
+type Task {
+  id: ID!
+  name: String
+  description: String
+  value: Float
+  dueDate: DateTime
+  dueReminder: DateTime
+  startDate: DateTime
+  endDate: DateTime
+  fileType: String
+  actualStart: DateTime
+  actualEnd: DateTime
+  plannedEffort: Int
+  spentEffort: Int
+  projectedCost: Float
+  actualCost: Float
+  projectedValue: Float
+  actualValue: Float
+  approvedCost: Float
+
+  """
+  Total of hourly rate * timesheet approval hour of all members under that task(see Time Approval page on FE)
+  """
+  totalRate(dates: [TaskQueryTotalRate!]!): Float
+
+  """
+  if a card has a sub_status_id = 50 and status = 2, in card_statuses it will be id = 50 and parent_status = 2
+  """
+  companyTeamStatus: CompanyTeamStatus
+
+  """To get sub_status_id"""
+  taskActivities: [TaskActivity]
+  createdAt: DateTime
+  parentTask: Task
+  childTasks: [Task]
+  updatedAt: DateTime
+  deletedAt: DateTime
+  createdBy: User
+  archivedAt: DateTime
+  archivedBy: User
+  taskBoardTeam: TaskBoardTeam
+  taskBoard: TaskBoard
+  project: TaskBoard
+  companyTeam: CompanyTeam
+  timeSpent: Int
+  timeSpentMember: Int
+  timesheets: [Timesheet]
+  timerTotals: [TaskTimerTotal]
+  completed: Boolean
+  archived: Boolean
+  comments(limit: Int, offset: Int): [TaskComment]
+  members: [TaskMember]
+  watchers: [TaskWatcher]
+  pics: [TaskPic]
+  subtasks(limit: Int, offset: Int): [Subtask]
+  checklists(limit: Int, offset: Int): [Checklist]
+  attachments: [TaskAttachment]
+  group: ProjectGroup
+  projectStatus: ProjectStatus
+  customValues: [TaskCustomValue]
+
+  """To be deprecated and replace by stageStatus"""
+  status: CompanyTeamStatusType
+  stageStatus: StageType
+
+  """
+  Type is deprecated as of 2021/10/13, will always be "Task"
+  """
+  type: TaskType
+  company: Company
+
+  """
+  2022/01/12 - Specifically for task activity tracker, but may be available to normal task in the future
+  """
+  priority: TaskPriorityType
+  templateTask: TaskTemplate
+  tags: [Tag]
+  pinned: Boolean
+  visibility: CommonVisibility
+  visibilityWhitelist: CommonVisibilityWhitelist
+  published: Boolean
+  posY: Int
+  actualEffort: Float
+  due_date: DateTime
+  due_reminder: DateTime
+  start_date: DateTime
+  end_date: DateTime
+  file_type: String
+  actual_start: DateTime
+  actual_end: DateTime
+  planned_effort: Int
+  spent_effort: Int
+  projected_cost: Float
+  actual_cost: Float
+  company_team_status: CompanyTeamStatus
+  task_activities: [TaskActivity]
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
+  created_by: User
+  task_board_team: TaskBoardTeam
+  task_board: TaskBoard
+  company_team: CompanyTeam
+  time_spent: Int
+  timer_totals: [TaskTimerTotal]
+}
+
+enum TaskActionType {
+  TASK_CREATED
+  TASK_ARCHIVED
+  TASK_UNARCHIVED
+  TASK_REMOVED
+  UPDATED_DUE_DATE
+  UPDATED_START_DATE
+  UPDATED_END_DATE
+  UPDATED_TEAM_STATUS
+  ASSIGNEE_ADDED
+  ASSIGNEE_REMOVED
+  PIC_ADDED
+  PIC_REMOVED
+  ATTACHMENT_UPLOADED
+  ATTACHMENT_REMOVED
+}
+
+type TaskActivity {
+  id: ID!
+  task: Task
+  attachment: TaskAttachment
+  fieldName: String
+  actionType: String
+  fromValueTo: String
+  toValue: String
+  fromDate: DateTime
+  toDate: DateTime
+  fromLabel: String
+  toLabel: String
+  targetPic: ContactPic
+  targetMember: CompanyMember
+  fromCardStatus: CompanyTeamStatus
+  toCardStatus: CompanyTeamStatus
+  createdBy: User
+  createdAt: DateTime
+  field_name: String
+  action_type: String
+  from_value_to: String
+  to_value: String
+  from_date: DateTime
+  to_date: DateTime
+  from_label: String
+  to_label: String
+  target_pic: ContactPic
+  target_member: CompanyMember
+  from_card_status: CompanyTeamStatus
+  to_card_status: CompanyTeamStatus
+  created_by: User
+  created_at: DateTime
+}
+
+type TaskAttachment {
+  id: ID!
+  type: String
+  encoding: String
+  name: String
+  url: String
+  path: String
+  createdBy: User
+  isDeleted: Boolean
+  fileSize: Int
+  documentHash: String
+  createdAt: DateTime
+  isExternal: Boolean
+  externalSource: ExternalFileSource
+  file_size: Int
+  document_hash: String
+  created_at: DateTime
+}
+
+"""Task Board refers to job in DB"""
+type TaskBoard {
+  id: ID
+  company: Company
+  tasks(limit: Int, offset: Int, filters: FilterOptions): [Task]
+  contact: Contact
+  type: TaskBoardType
+  category: TaskBoardCategory
+  name: String
+  description: String
+  comment: String
+  color: String
+
+  """Not the same kind of status in Task"""
+  status: TaskBoardStatusType
+  slug: String
+  archived: Boolean
+  owners: [TaskBoardOwner]
+  members: [TaskMember]
+  value: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+  archivedAt: DateTime
+  deletedAt: DateTime
+  associateBy: User
+  createdBy: User
+  updatedBy: User
+  deletedBy: User
+  timeSpent: Int
+  startDate: DateTime
+  endDate: DateTime
+  taskBoardTeams: [TaskBoardTeam]
+  folder: TaskBoardFolder
+  groups: [ProjectGroup]
+  workspace: Workspace
+  visibility: CommonVisibility
+  visibilityWhitelist: CommonVisibilityWhitelist
+  pinned: Boolean
+  published: Boolean
+  projectSettings: ProjectSettings
+  projectStatuses: [ProjectStatus]
+  archivedBy: User
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
+  associate_by: User
+  created_by: User
+  updated_by: User
+  deleted_by: User
+  time_spent: Int
+  start_date: DateTime
+  end_date: DateTime
+  task_board_teams: [TaskBoardTeam]
+}
+
+enum TaskBoardCategory {
+  DEFAULT
+  PROJECT
+}
+
+input TaskBoardFilter {
+  dueDateRange: [DateTime!]
+  memberOwnerIds: [ID!]
+  memberAssigneeIds: [ID!]
+  tagIds: [ID!]
+  isOverdue: Boolean
+  boardType: TaskBoardType
+  category: TaskBoardCategory
+}
+
+input TaskBoardFiltersOptions {
+  memberId: ID
+}
+
+type TaskBoardFolder {
+  id: ID
+  name: String
+  taskBoards: [TaskBoard]
+  createdAt: DateTime
+  updatedAt: DateTime
+  createdBy: User
+  updatedBy: User
+}
+
+enum TaskBoardFolderType {
+  INTERNAL
+  PERSONAL
+  COLLABORATION
+  PROJECT
+}
+
+input TaskBoardInput {
+  name: String!
+  description: String
+  companyId: ID
+  company_id: ID!
+  type: TaskBoardType!
+  category: TaskBoardCategory
+  status: Int!
+  color: String
+  owners: [String!]
+}
+
+type TaskBoardOwner {
+  board: TaskBoard
+  companyMember: CompanyMember
+}
+
+input TaskBoardSort {
+  type: TaskBoardSortType
+  direction: SortDirection
+}
+
+enum TaskBoardSortType {
+  CREATED_AT
+  NAME
+}
+
+enum TaskBoardStatusType {
+  PROGRESS
+  DONE
+  CANCELLED
+}
+
+type TaskBoardTeam {
+  id: ID!
+  tasks: [Task]
+  companyTeam: CompanyTeam
+  company_team: CompanyTeam
+}
+
+input TaskBoardTeamDeleteInput {
+  task_board_team_ids: [ID]!
+}
+
+input TaskBoardTeamInput {
+  job_id: ID!
+  team_id: ID!
+}
+
+enum TaskBoardType {
+  INTERNAL
+  PERSONAL
+  COLLABORATION
+  COMPANY
+  ALL
+}
+
+input TaskBoardUpdateInput {
+  name: String!
+  description: String
+  type: TaskBoardType!
+  category: TaskBoardCategory
+  color: String
+
+  """"owners" are company member IDs"""
+  owners: [String!]
+  published: Boolean
+}
+
+enum TaskBoardVisibility {
+  HIDDEN
+  PUBLIC
+  ASSIGNED
+  SPECIFIC
+  PRIVATE
+}
+
+type TaskBoardVisibilityWhitelist {
+  teams: [CompanyTeam]
+  members: [CompanyMember]
+}
+
+type TaskComment {
+  id: ID!
+  message: String
+  task: Task
+  parentTaskComment: TaskComment
+  messageContent: String
+  attachments: [TaskAttachment]
+  createdAt: DateTime
+  updatedAt: DateTime
+  deletedAt: DateTime
+  createdBy: User
+  updatedBy: User
+  deletedBy: User
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
+  created_by: User
+  updated_by: User
+  deleted_by: User
+}
+
+input TaskCommentInput {
+  """Old mention system pattern: @[member-or-pic-uuid]"""
+  message: String
+
+  """Must be in JSON file"""
+  messageContent: String
+
+  """
+  If have parentId, means it is a reply or children, no parentId is a parent comment.
+  """
+  parentId: ID
+
+  """Either in PIC or Member UUID"""
+  mentionIds: [ID!]
+}
+
+input TaskCommentUpdateInput {
+  message: String
+  messageContent: String
+}
+
+type TaskCustomValue {
+  group: ProjectGroup
+  task: Task
+  attribute: ProjectGroupCustomAttribute
+  value: String
+}
+
+input TaskDeleteInput {
+  task_ids: [ID]!
+}
+
+enum TaskDueRemindersType {
+  ON_DUE
+  FIVE_M
+  TEN_M
+  FIFTEEN_M
+  ONE_HOUR
+  TWO_HOUR
+  ONE_DAY
+  TWO_DAY
+}
+
+input TaskFilter {
+  search: String
+  ids: [ID!]
+  boardType: TaskBoardType
+  stage: StageType
+  subStatusId: ID
+  contactIds: [ID!]
+  priority: TaskPriorityType
+  dueDateRange: [DateTime!]
+  startDateRange: [DateTime!]
+  memberOwnerIds: [ID!]
+  memberAssigneeIds: [ID!]
+  picIds: [ID!]
+  tagIds: [ID!]
+  isRecurring: Boolean
+  isOverdue: Boolean
+  category: TaskBoardCategory
+}
+
+input TaskFilterOptions {
+  is_project: Boolean
+}
+
+input TaskInput {
+  name: String!
+  description: String
+  value: Float
+  priority: TaskPriorityType
+  tagIds: [ID!]
+  posY: Int
+  groupId: ID
+  projectStatusId: ID
+  parentId: ID
+  jobId: ID
+  workspaceId: ID
+  projectId: ID
+  teamId: ID
+  plannedEffort: Float
+  subStatusId: ID
+  dueDate: DateTime
+  startDate: DateTime
+  endDate: DateTime
+  projectedCost: Float
+  published: Boolean
+  visibility: TaskVisibilityType
+  job_id: ID
+  team_id: ID
+  planned_effort: Float
+  sub_status_id: ID
+  due_date: DateTime
+  start_date: DateTime
+  end_date: DateTime
+  projected_cost: Float
+}
+
+type TaskMember {
+  id: ID!
+  task: Task
+  user: User
+  companyMember: CompanyMember
+  company_member: CompanyMember
+}
+
+input TaskMemberFilter {
+  member_id: ID
+  memberId: ID
+}
+
+input TaskMemberInput {
+  companyMemberIds: [ID!]
+  company_member_ids: [ID]!
+}
+
+input TaskPersonalInput {
+  name: String!
+  description: String
+  status: PersonalStatusType
+  stageStatus: StageType
+  value: Float
+  priority: TaskPriorityType
+  jobId: ID
+  dueDate: DateTime
+  startDate: DateTime
+  endDate: DateTime
+  published: Boolean
+  job_id: ID!
+  due_date: DateTime
+  start_date: DateTime
+  end_date: DateTime
+}
+
+type TaskPic {
+  id: ID!
+  task(isProject: Boolean): Task
+  contact: Contact
+  pic: ContactPic
+  user: User
+}
+
+input TaskPicInput {
+  picIds: [ID!]
+  pic_ids: [ID]
+}
+
+input TaskPicsInput {
+  taskId: ID!
+  picIds: [ID!]!
+}
+
+enum TaskPriorityType {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+input TaskQueryTotalRate {
+  day: Int!
+  month: Int!
+  year: Int!
+}
+
+input TaskSequenceInput {
+  task_id: ID
+  sequence: Int
+}
+
+input TaskSort {
+  type: TaskSortType
+  direction: SortDirection
+}
+
+enum TaskSortType {
+  CREATED_AT
+  DUE_DATE
+  NAME
+  PRIORITY
+  STAGE
+}
+
+type TaskTag {
+  task: Task
+  tag: Tag
+}
+
+input TaskTagOptions {
+  taskId: ID!
+  tagIds: [ID!]!
+}
+
+type TaskTemplate implements Template {
+  id: ID
+  name: String
+  company: Company
+  createdBy: User
+  createdAt: DateTime
+  updatedAt: DateTime
+  description: String
+  copySubtasks: Boolean
+  copyAttachments: Boolean
+  isRecurring: Boolean
+  recurringSetting: TaskTemplateRecurringSetting
+  templateId: ID
+  items: [TaskTemplateItem]
+  attachments: [TaskTemplateAttachment]
+  type: TemplateType
+}
+
+type TaskTemplateAttachment {
+  name: String
+  type: String
+  filesize: Int
+  bucket: String
+  path: String
+  url: String
+  createdAt: String
+  updatedAt: String
+}
+
+type TaskTemplateItem {
+  name: String
+  sequence: Int
+  description: String
+  isSubtask: Boolean
+}
+
+"""Translated from cron string"""
+type TaskTemplateRecurringSetting {
+  intervalType: String
+  day: Int
+  month: Int
+  skipWeekend: Boolean
+}
+
+type TaskTimerEntry {
+  task: Task
+  companyMember: CompanyMember
+  startDate: DateTime
+  endDate: DateTime
+  createdAt: DateTime
+  updatedAt: DateTime
+  timeTotal: Int
+  company_member: CompanyMember
+  start_date: DateTime
+  end_date: DateTime
+  created_at: DateTime
+  updated_at: DateTime
+  time_total: Int
+}
+
+type TaskTimerTotal {
+  companyMember: CompanyMember
+  memberTotal: Int
+  company_member: CompanyMember
+  member_total: Int
+}
+
+enum TaskType {
+  TASK
+  DOCUMENT
+}
+
+input TaskUpdateInput {
+  name: String
+  description: String
+  sequence: Int
+  priority: TaskPriorityType
+  dueDate: DateTime
+  teamId: ID
+  dueReminder: DateTime
+  subStatusId: ID
+  plannedEffort: Float
+  startDate: DateTime
+  endDate: DateTime
+  projectedCost: Float
+  published: Boolean
+  visibility: TaskVisibilityType
+  projectStatusId: ID
+  actualStart: DateTime
+  actualEnd: DateTime
+  actualEffort: Float
+  actualValue: Float
+  due_date: DateTime
+  team_id: ID
+  due_reminder: DateTime
+  sub_status_id: ID
+  planned_effort: Float
+  start_date: DateTime
+  end_date: DateTime
+  projected_cost: Float
+}
+
+enum TaskVisibilityType {
+  """And creator"""
+  OWNERS
+  DEFAULT
+}
+
+type TaskWatcher {
+  task: Task
+  companyMember: CompanyMember
+}
+
+input TeamStatusFilter {
+  sub_status_id: ID
+}
+
+interface Template {
+  id: ID
+  name: String
+  company: Company
+  createdBy: User
+  createdAt: DateTime
+  updatedAt: DateTime
+  type: TemplateType
+}
+
+enum TemplateType {
+  TASK
+  PROJECT_TASK
+}
+
+"""
+A time string at UTC, such as 10:15:30Z, compliant with the `full-time` format
+outlined in section 5.6 of the RFC 3339profile of the ISO 8601 standard for
+representation of dates and times using the Gregorian calendar.
+"""
+scalar Time
+
+type Timesheet {
+  id: ID!
+  activity: TimesheetActivity
+  submitted_date: DateTime
+  comments: String
+  location: Location
+  startDate: DateTime
+  endDate: DateTime
+  timeTotal: Int
+  companyMember: CompanyMember
+  start_date: DateTime
+  end_date: DateTime
+  time_total: Int
+  company_member: CompanyMember
+  archived: TimesheetArchiveStatus
+}
+
+type TimesheetActivity {
+  id: ID!
+  task: Task
+  active: Boolean
+  created_at: DateTime
+  updated_at: DateTime
+}
+
+input TimesheetApprovalInput {
+  taskId: ID!
+  companyMemberId: ID
+}
+
+enum TimesheetApprovalStatus {
+  REJECTED
+  APPROVED
+}
+
+enum TimesheetArchiveStatus {
+  TRUE
+  FALSE
+}
+
+type TimesheetDayApproval {
+  companyMember: CompanyMember
+  task: Task
+  day: Int
+  total: Int
+  month: Int
+  year: Int
+  status: TimesheetApprovalStatus
+  billable: Boolean
+}
+
+input TimesheetDaysInput {
+  day: Int!
+  month: Int!
+  year: Int!
+  total: Int!
+}
+
+input TimesheetEntryInput {
+  startDate: DateTime
+  submittedDate: DateTime
+  timeTotal: Int
+  start_date: DateTime!
+  submitted_date: DateTime
+  time_total: Int
+  comments: String
+}
+
+input TimesheetFilterOptions {
+  selectedDate: DateTime
+  archived: ArchivedStatus
+}
+
+"""
+The javascript `Date` as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
+"""
+scalar Timestamp
+
+input ToggleEnabledCustomColumnInput {
+  projectId: ID!
+  attributeId: ID!
+}
+
+type ToolTipsStatus {
+  INITIAL: Boolean
+  CREATE_COMPANY: Boolean
+  EDIT_COMPANY: Boolean
+  ADD_COMPANY_MEMBERS: Boolean
+  ADD_COMPANY_TEAM: Boolean
+  EDIT_COMPANY_TEAM: Boolean
+  SETUP_PAYMENT_DETAILS: Boolean
+  SUBSCRIBE_PACKAGE: Boolean
+  ADD_CONTACT_GROUP: Boolean
+  ADD_CONTACT: Boolean
+  SWITCH_CONTACT_GROUP_TAB: Boolean
+  ASSIGN_CONTACT_GROUP_FOR_CONTACT: Boolean
+  VIEW_CONTACT_DETAIL: Boolean
+  ADD_INTERNAL_TASK_BOARD: Boolean
+  ADD_TASK_BOARD_TEAM: Boolean
+  ADD_TASK: Boolean
+  EDIT_TASK: Boolean
+  TASK_VIEW_MODE: Boolean
+  TASK_SHARED_WITH_ME: Boolean
+  ADD_CLIENT_COLLECTOR: Boolean
+  CREATE_COLLECTION: Boolean
+  VIEW_COLLECTION: Boolean
+  COLLECTION_LIST_VIEW_TYPE_AND_STATUS_SORTING: Boolean
+  PAYMENTS_PAGE: Boolean
+}
+
+type TotalNotificationCount {
+  total: Int
+}
+
+type TotalTimesheetApproval {
+  day: Int
+  month: Int
+  year: Int
+  total: Int
+}
+
+input UnarchiveTaskInput {
+  task_ids: [ID]!
+}
+
+type UnreadCount {
+  unread: Int
+}
+
+"""Floats that will have a value of 0 or more."""
+scalar UnsignedFloat
+
+"""Integers that will have a value of 0 or more."""
+scalar UnsignedInt
+
+input UpdateAttendanceSettingsInput {
+  allowMobile: Boolean
+  allowWeb: Boolean
+  requireVerification: Boolean
+  requireLocation: Boolean
+  enable2d: Boolean
+  enableBiometric: Boolean
+  allow_mobile: Boolean
+  allow_web: Boolean
+  require_verification: Boolean
+  require_location: Boolean
+  enable_2d: Boolean
+  enable_biometric: Boolean
+}
+
+input UpdateBillingInvoiceInput {
+  billingInvoiceId: ID!
+
+  """Maximum 20 characters"""
+  docNo: String
+  docDate: DateTime
+
+  """Get companyName from contactId"""
+  picId: ID
+  terms: Int
+
+  """Maximum 200 characters"""
+  remarks: String
+}
+
+input UpdateBillingInvoiceItemInput {
+  invoiceItemId: ID!
+  descriptionHdr: String
+  sequence: Int
+
+  """Either update taskId to change name or change the itemName"""
+  taskId: ID
+
+  """
+  aka Description_DTL, either update taskId to change name or change the itemName
+  """
+  itemName: String
+  unitPrice: Float
+  discountPercentage: Float
+  taxPercentage: Float
+}
+
+input UpdateCollectionInput {
+  title: String
+  description: String
+  refNo: String
+  dueDate: DateTime
+  remindInterval: CollectionRemindIntervalTypes
+  startMonth: DateTime
+  smsNotify: Boolean
+  whatsappNotify: Boolean
+  voiceNotify: Boolean
+  emailNotify: Boolean
+  notifyPics: [ID!]
+  remindEnd_on: DateTime
+  remindOnDate: Int
+  remindOnMonth: Int
+  isDraft: Boolean
+  ref_no: String
+  due_date: DateTime
+  remind_interval: CollectionRemindIntervalTypes
+  start_month: DateTime
+  sms_notify: Boolean
+  whatsapp_notify: Boolean
+  voice_notify: Boolean
+  email_notify: Boolean
+  notify_pics: [ID!]
+  remind_end_on: DateTime
+  remind_on_date: Int
+  remind_on_month: Int
+  is_draft: Boolean
+}
+
+input UpdateCollectionPaymentTypeInput {
+  payment_type: CollectionPaymentTypes
+}
+
+input UpdateCollectorInput {
+  id: ID!
+  team_id: ID
+  member_ids: [ID]
+  teamId: ID
+  memberIds: [ID]
+}
+
+input UpdateCompanyHolidayInput {
+  name: String
+  active: CompanyHolidayStatus
+  startDate: DateTime
+  endDate: DateTime
+  start_date: DateTime
+  end_date: DateTime
+}
+
+input UpdateCompanyInfoInput {
+  name: String
+  description: String
+  logoUrl: String
+
+  """Only for invoice generation"""
+  accountCode: String
+
+  """Only for invoice generation"""
+  invoicePrefix: String
+  address: String
+  email: String
+  phone: String
+  website: String
+  registrationCode: String
+  invoiceStart: Int
+  logo_url: String
+}
+
+input UpdateCompanyMemberInfoInput {
+  position: String
+  type: CompanyMemberType
+  hourlyRate: Float
+  employeeTypeId: ID
+  hourly_rate: Float
+  employee_type_id: ID
+}
+
+input UpdateCompanyPermissionsInput {
+  member: UpdateCrudInput
+  manager: UpdateCrudInput
+}
+
+input UpdateCompanyTeamInfoInput {
+  title: String
+  memberIds: [ID]
+  member_ids: [ID]
+}
+
+input UpdateCompanyTeamStatusInput {
+  label: String!
+  percentage: Int!
+  color: String!
+  parent_status: CompanyTeamStatusType!
+  parentStatus: CompanyTeamStatusType
+  stage: StageType
+}
+
+input UpdateCompanyWorkDayInput {
+  open: Boolean!
+  startHour: String
+  endHour: String
+  start_hour: String!
+  end_hour: String!
+}
+
+input UpdateContactGroupInput {
+  name: String
+}
+
+input UpdateContactInput {
+  name: String!
+  address: String
+  type: ContactType!
+  remarks: String
+  deal_value: Float
+  dealValue: Float
+
+  """Only for invoice generation"""
+  accountCode: String
+}
+
+input UpdateContactPicInput {
+  name: String!
+  email: String
+  contactNo: String
+  contact_no: String
+  remarks: String
+}
+
+input UpdateCrudInput {
+  member: CommonCrud
+}
+
+input UpdateCustomTimesheetApprovalInput {
+  date: DateTime!
+  status: TimesheetApprovalStatus
+  billable: Boolean
+  sheets: [CustomTimesheetApprovalInput!]!
+}
+
+input UpdateLocationInput {
+  name: String
+  address: String
+  radius: Float
+  lng: Float
+  lat: Float
+  archived: Boolean
+  metadata: String
+}
+
+input UpdatePaymentStatusInput {
+  status: CollectionPaymentStatusTypes!
+  remarks: String
+  collectionId: ID
+  collectionPeriodId: ID
+  collectionPaymentId: ID
+  collection_id: ID!
+  collection_period_id: ID!
+  collection_payment_id: ID!
+}
+
+input UpdateProfileInput {
+  name: String
+  email: String
+  contactNo: String
+  profileImage: String
+  contact_no: String
+  profile_image: String
+}
+
+input UpdateProjectsArchivedStateInput {
+  projectIds: [ID!]!
+  archived: Boolean!
+}
+
+input UpdateSubscriptionPackageProductsInput {
+  packageId: ID!
+  productId: ID!
+}
+
+input UpdateSubscriptionProductInput {
+  name: String!
+}
+
+input UpdateTagGroupInput {
+  id: ID!
+  name: String!
+  description: String
+}
+
+input UpdateTagInput {
+  id: ID!
+  name: String
+  color: String
+  groupId: ID
+}
+
+input UpdateTaskBoardFolderInput {
+  folderId: ID!
+  name: String!
+}
+
+input UpdateTaskBoardsArchivedStateInput {
+  boardIds: [String]!
+  archived: Boolean!
+}
+
+input UpdateTaskParentInput {
+  childTaskId: ID!
+  destinationParentId: ID!
+}
+
+type UpdateTaskParentResponse {
+  sourceTask: Task!
+  destinationTask: Task!
+}
+
+input UpdateTaskTemplateInput {
+  companyId: ID!
+  templateId: ID!
+  name: String!
+  description: String
+  cronString: String
+  isCopySubtasks: Boolean
+  isCopyAttachments: Boolean
+}
+
+input UpdateTimesheetApprovalInput {
+  date: DateTime!
+  status: TimesheetApprovalStatus
+  billable: Boolean
+  sheets: [TimesheetApprovalInput!]!
+}
+
+input UpdateTimesheetInput {
+  end_date: DateTime
+  endDate: DateTime
+  comments: String
+}
+
+input UpdateToolTipsStatusInput {
+  INITIAL: Boolean
+  CREATE_COMPANY: Boolean
+  EDIT_COMPANY: Boolean
+  ADD_COMPANY_MEMBERS: Boolean
+  ADD_COMPANY_TEAM: Boolean
+  EDIT_COMPANY_TEAM: Boolean
+  SETUP_PAYMENT_DETAILS: Boolean
+  SUBSCRIBE_PACKAGE: Boolean
+  ADD_CONTACT_GROUP: Boolean
+  ADD_CONTACT: Boolean
+  SWITCH_CONTACT_GROUP_TAB: Boolean
+  ASSIGN_CONTACT_GROUP_FOR_CONTACT: Boolean
+  VIEW_CONTACT_DETAIL: Boolean
+  ADD_INTERNAL_TASK_BOARD: Boolean
+  ADD_TASK_BOARD_TEAM: Boolean
+  ADD_TASK: Boolean
+  EDIT_TASK: Boolean
+  TASK_VIEW_MODE: Boolean
+  TASK_SHARED_WITH_ME: Boolean
+  ADD_CLIENT_COLLECTOR: Boolean
+  CREATE_COLLECTION: Boolean
+  VIEW_COLLECTION: Boolean
+  COLLECTION_LIST_VIEW_TYPE_AND_STATUS_SORTING: Boolean
+  PAYMENTS_PAGE: Boolean
+}
+
+input UpdateUserNameInput {
+  name: String!
+}
+
+input UpdateWorkspaceInput {
+  name: String
+  bgColor: String
+  workspaceId: ID!
+}
+
+input UpgradeSubscriptionInput {
+  subscriptionId: ID!
+  companyId: ID!
+  packageId: ID!
+  interval: SubscriptionPriceInterval!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+input UploadMemberReferenceImageInput {
+  imageUrl: String
+  s3Bucket: String
+  s3Key: String
+  image_url: String!
+  s3_bucket: String!
+  s3_key: String!
+}
+
+input UploadPaymentReceiptInput {
+  collectionId: ID
+  collectionPeriodId: ID
+  collectionPaymentId: ID
+  collection_id: ID!
+  collection_period_id: ID!
+  collection_payment_id: ID!
+}
+
+"""
+A field whose value conforms to the standard URL format as specified in RFC3986: https://www.ietf.org/rfc/rfc3986.txt.
+"""
+scalar URL
+
+"""A currency string, such as $21.25"""
+scalar USCurrency
+
+type User {
+  id: String
+  email: String
+  name: String
+  active: Boolean
+  registered: Boolean
+  companies: [Company]
+  defaultCompany: Company
+  defaultTimezone: String
+  contactNo: String
+  profileImage: String
+  profileImages: ImageGroup
+  profileImageSize: Float
+  lastLogin: DateTime
+  refreshToken: String
+  resetTokenValidity: DateTime
+  emailVerified: Boolean
+  emailVerificationCode: String
+  emailAuth: Boolean
+  viewNotificationAt: DateTime
+  resetToken: String
+  facebookId: String
+  googleId: String
+  linkedinId: String
+  customerId: String
+  paymentMethodId: String
+  paymentMethods: [PaymentMethod]
+  stripeCustomerDetails: StripeCustomerDetails
+  lastActiveAt: DateTime
+  createdBy: User
+  updatedBy: User
+  deletedBy: User
+  createdAt: DateTime
+  updatedAt: DateTime
+  deletedAt: DateTime
+  auth0Id: String
+  tooltipsStatus: ToolTipsStatus
+  signUpData: JSON
+  viewOptions: JSON
+  onboarding: JSON
+  default_company: Company
+  default_timezone: String
+  contact_no: String
+  profile_image: String
+  last_login: DateTime
+  refresh_token: String
+  reset_token_validity: DateTime
+  email_verified: Boolean
+  email_verification_code: String
+  email_auth: Boolean
+  view_notification_at: DateTime
+  reset_token: String
+  facebook_id: String
+  google_id: String
+  linkedin_id: String
+  customer_id: String
+  payment_method_id: String
+  payment_methods: [PaymentMethod]
+  last_active_at: DateTime
+  created_by: User
+  updated_by: User
+  deleted_by: User
+  created_at: DateTime
+  updated_at: DateTime
+  deleted_at: DateTime
+  auth0_id: String
+  tooltips_status: ToolTipsStatus
+}
+
+type UserNotification {
+  id: ID!
+  notification: Notification
+  user: User
+  username: String
+  is_read: Boolean
+  user_type: UserNotificationType
+  created_at: DateTime
+  group: String
+}
+
+enum UserNotificationType {
+  MEMBER
+  PIC
+}
+
+"""
+A field whose value is a UTC Offset: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+"""
+scalar UtcOffset
+
+"""
+A field whose value is a generic Universally Unique Identifier: https://en.wikipedia.org/wiki/Universally_unique_identifier.
+"""
+scalar UUID
+
+type VerificationImageUploadUrlResponse {
+  s3Bucket: String
+  s3Key: String
+  uploadUrl: String
+  s3_bucket: String
+  s3_key: String
+  upload_url: String
+}
+
+"""Represents NULL values"""
+scalar Void
+
+"""Once voided, cannot be unvoided"""
+input VoidInvoiceInput {
+  invoiceId: ID!
+}
+
+input WeeklyTimesheetFilterOptions {
+  companyMemberId: ID
+  taskId: ID
+  week: Int!
+  year: Int!
+}
+
+enum WorkDay {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+}
+
+type WorkHourTotals {
+  tracked: Int
+  worked: Int
+  regular: Int
+  overtime: Int
+}
+
+type Workspace {
+  id: ID
+  name: String
+  bgColor: String
+  company: Company
+  projects: [TaskBoard]
+  visibility: CommonVisibility
+  visibilityWhitelist: CommonVisibilityWhitelist
+  createdBy: User
+  updatedBy: User
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+

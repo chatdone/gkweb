@@ -1,0 +1,46 @@
+@import 'src/global.less';
+
+.wrapper {
+  margin-top: 1rem;
+  min-height: 82vh;
+
+  .table();
+
+  :global(.arco-table-cell-expand-icon button) {
+    margin-right: 1rem;
+  }
+
+  :global(.arco-card-body) {
+    padding-bottom: 5rem;
+  }
+
+  :global(.arco-space-vertical) {
+    width: 100%;
+  }
+
+  .description-container {
+    padding-left: 1rem;
+
+    :global(div.arco-typography) {
+      margin-bottom: 0;
+      font-size: @font-size-md;
+    }
+
+    .title {
+      font-weight: 600;
+    }
+  }
+
+  .btn-active {
+    color: @gk-theme;
+    font-weight: 600;
+
+    &:global(.arco-btn-secondary:not(.arco-btn-disabled):not(.arco-btn-loading):hover) {
+      color: @gk-theme;
+    }
+  }
+
+  .btn-inactive {
+    background-color: unset;
+  }
+}

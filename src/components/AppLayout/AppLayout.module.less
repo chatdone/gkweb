@@ -1,0 +1,82 @@
+@import 'src/global.less';
+
+.layout {
+  background: #f1f2f4;
+  width: 100vw;
+  height: 100vh;
+}
+
+.layout-main {
+  overflow: hidden;
+
+  @media only screen and (max-width: @mobile-screen-width) {
+    overflow: scroll;
+  }
+}
+
+.content {
+  position: relative;
+  padding: 1rem 1rem 5rem;
+
+  @media only screen and (max-width: @mobile-screen-width) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.layout-sider {
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    border-radius: 7px;
+    background-color: var(--color-text-4);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-text-3);
+  }
+
+  > :global(.arco-layout-sider-children) {
+    overflow-y: hidden;
+  }
+
+  .collapse-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+
+    background-color: white;
+    color: #86909c;
+
+    z-index: 10;
+
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: -1.2rem;
+    bottom: 0;
+
+    &:hover {
+      background-color: var(--color-fill-3);
+    }
+  }
+}
+
+.layout-header {
+  z-index: 1;
+}
+
+.layout-sider-new {
+  > :global(.arco-layout-sider-children) {
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+  }
+}

@@ -1,0 +1,49 @@
+@import 'src/global.less';
+
+.checkout {
+  width: 100%;
+
+  .table();
+
+  :global(.arco-space-vertical) {
+    width: 100%;
+  }
+
+  :global(.arco-table-tfoot .arco-table-td) {
+    background-color: white;
+  }
+
+  :global(.arco-table-tfoot .arco-table-td:first-child) {
+    font-weight: bold;
+  }
+
+  .title {
+    font-weight: 600;
+    font-size: @font-size-md;
+  }
+
+  .card {
+    :global(.arco-typography) {
+      color: @grey-6;
+    }
+
+    :global(.arco-card-body) {
+      padding-right: 3.5rem;
+    }
+
+    svg {
+      font-size: @font-size-2xl;
+      display: block;
+    }
+  }
+
+  .link-txt {
+    color: @gk-theme;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .button-group-row {
+    margin-top: 1rem;
+  }
+}

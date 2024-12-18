@@ -1,0 +1,104 @@
+@import 'src/global.less';
+
+.title {
+  font-weight: 600;
+}
+
+.wrapper {
+  margin-top: 1rem;
+
+  min-height: 81.5vh;
+
+  :global(.arco-switch-checked) {
+    background-color: @gk-theme;
+  }
+
+  :global(.arco-space-vertical) {
+    width: 100%;
+  }
+
+  .page-title {
+    .title();
+    font-size: @font-size-xl;
+  }
+
+  .content-wrapper {
+    padding: 0 1rem;
+  }
+}
+
+.section-header {
+  margin-bottom: 1rem;
+
+  :global(div.arco-typography) {
+    margin-bottom: 0;
+  }
+}
+
+.policy-card {
+  padding: 1rem;
+
+  border: 1px solid #e5e6e8;
+  border-radius: 2px;
+
+  .title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &.with-children {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .tooltip-icon {
+    vertical-align: -2.5px;
+    color: #c9cdd4;
+  }
+}
+
+.clock-in-option-card {
+  width: 287px;
+  height: 133px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+
+  border: 1px solid #e5e6e8;
+  border-radius: 4px;
+
+  :global(.arco-space-vertical) {
+    width: unset;
+  }
+
+  :global(div.arco-typography) {
+    margin-bottom: 0;
+  }
+
+  .title {
+    font-weight: bold;
+  }
+
+  .icon {
+    font-size: @font-size-2xl;
+  }
+
+  .checkbox {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    font-size: @font-size-lg;
+  }
+
+  .checked {
+    color: @gk-theme;
+  }
+
+  &.disabled {
+    opacity: 0.4;
+  }
+}

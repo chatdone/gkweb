@@ -1,0 +1,44 @@
+@import 'src/global.less';
+
+.batch-modal-content-wrapper {
+  width: 100%;
+
+  :global(.arco-upload-list-status) {
+    display: none;
+  }
+
+  .title {
+    font-weight: bold;
+  }
+
+  .file-list {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+.file-list-item {
+  display: flex;
+  align-items: center;
+
+  :global(.arco-btn-icon-only) {
+    margin-left: 0.25rem;
+    color: @grey-8;
+  }
+
+  .file {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    background-color: #f7f8fa;
+    padding: 0.25rem 0.5rem;
+
+    :global(.arco-select .arco-select-view) {
+      background-color: white;
+    }
+
+    svg {
+      vertical-align: -3px;
+    }
+  }
+}

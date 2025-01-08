@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "doppler run -- yarn dist",
+    "build": "vite build",
     "dist": "tsc -p tsconfig.prod.json && NODE_OPTIONS=--max-old-space-size=8192 vite build",
     "preview": "vite preview",
     "test": "vitest",

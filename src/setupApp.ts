@@ -1,6 +1,6 @@
-import * as Sentry from '@sentry/react';
+//import * as Sentry from '@sentry/react';
 import '@arco-design/web-react/dist/css/arco.css';
-import { BrowserTracing } from '@sentry/tracing';
+//import { BrowserTracing } from '@sentry/tracing';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import calendar from 'dayjs/plugin/calendar';
@@ -45,11 +45,11 @@ dayjs.extend(advancedFormat);
 dayjs.extend(weekOfYear);
 dayjs.extend(isLeapYear);
 
-Sentry.init({
-  dsn: Configs.env.SENTRY_DSN,
-  environment: Configs.GK_ENVIRONMENT,
-  integrations: [new BrowserTracing()],
-});
+// Sentry.init({
+//   dsn: Configs.env.SENTRY_DSN,
+//   environment: Configs.GK_ENVIRONMENT,
+//   integrations: [new BrowserTracing()],
+// });
 
 // ReactGA.initialize(Configs.env.GA_MEASUREMENT_ID, {
 //   testMode: !(Configs.GK_ENVIRONMENT === 'production'),

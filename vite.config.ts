@@ -3,8 +3,8 @@ import { defineConfig, loadEnv } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import type { VitePWAOptions } from 'vite-plugin-pwa';
 import removeConsole from 'vite-plugin-remove-console';
-import type { ViteSentryPluginOptions } from 'vite-plugin-sentry';
-import viteSentry from 'vite-plugin-sentry';
+// import type { ViteSentryPluginOptions } from 'vite-plugin-sentry';
+// import viteSentry from 'vite-plugin-sentry';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default ({ mode }) => {
@@ -59,7 +59,7 @@ export default ({ mode }) => {
     plugins: [
       react(),
       tsconfigPaths(),
-      viteSentry(sentryConfig),
+      // viteSentry(sentryConfig),
       VitePWA(pwaOptions),
       removeConsole(),
     ],

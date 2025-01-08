@@ -10,25 +10,25 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
 
-  const sentryConfig: ViteSentryPluginOptions = {
-    url: 'https://sentry.io',
-    authToken: process.env.VITE_SENTRY_AUTH_TOKEN,
-    org: 'gokudos',
-    project: 'gokudos',
-    release: '1.0',
-    deploy: {
-      env: process.env.VITE_GK_ENVIRONMENT,
-    },
-    setCommits: {
-      auto: true,
-    },
-    sourceMaps: {
-      include: ['./dist/assets'],
-      ignore: ['node_modules'],
-      urlPrefix: '~/assets',
-    },
-    silent: process.env.VITE_GK_ENVIRONMENT === 'development',
-  };
+  // const sentryConfig: ViteSentryPluginOptions = {
+  //   url: 'https://sentry.io',
+  //   authToken: process.env.VITE_SENTRY_AUTH_TOKEN,
+  //   org: 'gokudos',
+  //   project: 'gokudos',
+  //   release: '1.0',
+  //   deploy: {
+  //     env: process.env.VITE_GK_ENVIRONMENT,
+  //   },
+  //   setCommits: {
+  //     auto: true,
+  //   },
+  //   sourceMaps: {
+  //     include: ['./dist/assets'],
+  //     ignore: ['node_modules'],
+  //     urlPrefix: '~/assets',
+  //   },
+  //   silent: process.env.VITE_GK_ENVIRONMENT === 'development',
+  // };
 
   const pwaOptions: Partial<VitePWAOptions> = {
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',

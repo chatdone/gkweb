@@ -1,7 +1,7 @@
 import { ApolloProvider } from '@apollo/client';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import 'virtual:vite-plugin-sentry/sentry-config';
+// import 'virtual:vite-plugin-sentry/sentry-config';
 
 import ArcoConfig from './components/ArcoConfig';
 import HubSpot from './components/HubSpot';

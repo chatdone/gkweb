@@ -15,10 +15,10 @@ const Configs = {
     GOOGLE_CLIENT_ID: import.meta.env.VITE_GOOGLE_CLIENT_ID,
     GOOGLE_API_KEY: import.meta.env.VITE_GOOGLE_API_KEY,
     STRIPE_PUBLISH_KEY: import.meta.env.VITE_STRIPE_PUBLISH_KEY,
-    SENTRY_DSN:
-      import.meta.env.VITE_SENTRY_DSN ||
-      'https://0cc28349996c47fca02a19f27d55e861@o1239720.ingest.sentry.io/6575078',
-    SENTRY_AUTH_TOKEN: import.meta.env.VITE_SENTRY_AUTH_TOKEN,
+    // SENTRY_DSN:
+    //   import.meta.env.VITE_SENTRY_DSN ||
+    //   'https://0cc28349996c47fca02a19f27d55e861@o1239720.ingest.sentry.io/6575078',
+    // SENTRY_AUTH_TOKEN: import.meta.env.VITE_SENTRY_AUTH_TOKEN,
     GA_MEASUREMENT_ID: import.meta.env.VITE_GA_MEASUREMENT_ID || '',
     ENABLE_DEDOCO: import.meta.env.VITE_ENABLE_DEDOCO === 'true',
     DEBUG_ONBOARDING_TOOLTIP:

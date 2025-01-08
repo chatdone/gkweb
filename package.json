@@ -116,6 +116,7 @@
     "vite-plugin-remove-console": "^1.1.0",
     "vite-plugin-sentry": "^1.1.5",
     "vite-tsconfig-paths": "^3.4.1",
+    "vite-plugin-vercel": "^9.0.4",
     "vitest": "^0.23.2",
     "workbox-window": "^6.5.4"
   }

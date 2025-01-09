@@ -1,5 +1,6 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig, loadEnv } from 'vite';
+import vercel from 'vite-plugin-vercel';
 import { VitePWA } from 'vite-plugin-pwa';
 import type { VitePWAOptions } from 'vite-plugin-pwa';
 import removeConsole from 'vite-plugin-remove-console';
@@ -57,6 +58,7 @@ export default ({ mode }) => {
 
   return defineConfig({
     plugins: [
+      vercel(),
       react(),
       tsconfigPaths(),
       // viteSentry(sentryConfig),

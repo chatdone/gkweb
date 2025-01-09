@@ -100,7 +100,7 @@ const LoginPage = () => {
           navigate(0);
         } else {
           Message.error(auth0Error.message, {
-            title: 'Failed to login',
+            title: `Failed to login ${auth0Error.message}`,
             duration: 0,
           });
         }

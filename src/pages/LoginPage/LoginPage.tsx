@@ -76,6 +76,8 @@ const LoginPage = () => {
 
     if (!isAuth0Loading) {
       if (auth0Error && !state?.retryLogin) {
+        console.log("error: ", auth0Error.message);
+
         const isEmailNotVerified =
           auth0Error.message.match(new RegExp('verify', 'i')) &&
           auth0Error.message.match(new RegExp('email', 'i'));
